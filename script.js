@@ -74,15 +74,15 @@
 // const sum  = function (a) {
 //     return function (b) {
 //       if (b) {
-//         return sum(a+b); // it takes an argument and return a function which again can take an argument.
+//         return sum(a+b);
 //       }
-//       return a; // it will keep on adding 1+2+3+4..
+//       return a; 
 //     }
 //   };
 
 
-//   console.log(sum(1)(2)()); //3
-//   console.log(sum(1)(2)(3)(4)(5)(6)()); //10
+//   console.log(sum(1)(2)()); 
+//   console.log(sum(1)(2)(3)(4)(5)(6)());
 
 
 // function add(a){
