@@ -114,5 +114,6 @@ function f(value) {
 }
 
 
-console.log(f(1)(2)(3)(4)(5)(6)(7));
+console.log(f(1)(2));
+console.log(f(1)(2)(3));
 
