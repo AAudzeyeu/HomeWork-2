@@ -1,11 +1,14 @@
+@import url(animation.css);
+
 body {
     height: 100vh;
     width: 100vw;
-    animation: ani 2s linear infinite;
+    animation: animation 5s linear infinite;
 }
 
 .main-text {
     text-align: center;
     color: red;
     letter-spacing: 1em;
+    animation: animation 5s linear infinite;
 }
