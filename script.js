@@ -84,7 +84,7 @@
 //   console.log(sum(1)(2)()); 
 //   console.log(sum(1)(2)(3)(4)(5)(6)());
 
-
+// 2
 // function add(a){
 //     function sum(b){
 //        a =   a+b;
