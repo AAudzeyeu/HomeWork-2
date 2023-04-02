@@ -1,11 +1,15 @@
 
 
-const elem = document.querySelectorAll('.biig')[0];
+const elem = document.querySelectorAll('.biig');
 
 elem.addEventListener('click', (e) => {
-    e.target = elem.style.background = 'red'
+    e.target = elem.style.color = 'red'
 })
 
+
+let scrollButtom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
+console.log(`TOP ${elem.scrollTop}`);
+console.log(`BOTTOM ${scrollButtom}`);
 
 
 
