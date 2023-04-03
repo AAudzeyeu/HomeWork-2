@@ -139,14 +139,14 @@
 //     console.log(1);
 // }
 
-// container.onclick = function(event) {
+// form.onclick = function(event) {
 //     if (event.target.className != 'remove-button') return;
 
 //     let pane = event.target.closest('.pane');
 //     pane.remove();
 //   };
 
-// const removeButton = document.querySelector('#container');
+// const removeButton = document.querySelector('#form');
 // const removeText = function(event) {
 //     if(event.target.className != 'remove-button') return;
 
@@ -206,19 +206,21 @@ const data = [
 // }
 
 
-// let container = document.querySelector('#container')
+let container = document.querySelector('#container')
 // let createFormtest = function () {
 //     let input = document.createElement('input');
 //     input.type = `input`
 //     input.value = ''
 //     input.placeholder = 'Введи привет'
 //     let br = document.createElement('br')
-//     container.append(input);
-//     container.append(br)
+//     form.append(input);
+//     form.append(br)
 // }
 // createFormtest();
 
+let form = document.createElement('form')
 let createForm = function () {
+    container.append(form)
     for (let i = 0; i < data.length; i++) {
         let br = document.createElement('br');
         let select = document.createElement('select');
@@ -230,9 +232,9 @@ let createForm = function () {
             input.id = data[i]['id']
             input.value = data[i]['value']
             label.textContent = data[i]['placeholder']
-            container.append(input);
-            container.append(label);
-            container.append(br)
+            form.append(input);
+            form.append(label);
+            form.append(br)
         }
         if ((data[i]['type']) === 'date') {
             let input = document.createElement('input');
@@ -241,35 +243,40 @@ let createForm = function () {
             input.id = data[i]['id']
             input.value = data[i]['value']
             label.textContent = data[i]['placeholder']
-            container.append(input);
-            container.append(label);
-            container.append(br)
+            form.append(input);
+            form.append(label);
+            form.append(br)
         }
         // console.log(data[i]['type']);
         if ((data[i]['type']) === 'radio') {
             // console.log(data[i]['options'].length);
-            let form = document.createElement('form');
-            container.append(form)
+           
 
             let input = document.createElement('input');
             let label = document.createElement('label');
             input.type = 'radio'
-            input.id = data[i]['id']
-            label.id = data[i]['id']
+            input.value = data[i]['value']
 
 
             for (let j = 0; j < data[i]['options'].length; j++) {
+                let input = document.createElement('input');
+                let label = document.createElement('label');
+                input.name = data[i]['id']
+                label.name = data[i]['id']
+                input.id = data[i]['options']
+                label.id = data[i]['options']
+                input.type = 'radio'
+
                 label.textContent = data[i]['options'][j]
                 form.append(input);
                 form.append(label);
             }
 
 
-            container.append(br)
+            form.append(br)
         }
         if ((data[i]['type']) === 'checkbox') {
-            let form = document.createElement('form');
-            container.append(form)
+            
             let input = document.createElement('input');
             let label = document.createElement('label');
             input.type = data[i][`type`]
@@ -277,25 +284,52 @@ let createForm = function () {
             input.value = data[i]['value']
             label.textContent = data[i]['placeholder']
             for (let j = 0; j < data[i]['options'].length; j++) {
+                let input = document.createElement('input');
+                let label = document.createElement('label');
+                input.type = data[i][`type`]
+                input.id = data[i]['id']
+                input.value = data[i]['value']
                 label.textContent = data[i]['options'][j]
                 form.append(input);
                 form.append(label);
             }
         }
 
+        form.append(br)
     }
-    // console.log(data[`options`][1]);
 }
 createForm();
-// console.log(`${data[0][`${key}`]}`);
 
-// for (key in data[0]) {
-//     // console.log(data[0].key);
-//     console.log(key);
-//     console.log(data[0][`${key}`]);
-// }
+let createButton = function(event) {
+    let button = document.createElement('button');
+    // button.type = 'submit'
+    button.id = 'button'
+    button.formMethod = 'get'
+    button.textContent = 'Submit'
+    // button.onsubmit = console.log('hi22');
+    button.oncontextmenu = function(event) {
+        event.preventDefault();
+        alert('Привте')
+    }
+    form.append(button);
+    
+}
+createButton();
 
-// console.log(data[0].type);
+document.querySelector('#button').addEventListener('click', () => {
+    let arr = [];
+    let data = document.querySelector('#name').value;
+    arr = arr.push(data);
+    document.querySelector('.out').innerHTML = data;
+    console.log(arr);
+},
+)
+
+
+
+
+
+
 
 
 
