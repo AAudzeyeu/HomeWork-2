@@ -16,3 +16,8 @@
     height: 40px;
     transition: all 1s;
   }
+
+  input {
+    margin: 15px 10px 15px 30px;
+    
+  }

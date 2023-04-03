@@ -146,11 +146,168 @@
 //     pane.remove();
 //   };
 
-const removeButton = document.querySelector('#container');
-const removeText = function(event) {
-    if(event.target.className != 'remove-button') return;
+// const removeButton = document.querySelector('#container');
+// const removeText = function(event) {
+//     if(event.target.className != 'remove-button') return;
 
-    let pane = event.target.closest('.pane');
-    pane.remove();
+//     let pane = event.target.closest('.pane');
+//     pane.remove();
+// }
+// removeButton.addEventListener('click', removeText)
+
+
+const data = [
+    {
+        type: "input",
+        id: "name",
+        value: "",
+        placeholder: "name",
+    },
+    {
+        type: "input",
+        id: "surname",
+        value: "",
+        placeholder: "surname",
+    },
+    {
+        type: "date",
+        id: "birthday",
+        value: "",
+        placeholder: "date of birth",
+    },
+    {
+        type: "radio",
+        id: "sex",
+        value: "man",
+        options: ["man", "woman"],
+        placeholder: "sex",
+    },
+    {
+        type: "checkbox",
+        id: "time",
+        value: "",
+        options: ["9-10 AM", "11-12 AM", "1-2 PM", "3-4 PM", "5-6 PM"],
+        placeholder: "select timeslot for assessment",
+    },
+];
+
+// console.log(data);
+// const test = {
+//     type: true,
+//     isAdmin: true,
+//     name: 'Lexa',
+//     age: '15',
+// }
+// console.log(test['isAdmin']);
+// console.log(data[0]['type']);
+
+// for (key in test) {
+//     console.log(test[`${key}`]);
+// }
+
+
+// let container = document.querySelector('#container')
+// let createFormtest = function () {
+//     let input = document.createElement('input');
+//     input.type = `input`
+//     input.value = ''
+//     input.placeholder = 'Введи привет'
+//     let br = document.createElement('br')
+//     container.append(input);
+//     container.append(br)
+// }
+// createFormtest();
+
+let createForm = function () {
+    for (let i = 0; i < data.length; i++) {
+        let br = document.createElement('br');
+        let select = document.createElement('select');
+        let option = document.createElement('option');
+        if ((data[i]['type']) === 'input') {
+            let input = document.createElement('input');
+            let label = document.createElement('label');
+            input.type = data[i][`type`]
+            input.id = data[i]['id']
+            input.value = data[i]['value']
+            label.textContent = data[i]['placeholder']
+            container.append(input);
+            container.append(label);
+            container.append(br)
+        }
+        if ((data[i]['type']) === 'date') {
+            let input = document.createElement('input');
+            let label = document.createElement('label');
+            input.type = data[i][`type`]
+            input.id = data[i]['id']
+            input.value = data[i]['value']
+            label.textContent = data[i]['placeholder']
+            container.append(input);
+            container.append(label);
+            container.append(br)
+        }
+        // console.log(data[i]['type']);
+        if ((data[i]['type']) === 'radio') {
+            // console.log(data[i]['options'].length);
+            let form = document.createElement('form');
+            container.append(form)
+
+            let input = document.createElement('input');
+            let label = document.createElement('label');
+            input.type = 'radio'
+            input.id = data[i]['id']
+            label.id = data[i]['id']
+
+
+            for (let j = 0; j < data[i]['options'].length; j++) {
+                label.textContent = data[i]['options'][j]
+                form.append(input);
+                form.append(label);
+            }
+
+
+            container.append(br)
+        }
+        if ((data[i]['type']) === 'checkbox') {
+            let form = document.createElement('form');
+            container.append(form)
+            let input = document.createElement('input');
+            let label = document.createElement('label');
+            input.type = data[i][`type`]
+            input.id = data[i]['id']
+            input.value = data[i]['value']
+            label.textContent = data[i]['placeholder']
+            for (let j = 0; j < data[i]['options'].length; j++) {
+                label.textContent = data[i]['options'][j]
+                form.append(input);
+                form.append(label);
+            }
+        }
+
+    }
+    // console.log(data[`options`][1]);
 }
-removeButton.addEventListener('click', removeText)
+createForm();
+// console.log(`${data[0][`${key}`]}`);
+
+// for (key in data[0]) {
+//     // console.log(data[0].key);
+//     console.log(key);
+//     console.log(data[0][`${key}`]);
+// }
+
+// console.log(data[0].type);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
