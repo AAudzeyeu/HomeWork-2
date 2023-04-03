@@ -385,13 +385,13 @@ let el = document.querySelector('#form');
 // })
 
 
-let obj = {};
-let str = '';
-let ss = data[4]['options'][2];
-let result4 = ss.concat(`, ${ss}`)
-console.log();
-obj['value'] = result4
-console.log(obj);
+// let obj = {};
+// let str = '';
+// let ss = data[4]['options'][2];
+// let result4 = ss.concat(`, ${ss}`)
+// console.log();
+// obj['value'] = result4
+// console.log(obj);
 
 
 
