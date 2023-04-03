@@ -191,6 +191,8 @@ const data = [
     },
 ];
 
+
+
 // console.log(data);
 // const test = {
 //     type: true,
@@ -206,7 +208,6 @@ const data = [
 // }
 
 
-let container = document.querySelector('#container')
 // let createFormtest = function () {
 //     let input = document.createElement('input');
 //     input.type = `input`
@@ -218,13 +219,14 @@ let container = document.querySelector('#container')
 // }
 // createFormtest();
 
+let container = document.querySelector('#container')
 let form = document.createElement('form')
+let result = [];
+form.id = 'form'
 let createForm = function () {
     container.append(form)
     for (let i = 0; i < data.length; i++) {
         let br = document.createElement('br');
-        let select = document.createElement('select');
-        let option = document.createElement('option');
         if ((data[i]['type']) === 'input') {
             let input = document.createElement('input');
             let label = document.createElement('label');
@@ -250,7 +252,7 @@ let createForm = function () {
         // console.log(data[i]['type']);
         if ((data[i]['type']) === 'radio') {
             // console.log(data[i]['options'].length);
-           
+
 
             let input = document.createElement('input');
             let label = document.createElement('label');
@@ -262,10 +264,8 @@ let createForm = function () {
                 let input = document.createElement('input');
                 let label = document.createElement('label');
                 input.name = data[i]['id']
-                label.name = data[i]['id']
-                input.id = data[i]['options']
-                label.id = data[i]['options']
-                input.type = 'radio'
+                label.id = data[i]['options'][j]
+                input.type = data[i]['type']
 
                 label.textContent = data[i]['options'][j]
                 form.append(input);
@@ -276,7 +276,7 @@ let createForm = function () {
             form.append(br)
         }
         if ((data[i]['type']) === 'checkbox') {
-            
+
             let input = document.createElement('input');
             let label = document.createElement('label');
             input.type = data[i][`type`]
@@ -300,34 +300,98 @@ let createForm = function () {
 }
 createForm();
 
-let createButton = function(event) {
+let createButton = function (event) {
     let button = document.createElement('button');
-    // button.type = 'submit'
     button.id = 'button'
     button.formMethod = 'get'
     button.textContent = 'Submit'
     // button.onsubmit = console.log('hi22');
-    button.oncontextmenu = function(event) {
-        event.preventDefault();
-        alert('Привте')
-    }
+
     form.append(button);
-    
+
 }
 createButton();
 
-document.querySelector('#button').addEventListener('click', () => {
-    let arr = [];
-    let data = document.querySelector('#name').value;
-    arr = arr.push(data);
-    document.querySelector('.out').innerHTML = data;
-    console.log(arr);
-},
-)
+let loadedForm = function (event) {
+    event.preventDefault();
+    let el = document.querySelector('#form');
+    let nameForm = {};
+    let surnameForm = {};
+    let birthForm = {};
+    let sexForm = {};
+    let timeForm = {};
+
+    for (let i = 0; i < data.length; i++) {
+        if ((data[i]['id']) === 'name') {
+            nameForm['id'] = data[i]['id']
+            nameForm['value'] = el.name.value;
+        }
+        if ((data[i]['id']) === 'surname') {
+            surnameForm['id'] = data[i]['id']
+            surnameForm['value'] = el.surname.value;
+        }
+        if ((data[i]['id']) === 'birthday') {
+            birthForm['id'] = data[i]['id']
+            birthForm['value'] = el.birthday.value;
+        }
+        if ((data[i]['id']) === 'sex') {
+            sexForm['id'] = data[i]['id']
+            let radioInp = document.getElementsByName('sex');
+            for (let j = 0; j < radioInp.length; j++) {
+                if (radioInp[j].type == "radio" && radioInp[j].checked) {
+                    sexForm['value'] = data[i]['options'][j]
+                }
+            }
+        }
+        if ((data[i]['id']) === 'time') {
+            timeForm['id'] = data[i]['id']
+            let checkInp = document.querySelectorAll('#time');
+            let timeResultForm = '';
+            for (let k = 0; k < checkInp.length; k++) {
+                if (checkInp[k].type == "checkbox" && checkInp[k].checked) {
+                    timeResultForm = timeResultForm.concat(`${data[i]['options'][k]}, `);
+                    timeForm['value'] = timeResultForm
+                }
+            }
+        }
+
+    };
+
+    // surNameForm['id'] = data[1]['id']
+    // surNameForm['value'] = el.surname.value;
+    // birthForm['id'] = data[2]
+    result.push(nameForm, surnameForm, birthForm, sexForm, timeForm)
+    console.log(result);
+    result = [];
+}
+document.querySelector('#button').addEventListener('click', loadedForm);
+let el = document.querySelector('#form');
+
+// console.log(data[0]['id']);
 
 
 
 
+
+
+
+
+// document.querySelector('#button').addEventListener('click', () => {
+//     let arr = [];
+//     let data = document.querySelector('#name').value;
+//     arr = arr.push(data);
+//     document.querySelector('.out').innerHTML = data;
+//     console.log(arr);
+// })
+
+
+let obj = {};
+let str = '';
+let ss = data[4]['options'][2];
+let result4 = ss.concat(`, ${ss}`)
+console.log();
+obj['value'] = result4
+console.log(obj);
 
 
 
