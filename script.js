@@ -234,6 +234,7 @@ let createForm = function () {
             input.id = data[i]['id']
             input.value = data[i]['value']
             label.textContent = data[i]['placeholder']
+            label.setAttribute('for', `${data[i]['id']}`); 
             form.append(input);
             form.append(label);
             form.append(br)
@@ -245,6 +246,7 @@ let createForm = function () {
             input.id = data[i]['id']
             input.value = data[i]['value']
             label.textContent = data[i]['placeholder']
+            label.setAttribute('for', `${data[i]['id']}`); 
             form.append(input);
             form.append(label);
             form.append(br)
@@ -282,6 +284,7 @@ let createForm = function () {
             input.type = data[i][`type`]
             input.id = data[i]['id']
             input.value = data[i]['value']
+            label.setAttribute('for', `${data[i]['id']}`); 
             label.textContent = data[i]['placeholder']
             for (let j = 0; j < data[i]['options'].length; j++) {
                 let input = document.createElement('input');
