@@ -132,15 +132,104 @@
 //     })
 // });
 
-const root = document.querySelector('#parent');
-const body = document.body;
-const customClick = new Event('click');
+// const root = document.querySelector('#parent');
+// const body = document.body;
 
 
-root.addEventListener('click', () => {
-    alert('Hi')
-})
+// root.addEventListener('click', (e) => {
+//     console.log(e)
+// })
+// const customClick = new MouseEvent('click', {
+//     clientX: 100,
+//     clientY: 200,
+// });
 
-body.addEventListener('click', (e) => {
-    root.dispatchEvent(customClick)
-});
+// body.addEventListener('click', (e) => {
+//     root.dispatchEvent(customClick)
+// });
+
+// body.addEventListener('click', (e) => {
+//     console.log('e', e);
+//     console.log('X', e.pageX);
+//     console.log('Y', e.pageY);
+//     console.log('BX', body.offsetWidth);
+//     console.log('BY', body.offsetHeight);
+//     let x = e.pageX;
+//     let y = e.pageY;
+//     let bY = e.target.offsetHeight
+//     let bX = e.target.offsetWidth;
+//     if (x < bX / 2 && y < bY / 2) {
+//         console.log(1);
+//     } else if (x >= bX / 2 && y < bY / 2) {
+//         console.log(2);
+//     } else if (x < bX / 2 && y >= bY / 2) {
+//         console.log(3);
+//     } else if (x >= bX / 2 && y >= bY / 2) {
+//         console.log(4);
+//     }
+// });
+
+// const id = setTimeout((arg) => {
+//     console.log(1)
+// }, 100)
+
+// setTimeout(() => {
+//     console.log(2);
+// }, 1000)
+
+// for(let i = 0; i < 15; i++) {
+//     setTimeout(() => {
+//         console.log(i);
+//     }, 1000 + i* 1000)
+// }
+
+// clearInterval(id);
+
+// const id = setInterval(() => {
+//     console.log(1);
+// }, 100)
+
+// setTimeout(() => {
+// clearInterval(id)
+// }, 1000)
+
+let count = 0;
+let timeout = 200;
+
+// const id2 = setInterval(() => {
+//     if(count > 9) {
+//         clearInterval(id2)
+//     }
+//     count++;
+//     console.log('tick');
+// }, 1000)
+
+// setTimeout(confirm, 1000, 1)
+
+// const id2 = setTimeout(() => {
+//     for(let i = 0; i < 10; i++) {
+//         console.log(1);
+//     }
+// }, 1000)
+
+// const id3 = setTimeout(() => {
+    
+//     setInterval(() => {
+//         console.log(1);
+//     }, 100)
+    
+// }, 1000)
+
+const id4 = setTimeout(function func() {
+    if(count < 10) {
+
+        // if (success) clearTimeout(id4)
+        count++;
+
+        console.log(count);
+
+        timeout *= 2;
+        setTimeout(func, 1000);
+    }
+    else clearTimeout(id4)
+}, timeout)
