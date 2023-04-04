@@ -64,8 +64,8 @@
 //     // console.log(e.currentTarget); // Элемент на который поешено событие
 // })
 
-
-const root = document.querySelector('#parent');
+// const root = document.querySelector('#parent');
+// const elements = document.querySelectorAll('*');
 
 // root.addEventListener('click', (e) => {
 //     const goalElement = e.target.closest('.test')
@@ -92,23 +92,55 @@ const root = document.querySelector('#parent');
 // })
 
 
-const clearStyles = () => root.querySelectorAll('body')
-    .forEach(element => {
-        element.style.background = '';
-    });
+// const clearStyles = () => root.querySelectorAll('body')
+//     .forEach(element => {
+//         element.style.background = '';
+//     });
 
 
 
-document.documentElement.addEventListener('click', (e) => {
-    const goalElement = e.target.closest('.test');
-    const randomColor = "#" + Math.floor(Math.random() * 1247).toString(16);
+// document.documentElement.addEventListener('click', (e) => {
+//     const goalElement = e.target.closest('.test');
+//     const randomColor = "#" + Math.floor(Math.random() * 1247).toString(16);
 
-    if (goalElement) {
-        goalElement.style.background = randomColor;
+//     if (goalElement) {
+//         goalElement.style.background = randomColor;
 
-    } else {
-      clearStyles();
-    }
+//     } else {
+//       clearStyles();
+//     }
 
+// })
+
+// const input = document.querySelector('#text');
+// const checkbox = document.querySelector('#checkbox')
+
+// document.addEventListener('change', (e) => {
+//     console.log(e.target.value);
+// })
+
+// document.body.addEventListener('click', (e) => {
+//     console.log(e.target.tagName);
+// })
+// elements.forEach(element => {
+//     element.addEventListener('click', (e) => {
+//         console.log(`Погружение`, e.currentTarget);
+//         e.stopPropagation();
+//     }, true)
+//     element.addEventListener('click', (e) => {
+//         console.log(`Всплытие`, e.currentTarget);
+//     })
+// });
+
+const root = document.querySelector('#parent');
+const body = document.body;
+const customClick = new Event('click');
+
+
+root.addEventListener('click', () => {
+    alert('Hi')
 })
 
+body.addEventListener('click', (e) => {
+    root.dispatchEvent(customClick)
+});
