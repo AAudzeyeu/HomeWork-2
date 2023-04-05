@@ -191,132 +191,126 @@ const data = [
     },
 ];
 
-
-
-// console.log(data);
-// const test = {
-//     type: true,
-//     isAdmin: true,
-//     name: 'Lexa',
-//     age: '15',
-// }
-// console.log(test['isAdmin']);
-// console.log(data[0]['type']);
-
-// for (key in test) {
-//     console.log(test[`${key}`]);
-// }
-
-
-// let createFormtest = function () {
-//     let input = document.createElement('input');
-//     input.type = `input`
-//     input.value = ''
-//     input.placeholder = 'Введи привет'
-//     let br = document.createElement('br')
-//     form.append(input);
-//     form.append(br)
-// }
-// createFormtest();
-
-let container = document.querySelector('#container')
-let form = document.createElement('form')
-let result = [];
-form.id = 'form'
 let createForm = function () {
-    container.append(form)
+    let container = document.querySelector('#container');
+    let form = document.createElement('form');
+    form.id = 'form';
+    container.append(form);
+}
+
+let addForm = function () {
+
+
     for (let i = 0; i < data.length; i++) {
+
         let br = document.createElement('br');
+
         if ((data[i]['type']) === 'input') {
             let input = document.createElement('input');
             let label = document.createElement('label');
-            input.type = data[i][`type`]
-            input.id = data[i]['id']
-            input.value = data[i]['value']
-            label.textContent = data[i]['placeholder']
-            label.setAttribute('for', `${data[i]['id']}`); 
-            form.append(input);
-            form.append(label);
-            form.append(br)
-        }
-        if ((data[i]['type']) === 'date') {
-            let input = document.createElement('input');
-            let label = document.createElement('label');
-            input.type = data[i][`type`]
-            input.id = data[i]['id']
-            input.value = data[i]['value']
-            label.textContent = data[i]['placeholder']
-            label.setAttribute('for', `${data[i]['id']}`); 
-            form.append(input);
-            form.append(label);
-            form.append(br)
-        }
-        // console.log(data[i]['type']);
-        if ((data[i]['type']) === 'radio') {
-            // console.log(data[i]['options'].length);
 
+            input.type = data[i][`type`];
+            input.id = data[i]['id'];
+            input.value = data[i]['value'];
+
+            label.textContent = data[i]['placeholder'];
+            label.setAttribute('for', `${data[i]['id']}`);
+
+            form.append(input);
+            form.append(label);
+            form.append(br);
+        } else if ((data[i]['type']) === 'date') {
 
             let input = document.createElement('input');
             let label = document.createElement('label');
+
+            input.type = data[i][`type`];
+            input.id = data[i]['id'];
+            input.value = data[i]['value'];
+
+            label.textContent = data[i]['placeholder'];
+            label.setAttribute('for', `${data[i]['id']}`);
+
+            form.append(input);
+            form.append(label);
+            form.append(br);
+
+        } else if ((data[i]['type']) === 'radio') {
+
+            let input = document.createElement('input');
+
             input.type = 'radio'
             input.value = data[i]['value']
 
 
             for (let j = 0; j < data[i]['options'].length; j++) {
+
                 let input = document.createElement('input');
                 let label = document.createElement('label');
-                input.name = data[i]['id']
-                label.id = data[i]['options'][j]
-                input.type = data[i]['type']
 
-                label.textContent = data[i]['options'][j]
+                input.name = data[i]['id'];
+                input.type = data[i]['type'];
+
+                label.id = data[i]['options'][j];
+                label.textContent = data[i]['options'][j];
+
                 form.append(input);
                 form.append(label);
             }
 
+            form.append(br);
 
-            form.append(br)
-        }
-        if ((data[i]['type']) === 'checkbox') {
+        } else if ((data[i]['type']) === 'checkbox') {
 
             let input = document.createElement('input');
             let label = document.createElement('label');
-            input.type = data[i][`type`]
-            input.id = data[i]['id']
-            input.value = data[i]['value']
-            label.setAttribute('for', `${data[i]['id']}`); 
-            label.textContent = data[i]['placeholder']
+
+            input.type = data[i][`type`];
+            input.id = data[i]['id'];
+            input.value = data[i]['value'];
+
+            label.setAttribute('for', `${data[i]['id']}`);
+            label.textContent = data[i]['placeholder'];
+
             for (let j = 0; j < data[i]['options'].length; j++) {
+
                 let input = document.createElement('input');
                 let label = document.createElement('label');
-                input.type = data[i][`type`]
-                input.id = data[i]['id']
-                input.value = data[i]['value']
-                label.textContent = data[i]['options'][j]
+
+                input.type = data[i][`type`];
+                input.id = data[i]['id'];
+                input.value = data[i]['value'];
+
+                label.textContent = data[i]['options'][j];
+
                 form.append(input);
                 form.append(label);
             }
         }
 
         form.append(br)
+
     }
 }
-createForm();
 
-let createButton = function (event) {
+let createButton = function () {
     let button = document.createElement('button');
-    button.id = 'button'
-    button.formMethod = 'get'
-    button.textContent = 'Submit'
-    // button.onsubmit = console.log('hi22');
+
+    button.id = 'button';
+    button.formMethod = 'get';
+    button.textContent = 'Submit';
 
     form.append(button);
 
-}
-createButton();
+};
 
 let loadedForm = function (event) {
+
     event.preventDefault();
+
+    let finishForm = [];
+
+
     let el = document.querySelector('#form');
     let nameForm = {};
     let surnameForm = {};
@@ -325,76 +319,85 @@ let loadedForm = function (event) {
     let timeForm = {};
 
     for (let i = 0; i < data.length; i++) {
+
         if ((data[i]['id']) === 'name') {
-            nameForm['id'] = data[i]['id']
+
+            nameForm['id'] = data[i]['id'];
             nameForm['value'] = el.name.value;
-        }
-        if ((data[i]['id']) === 'surname') {
-            surnameForm['id'] = data[i]['id']
+
+            finishForm.push(nameForm);
+
+        } else if ((data[i]['id']) === 'surname') {
+
+            surnameForm['id'] = data[i]['id'];
             surnameForm['value'] = el.surname.value;
-        }
-        if ((data[i]['id']) === 'birthday') {
-            birthForm['id'] = data[i]['id']
+
+            finishForm.push(surnameForm);
+
+        } else if ((data[i]['id']) === 'birthday') {
+
+            birthForm['id'] = data[i]['id'];
             birthForm['value'] = el.birthday.value;
-        }
-        if ((data[i]['id']) === 'sex') {
-            sexForm['id'] = data[i]['id']
+
+            finishForm.push(birthForm);
+
+        } else if ((data[i]['id']) === 'sex') {
+
+            sexForm['id'] = data[i]['id'];
+
             let radioInp = document.getElementsByName('sex');
+
             for (let j = 0; j < radioInp.length; j++) {
+
                 if (radioInp[j].type == "radio" && radioInp[j].checked) {
+
                     sexForm['value'] = data[i]['options'][j]
+
+                } else {
+                    sexForm['value'] = '';
                 }
             }
-        }
-        if ((data[i]['id']) === 'time') {
-            timeForm['id'] = data[i]['id']
+
+            finishForm.push(sexForm);
+
+        } if ((data[i]['id']) === 'time') {
+
+            timeForm['id'] = data[i]['id'];
+
             let checkInp = document.querySelectorAll('#time');
-            let timeResultForm = '';
+            let timeResultForm = [];
+
             for (let k = 0; k < checkInp.length; k++) {
+
                 if (checkInp[k].type == "checkbox" && checkInp[k].checked) {
-                    timeResultForm = timeResultForm.concat(`${data[i]['options'][k]}, `);
-                    timeForm['value'] = timeResultForm
+
+                    timeResultForm.push(data[i]['options'][k]);
+                    timeForm['value'] = timeResultForm;
+
+                } else if (checkInp.checked) {
+                    timeForm['value'] = '';
                 }
+
+
             }
+
+            finishForm.push(timeForm);
+
         }
 
     };
 
-    // surNameForm['id'] = data[1]['id']
-    // surNameForm['value'] = el.surname.value;
-    // birthForm['id'] = data[2]
-    result.push(nameForm, surnameForm, birthForm, sexForm, timeForm)
-    console.log(result);
-    result = [];
+    console.log(finishForm);
+
 }
-document.querySelector('#button').addEventListener('click', loadedForm);
-// let el = document.querySelector('#form');
 
-// console.log(data[0]['id']);
+let submitForm = () => document.querySelector('#button').addEventListener('click', loadedForm);
 
+createForm();
+addForm();
+createButton();
+submitForm();
 
-
-
-
-
-
-
-// document.querySelector('#button').addEventListener('click', () => {
-//     let arr = [];
-//     let data = document.querySelector('#name').value;
-//     arr = arr.push(data);
-//     document.querySelector('.out').innerHTML = data;
-//     console.log(arr);
-// })
-
-
-// let obj = {};
-// let str = '';
-// let ss = data[4]['options'][2];
-// let result4 = ss.concat(`, ${ss}`)
-// console.log();
-// obj['value'] = result4
-// console.log(obj);
 
 
 
