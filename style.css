@@ -1,25 +1,6 @@
-#field {
-    width: 200px;
-    height: 150px;
-    border: 10px solid black;
-    background-color: #00FF00;
-    position: relative;
-    overflow: hidden;
-    cursor: pointer;
-  }
-
-  #ball {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 40px;
-    height: 40px;
-    transition: all 1s;
-  }
-
   input {
     margin: 15px 10px 15px 30px;
-
+    cursor: pointer;
   }
   body {
     font-weight: bold;
@@ -31,11 +12,21 @@
     -o-transition: .3s ease;
     transition: .3s ease;
     cursor: pointer;
+    font: bold 1em/1em 'Montserrat', arial;
+    border-radius: 25px;
+    width: 80px;
+    height: 30px;
+    background: #FFF;
+    border: #FFF;
+    -webkit-box-shadow: 1px 3px 5px #000;
+    box-shadow: 1px 3px 5px #000;
   }
 
   #button:hover{
-    -webkit-transform: scale(1.2);
-    -ms-transform: scale(1.2);
-    transform: scale(1.2);
+    -webkit-transform: scale(1.05);
+    -ms-transform: scale(1.05);
+    transform: scale(1.05);
+    -webkit-box-shadow: 1px 3px 10px #000;
+    box-shadow: 1px 3px 10px #000;
     
   }

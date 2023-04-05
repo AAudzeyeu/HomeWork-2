@@ -374,10 +374,20 @@ let loadedForm = function (event) {
                     timeResultForm.push(data[i]['options'][k]);
                     timeForm['value'] = timeResultForm;
 
-                } else if (checkInp.checked) {
-                    timeForm['value'] = '';
+                }
+            }
+
+            let unCheckedForm = 0;
+
+            for (let k = 0; k < checkInp.length; k++) {
+
+                if (!(checkInp[k].checked)) {
+                    unCheckedForm++;
                 }
 
+                if (unCheckedForm === checkInp.length) {
+                    timeForm['value'] = '';
+                }
 
             }
 
