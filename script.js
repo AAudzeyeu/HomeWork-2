@@ -1,16 +1,16 @@
 
 
-// // // const elem = document.querySelectorAll('.biig');
+// // const elem = document.querySelectorAll('.biig');
 
-// // // document.documentElement.addEventListener('click', (e) => {
-// // //     const biig = e.target.closest('.biig') 
-// // //     const color = 'red';
+// // document.documentElement.addEventListener('click', (e) => {
+// //     const biig = e.target.closest('.biig') 
+// //     const color = 'red';
 
-// // //     biig.style.background = color;
-// // //     let scrollButtom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
+// //     biig.style.background = color;
+// //     let scrollButtom = elem.scrollHeight - elem.scrollTop - elem.clientHeight;
 
-// // //     console.log(`TOP ${elem.scrollTop}`);
-// // //     console.log(`BOTTOM ${scrollButtom}`);
+// //     console.log(`TOP ${elem.scrollTop}`);
+// //     console.log(`BOTTOM ${scrollButtom}`);
 
 
 // // // });
