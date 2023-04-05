@@ -196,102 +196,102 @@ let createForm = function () {
     let form = document.createElement('form');
     form.id = 'form';
     container.append(form);
-}
+};
 
 let addForm = function () {
 
 
-    for (let i = 0; i < data.length; i++) {
+    data.map(function (element) {
 
         let br = document.createElement('br');
 
-        if ((data[i]['type']) === 'input') {
+        if ((element['type']) === 'input') {
             let input = document.createElement('input');
             let label = document.createElement('label');
 
-            input.type = data[i][`type`];
-            input.id = data[i]['id'];
-            input.value = data[i]['value'];
+            input.type = element[`type`];
+            input.id = element['id'];
+            input.value = element['value'];
 
-            label.textContent = data[i]['placeholder'];
-            label.setAttribute('for', `${data[i]['id']}`);
-
-            form.append(input);
-            form.append(label);
-            form.append(br);
-        } else if ((data[i]['type']) === 'date') {
-
-            let input = document.createElement('input');
-            let label = document.createElement('label');
-
-            input.type = data[i][`type`];
-            input.id = data[i]['id'];
-            input.value = data[i]['value'];
-
-            label.textContent = data[i]['placeholder'];
-            label.setAttribute('for', `${data[i]['id']}`);
+            label.textContent = element['placeholder'];
+            label.setAttribute('for', `${element['id']}`);
 
             form.append(input);
             form.append(label);
             form.append(br);
 
-        } else if ((data[i]['type']) === 'radio') {
+        } else if ((element['type']) === 'date') {
+
+            let input = document.createElement('input');
+            let label = document.createElement('label');
+
+            input.type = element[`type`];
+            input.id = element['id'];
+            input.value = element['value'];
+
+            label.textContent = element['placeholder'];
+            label.setAttribute('for', `${element['id']}`);
+
+            form.append(input);
+            form.append(label);
+            form.append(br);
+
+        } else if ((element['type']) === 'radio') {
 
             let input = document.createElement('input');
 
             input.type = 'radio'
-            input.value = data[i]['value']
+            input.value = element['value']
 
-
-            for (let j = 0; j < data[i]['options'].length; j++) {
+            element['options'].map(function (item, index) {
 
                 let input = document.createElement('input');
                 let label = document.createElement('label');
 
-                input.name = data[i]['id'];
-                input.type = data[i]['type'];
+                input.name = element['id'];
+                input.type = element['type'];
 
-                label.id = data[i]['options'][j];
-                label.textContent = data[i]['options'][j];
+                label.id = element['options'][index];
+                label.textContent = element['options'][index];
 
                 form.append(input);
                 form.append(label);
-            }
+            })
 
             form.append(br);
 
-        } else if ((data[i]['type']) === 'checkbox') {
+        } else if ((element['type']) === 'checkbox') {
 
             let input = document.createElement('input');
             let label = document.createElement('label');
 
-            input.type = data[i][`type`];
-            input.id = data[i]['id'];
-            input.value = data[i]['value'];
+            input.type = element[`type`];
+            input.id = element['id'];
+            input.value = element['value'];
 
-            label.setAttribute('for', `${data[i]['id']}`);
-            label.textContent = data[i]['placeholder'];
+            label.setAttribute('for', `${element['id']}`);
+            label.textContent = element['placeholder'];
 
-            for (let j = 0; j < data[i]['options'].length; j++) {
+            element['options'].map(function (item, index) {
 
                 let input = document.createElement('input');
                 let label = document.createElement('label');
 
-                input.type = data[i][`type`];
-                input.id = data[i]['id'];
-                input.value = data[i]['value'];
+                input.type = element[`type`];
+                input.id = element['id'];
+                input.value = element['value'];
 
-                label.textContent = data[i]['options'][j];
+                label.textContent = element['options'][index];
 
                 form.append(input);
                 form.append(label);
-            }
+            });
         }
 
         form.append(br)
 
-    }
-}
+    });
+};
 
 let createButton = function () {
     let button = document.createElement('button');
@@ -318,70 +318,85 @@ let loadedForm = function (event) {
     let sexForm = {};
     let timeForm = {};
 
-    for (let i = 0; i < data.length; i++) {
+    data.map(function (element) {
 
-        if ((data[i]['id']) === 'name') {
+        if ((element['id']) === 'name') {
 
-            nameForm['id'] = data[i]['id'];
+            nameForm['id'] = element['id'];
             nameForm['value'] = el.name.value;
 
             finishForm.push(nameForm);
 
-        } else if ((data[i]['id']) === 'surname') {
+        } else if ((element['id']) === 'surname') {
 
-            surnameForm['id'] = data[i]['id'];
+            surnameForm['id'] = element['id'];
             surnameForm['value'] = el.surname.value;
 
             finishForm.push(surnameForm);
 
-        } else if ((data[i]['id']) === 'birthday') {
+        } else if ((element['id']) === 'birthday') {
 
-            birthForm['id'] = data[i]['id'];
+            birthForm['id'] = element['id'];
             birthForm['value'] = el.birthday.value;
 
             finishForm.push(birthForm);
 
-        } else if ((data[i]['id']) === 'sex') {
+        } else if ((element['id']) === 'sex') {
 
-            sexForm['id'] = data[i]['id'];
+            sexForm['id'] = element['id'];
 
             let radioInp = document.getElementsByName('sex');
+            let radioInpArr = Array.from(radioInp);
 
-            for (let j = 0; j < radioInp.length; j++) {
+            radioInpArr.map(function (item, index) {
 
-                if (radioInp[j].type == "radio" && radioInp[j].checked) {
+                if (radioInp[index].type == "radio" && radioInp[index].checked) {
 
-                    sexForm['value'] = data[i]['options'][j]
-
-                } else {
-                    sexForm['value'] = '';
-                }
-            }
-
-            finishForm.push(sexForm);
-
-        } if ((data[i]['id']) === 'time') {
-
-            timeForm['id'] = data[i]['id'];
-
-            let checkInp = document.querySelectorAll('#time');
-            let timeResultForm = [];
-
-            for (let k = 0; k < checkInp.length; k++) {
-
-                if (checkInp[k].type == "checkbox" && checkInp[k].checked) {
-
-                    timeResultForm.push(data[i]['options'][k]);
-                    timeForm['value'] = timeResultForm;
+                    sexForm['value'] = element['options'][index]
 
                 }
-            }
+            });
 
             let unCheckedForm = 0;
 
-            for (let k = 0; k < checkInp.length; k++) {
+            radioInpArr.map(function (item, index) {
 
-                if (!(checkInp[k].checked)) {
+                if (!(radioInp[index].checked)) {
+                    unCheckedForm++;
+                }
+
+                if (unCheckedForm === radioInp.length) {
+                    sexForm['value'] = '';
+                }
+
+            });
+
+            finishForm.push(sexForm);
+
+        } else if ((element['id']) === 'time') {
+
+            timeForm['id'] = element['id'];
+
+            let checkInp = document.querySelectorAll('#time');
+            let checkInpArr = Array.from(checkInp);
+
+            let timeResultForm = [];
+
+            checkInpArr.map(function (item, index) {
+
+                if (checkInp[index].type == "checkbox" && checkInp[index].checked) {
+
+                    timeResultForm.push(element['options'][index]);
+                    timeForm['value'] = timeResultForm;
+
+                }
+            });
+
+            let unCheckedForm = 0;
+
+            checkInpArr.map(function (item, index) {
+
+                if (!(checkInp[index].checked)) {
                     unCheckedForm++;
                 }
 
@@ -389,17 +404,17 @@ let loadedForm = function (event) {
                     timeForm['value'] = '';
                 }
 
-            }
+            });
 
             finishForm.push(timeForm);
 
         }
 
-    };
+    });
 
     console.log(finishForm);
 
-}
+};
 
 let submitForm = () => document.querySelector('#button').addEventListener('click', loadedForm);
 
