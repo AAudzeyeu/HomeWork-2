@@ -201,7 +201,7 @@ let createForm = function () {
 let addForm = function () {
 
 
-    data.map(function (element) {
+    data.forEach(function (element) {
 
         let br = document.createElement('br');
 
@@ -243,7 +243,7 @@ let addForm = function () {
             input.type = 'radio'
             input.value = element['value']
 
-            element['options'].map(function (item, index) {
+            element['options'].forEach(function (item, index) {
 
                 let input = document.createElement('input');
                 let label = document.createElement('label');
@@ -272,7 +272,7 @@ let addForm = function () {
             label.setAttribute('for', `${element['id']}`);
             label.textContent = element['placeholder'];
 
-            element['options'].map(function (item, index) {
+            element['options'].forEach(function (item, index) {
 
                 let input = document.createElement('input');
                 let label = document.createElement('label');
@@ -318,7 +318,7 @@ let loadedForm = function (event) {
     let sexForm = {};
     let timeForm = {};
 
-    data.map(function (element) {
+    data.forEach(function (element) {
 
         if ((element['id']) === 'name') {
 
@@ -348,7 +348,7 @@ let loadedForm = function (event) {
             let radioInp = document.getElementsByName('sex');
             let radioInpArr = Array.from(radioInp);
 
-            radioInpArr.map(function (item, index) {
+            radioInpArr.forEach(function (item, index) {
 
                 if (radioInp[index].type == "radio" && radioInp[index].checked) {
 
@@ -359,7 +359,7 @@ let loadedForm = function (event) {
 
             let unCheckedForm = 0;
 
-            radioInpArr.map(function (item, index) {
+            radioInpArr.forEach(function (item, index) {
 
                 if (!(radioInp[index].checked)) {
                     unCheckedForm++;
@@ -382,7 +382,7 @@ let loadedForm = function (event) {
 
             let timeResultForm = [];
 
-            checkInpArr.map(function (item, index) {
+            checkInpArr.forEach(function (item, index) {
 
                 if (checkInp[index].type == "checkbox" && checkInp[index].checked) {
 
@@ -394,7 +394,7 @@ let loadedForm = function (event) {
 
             let unCheckedForm = 0;
 
-            checkInpArr.map(function (item, index) {
+            checkInpArr.forEach(function (item, index) {
 
                 if (!(checkInp[index].checked)) {
                     unCheckedForm++;
