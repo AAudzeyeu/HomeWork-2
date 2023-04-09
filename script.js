@@ -281,10 +281,10 @@ let createForm = function () {
       console.log('form does not exist')
     }
 
-    let submitForm = () => form.addEventListener('click', submitForm)
-    let submitButton = () => document.querySelector('#button').addEventListener('click', conclusionDataToArrayForm);
+    
+    let submitButton = () => document.querySelector('#form').addEventListener('submit', conclusionDataToArrayForm);
     submitButton();
-    submitForm();
+    
 
   };
 
@@ -293,7 +293,7 @@ let createForm = function () {
 
 };
 
-createForm();
+createForm(data);
 
 
 
