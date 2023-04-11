@@ -1,119 +1,314 @@
-// function curry(f) {
-//     return function(a) {
-//         return function(b) {
-//             return f(a, b);
-//         };
-//     };
-// }
-// function sum(a, b) {
-    
-//     return a + b;
-// }
-// let curriedSum = curry(sum);
-// console.log(curriedSum(1)(2));
+
+const data = [
+  {
+    type: "input",
+    id: "name",
+    value: "",
+    placeholder: "name",
+  },
+  {
+    type: "input",
+    id: "surname",
+    value: "",
+    placeholder: "surname",
+  },
+  {
+    type: "date",
+    id: "birthday",
+    value: "",
+    placeholder: "date of birth",
+  },
+  {
+    type: "radio",
+    id: "sex",
+    value: "man",
+    options: ["man", "woman"],
+    placeholder: "sex",
+  },
+  {
+    type: "checkbox",
+    id: "time",
+    value: "",
+    options: ["9-10 AM", "11-12 AM", "1-2 PM", "3-4 PM", "5-6 PM"],
+    placeholder: "select timeslot for assessment",
+  },
+];
+
+let createForm = function (dataEdditorForm) {
+  try {
+    let container = document.querySelector('#container');
+    let form = document.createElement('form');
+    form.id = 'form';
+    container.append(form);
+  } catch (e) {
+    console.log('container does not exist')
+  }
+
+  let completionForm = function (dataEdditorForm) {
 
 
+    dataEdditorForm.forEach(function (element) {
 
-// const infiniteCurry = (fn, seed) => {
-    //     const reduceValue = (args, seedValue) =>
-//       args.reduce((acc, a) => {
-    //         return fn.call(fn, acc, a);
-    //       }, seedValue);
-    //     const next = (...args) => {
-        //       return (...x) => {
-//         if (!x.length) {
-//           return reduceValue(args, seed);
-//         }
-//         return next(...args, reduceValue(x, seed));
-//       };
-//     };
-//     return next();
-//   };
+      let br = document.createElement('br');
 
-//   const iSum = infiniteCurry((x, y) => x + y, 0);
+      if ((element['type']) === 'input') {
+        let input = document.createElement('input');
+        let label = document.createElement('label');
 
-//   console.log(iSum(1)(2)(3)(4));
+        input.type = element[`type`];
+        input.id = element['id'];
+        input.value = element['value'];
+        input.name = element['id']
 
-// function curry(func) {
-//     return function curried(...args) {
-//         if(args.length >= func.length) {
-//             let result = args.reduce(function(sum, elem) {
-//                 return sum + elem
-//             }, 0);
-//             console.log(result);
-//             return func.apply(this, args);
-//         } else {
-//             return function(...args2) {
-//                 return curried.apply(this, args.concat(...args2));
-//             }
-//         }
-//     };
-// }
+        label.textContent = element['placeholder'];
+        label.setAttribute('for', `${element['id']}`);
+        label.setAttribute('name', `${element['id']}`);
 
-// function sum(a, b, c) {
-//     return a + b + c;
-// }
-// 
-//
+        form.append(input);
+        form.append(label);
+        form.append(br);
 
-// function sumAll(...args3) {
-//     let sum = 0;
-//     for (arg of args3) sum += arg;
-//     return sum;
-// }
+      } else if ((element['type']) === 'date') {
+
+        let input = document.createElement('input');
+        let label = document.createElement('label');
+
+        input.type = element[`type`];
+        input.id = element['id'];
+        input.value = element['value'];
+        input.name = element['id'];
+
+        label.textContent = element['placeholder'];
+        label.setAttribute('for', `${element['id']}`);
+        label.setAttribute('name', `${element['id']}`);
+
+        form.append(input);
+        form.append(label);
+        form.append(br);
+
+      } else if ((element['type']) === 'radio') {
+
+        let input = document.createElement('input');
+
+        input.type = 'radio'
+        input.value = element['value']
+
+        element['options'].forEach(function (item, index) {
+
+          let input = document.createElement('input');
+          let label = document.createElement('label');
+
+          input.name = element['id'];
+          input.type = element['type'];
+
+          label.id = element['options'][index];
+          label.textContent = element['options'][index];
+          // label.setAttribute('name', `${element['id']}`);
+
+          form.append(input);
+          form.append(label);
+        })
+
+        form.append(br);
+
+      } else if ((element['type']) === 'checkbox') {
+
+        let input = document.createElement('input');
+        let label = document.createElement('label');
+
+        input.type = element[`type`];
+        input.id = element['id'];
+        input.value = element['value'];
+        input.name = element['id']
+
+        label.textContent = element['placeholder'];
+        label.setAttribute('for', `${element['id']}`);
+        
+
+        element['options'].forEach(function (item, index) {
+
+          let input = document.createElement('input');
+          let label = document.createElement('label');
+
+          input.type = element[`type`];
+          input.id = element['id'];
+          input.name = element['id']
+          input.value = element['value'];
+
+          label.textContent = element['options'][index];
+          label.setAttribute('name', `${element['id']}`);
+
+          form.append(input);
+          form.append(label);
+        });
+      }
+
+      form.append(br)
+
+    });
+  };
+
+  let conclusiondataEdditorFormToArrayForm = function (event) {
+
+    try {
+      event.preventDefault();
+
+      let finishForm = [];
 
 
+      let el = document.querySelector('#form');
+      if (!el) throw new Error('form does not exist')
 
-    
+      let nameForm = {};
+      let surnameForm = {};
+      let birthForm = {};
+      let sexForm = {};
+      let timeForm = {};
 
+      if (!dataEdditorForm && !dataEdditorForm.length) throw new Error('wrong dataEdditorForm')
 
-// let curriedSum = curry(Sum.sum());
+      dataEdditorForm.forEach(function (element) {
 
-// console.log(curriedSum(1)(2));
+        if ((element['id']) === 'name') {
 
-// const sum  = function (a) {
-//     return function (b) {
-//       if (b) {
-//         return sum(a+b);
-//       }
-//       return a; 
-//     }
-//   };
+          nameForm['id'] = element['id'];
+          nameForm['value'] = el.name.value;
 
+          finishForm.push(nameForm);
 
-//   console.log(sum(1)(2)()); 
-//   console.log(sum(1)(2)(3)(4)(5)(6)());
+        } else if ((element['id']) === 'surname') {
 
-// 2
-// function add(a){
-//     function sum(b){
-//        a =   a+b;
-//        return sum;
-//     }
-//     sum.toString = function(){return a;}
-//     return sum;
-//    }
-//    const result = add(1)(2)(3)(4);
+          surnameForm['id'] = element['id'];
+          surnameForm['value'] = el.surname.value;
 
-//    console.log(result);
+          finishForm.push(surnameForm);
 
-function f(value) {
-    let currientSum = value;
+        } else if ((element['id']) === 'birthday') {
 
-    function f(number) {
-        currientSum += number;
-        return f;
+          birthForm['id'] = element['id'];
+          birthForm['value'] = el.birthday.value;
+
+          finishForm.push(birthForm);
+
+        } else if ((element['id']) === 'sex') {
+
+          sexForm['id'] = element['id'];
+
+          let radioInp = document.getElementsByName('sex');
+          let radioInpArr = Array.from(radioInp);
+
+          radioInpArr.forEach(function (item, index) {
+
+            if (radioInp[index].type == "radio" && radioInp[index].checked) {
+
+              sexForm['value'] = element['options'][index]
+
+            }
+          });
+
+          let unCheckedForm = 0;
+
+          radioInpArr.forEach(function (item, index) {
+
+            if (!(radioInp[index].checked)) {
+              unCheckedForm++;
+            }
+
+            if (unCheckedForm === radioInp.length) {
+              sexForm['value'] = '';
+            }
+
+          });
+
+          finishForm.push(sexForm);
+
+        } else if ((element['id']) === 'time') {
+
+          timeForm['id'] = element['id'];
+
+          let checkInp = document.querySelectorAll('#time');
+          let checkInpArr = Array.from(checkInp);
+
+          let timeResultForm = [];
+
+          checkInpArr.forEach(function (item, index) {
+
+            if (checkInp[index].type == "checkbox" && checkInp[index].checked) {
+
+              timeResultForm.push(element['options'][index]);
+              timeForm['value'] = timeResultForm;
+
+            }
+          });
+
+          let unCheckedForm = 0;
+
+          checkInpArr.forEach(function (item, index) {
+
+            if (!(checkInp[index].checked)) {
+              unCheckedForm++;
+            }
+
+            if (unCheckedForm === checkInp.length) {
+              timeForm['value'] = '';
+            }
+
+          });
+
+          finishForm.push(timeForm);
+
+        }
+
+      });
+
+      console.log(finishForm);
+    } catch (e) {
+      console.log(e)
     }
 
-    f.toString = function() {
-        console.log(currientSum);
-        return currientSum;
-    };
+  };
+
+  let createButton = function () {
+    try {
+      let button = document.createElement('button');
+
+      button.id = 'button';
+      button.formMethod = 'get';
+      button.textContent = 'Submit';
+
+      form.append(button);
+    } catch (e) {
+      console.log('form does not exist')
+    }
+
     
-    return f;
-}
+    let submitButton = () => document.querySelector('#form').addEventListener('submit', conclusiondataEdditorFormToArrayForm);
+    submitButton();
+    
+
+  };
+
+  completionForm(data);
+  createButton();
+
+};
+
+createForm(data);
 
 
-console.log(f(1)(2));
-console.log(f(1)(2)(3));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
