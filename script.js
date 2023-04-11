@@ -34,7 +34,7 @@ const data = [
   },
 ];
 
-let createForm = function () {
+let createForm = function (dataEdditorForm) {
   try {
     let container = document.querySelector('#container');
     let form = document.createElement('form');
@@ -44,10 +44,10 @@ let createForm = function () {
     console.log('container does not exist')
   }
 
-  let completionForm = function () {
+  let completionForm = function (dataEdditorForm) {
 
 
-    data.forEach(function (element) {
+    dataEdditorForm.forEach(function (element) {
 
       let br = document.createElement('br');
 
@@ -148,7 +148,7 @@ let createForm = function () {
     });
   };
 
-  let conclusionDataToArrayForm = function (event) {
+  let conclusiondataEdditorFormToArrayForm = function (event) {
 
     try {
       event.preventDefault();
@@ -165,9 +165,9 @@ let createForm = function () {
       let sexForm = {};
       let timeForm = {};
 
-      if (!data && !data.length) throw new Error('wrong data')
+      if (!dataEdditorForm && !dataEdditorForm.length) throw new Error('wrong dataEdditorForm')
 
-      data.forEach(function (element) {
+      dataEdditorForm.forEach(function (element) {
 
         if ((element['id']) === 'name') {
 
@@ -282,13 +282,13 @@ let createForm = function () {
     }
 
     
-    let submitButton = () => document.querySelector('#form').addEventListener('submit', conclusionDataToArrayForm);
+    let submitButton = () => document.querySelector('#form').addEventListener('submit', conclusiondataEdditorFormToArrayForm);
     submitButton();
     
 
   };
 
-  completionForm();
+  completionForm(data);
   createButton();
 
 };
