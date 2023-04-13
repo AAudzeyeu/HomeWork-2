@@ -8,33 +8,40 @@ const createForm = function () {
     const ul = document.createElement('ul');
     
     document.body.prepend(ul);
-    ul.classList.add('main-ul')
+    ul.classList.add('main-ul');
 
     const createImgForm = async function () {
         await imgUrl.forEach(function (element) {
             const li = document.createElement('li');
-            ul.prepend(li);
+            const figure = document.createElement('figure');
             const img = document.createElement('img');
+            ul.prepend(li);
+
             img.classList.add('main-img')
             img.style.width = 400 + 'px';
             img.style.height = 250 + 'px';
             img.src = element;
-            li.append(img);
+            li.append(figure)
+            figure.append(img);
         })
     }
     createImgForm();
 
     const mainImg = document.querySelector('.main-ul');
-    console.log(mainImg);
+    const urlImg = document.createElement('a');
+    const figcaption = document.createElement('figcaption');
+   
     mainImg.addEventListener('click', function(e) {
-        console.log(e.target);
-        console.log(e.target.src);
-        console.log(e.target.classList.value);
+ 
         if (e.target.classList.value === 'main-img') {
-            const urlImg = document.createElement('a');
-            // a. = e.target.src;
-        }
-    })
-}
+            
+            urlImg.href = e.target.src
+            urlImg.textContent = 'Ссылка на картинку'
+            urlImg.target = '_blank'
+            e.target.after(figcaption);
+            figcaption.append(urlImg);
+        };
+    });
+};
 
 createForm();
