@@ -10,7 +10,7 @@ const createForm = function () {
     document.body.prepend(ul);
     ul.classList.add('main-ul');
 
-    const createImg = async function () {
+    const createImg = function () {
 
         Promise.all(imgUrl)
             .then(imgUrl.forEach(function (element) {
@@ -26,9 +26,9 @@ const createForm = function () {
 
                 li.append(figure)
                 figure.append(img);
-            }))
-    }
-    createImg()
+            }));
+    };
+    createImg();
 
     const mainImg = document.querySelector('.main-ul');
     const urlImg = document.createElement('a');
