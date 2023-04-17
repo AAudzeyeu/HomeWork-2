@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,26 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    
+    <div class="main-tasks">
+        <div class="container-tasks">
+            <h2 id="tasks-text">Tasks</h2>
+            <div class="tasks">
+            </div>
+            <h3 id="completed-tasks__text">Completed</h3>
+            <div class="tasks-completed">
+            </div>
+        </div>
+        <div class="tasks-add">
+            <form id="form-button__task">
+                <input type="text" id="add-task" name="add-task" required>
+                <label for="add-task"></label>
+                <button id="button-add__task">Add Task</button>
+            </form>
+        </div>
+    </div>
 </body>
 <script src="script.js"></script>
+
 </html>
