@@ -2,6 +2,7 @@ body {
     position: relative;
     height: 100vh;
     overflow-x: hidden;
+    font: 1em/1em 'Montserrat', sans-serif;
 }
 
 .main-tasks {
@@ -19,11 +20,9 @@ body {
 }
 .tasks {
     position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 35vw;
+    width: 55vw;
     white-space: normal;
+    float: left;
 }
 
 #form-button__task {
@@ -31,6 +30,8 @@ body {
     bottom: 0;
 }
 
-label {
-    
+.task-form__text {
+ font: 1.05rem/1em 'Montserrat', sans-serif;
+ padding: 5px;
+ margin: 15px 5px 0;
 }
