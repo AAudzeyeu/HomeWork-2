@@ -12,18 +12,19 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    
-}
-.container-tasks {
 
 }
 
-#tasks-text, #completed-tasks__text {
-   text-align: center;
-   margin: 20px 0;
-   clear: both;
-   font: bold 1.5em/1em 'Montserrat', sans-serif;
+.container-tasks {}
+
+#tasks-text,
+#completed-tasks__text {
+    text-align: center;
+    margin: 20px 0;
+    clear: both;
+    font: bold 1.5em/1em 'Montserrat', sans-serif;
 }
+
 .tasks {
     position: relative;
     width: 55vw;
@@ -31,6 +32,7 @@ body {
     float: left;
     clear: both;
 }
+
 .tasks-completed {
     clear: both;
     width: 55vw;
@@ -44,7 +46,8 @@ body {
     margin-right: 25px;
 }
 
-#button-add__task, #button-add__randomTask  {
+#button-add__task,
+#button-add__randomTask {
     font-weight: bold;
     padding: 10px;
     border-radius: 15px;
@@ -58,7 +61,8 @@ body {
     transition: .35s ease;
 }
 
-#button-add__task:hover, #button-add__randomTask:hover {
+#button-add__task:hover,
+#button-add__randomTask:hover {
     -webkit-transform: scale(1.1);
     -ms-transform: scale(1.1);
     transform: scale(1.1);
@@ -79,10 +83,16 @@ body {
 }
 
 .task-form__text {
- font: 1.2rem/1em 'Montserrat', sans-serif;
- padding: 5px;
- margin: 20px 0 20px 5px;
+    font: 1.2rem/1em 'Montserrat', sans-serif;
+    padding: 5px;
+    margin: 20px 0 20px 5px;
 }
+
+.task-form__checkbox {
+    padding: 5px;
+    margin: 20px 0 20px 5px;
+}
+
 
 .header-burger {
     display: block;

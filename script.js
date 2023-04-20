@@ -1,6 +1,5 @@
 const createTasksForm = function () {
 
-
     const createDomTasksForm = function () {
 
         const createDivMainTasks = function () {
@@ -27,8 +26,8 @@ const createTasksForm = function () {
             divContainerTasks.append(div);
             div.append(h3);
         }
-        
-        const createTasksList = function() {
+
+        const createTasksList = function () {
             const divContainerTasks = document.querySelector('.container-tasks');
             const div = document.createElement('div');
 
@@ -48,7 +47,7 @@ const createTasksForm = function () {
             div.append(h3);
         }
 
-        const createTasksListCompleted = function() {
+        const createTasksListCompleted = function () {
             const divContainerTasks = document.querySelector('.container-tasks');
             const div = document.createElement('div');
 
@@ -69,7 +68,7 @@ const createTasksForm = function () {
             div.append(form);
 
             button.id = 'button-add__randomTask';
-            button.textContent = 'Add Ranom Task';
+            button.textContent = 'Add Random Task';
             div.append(button)
 
         }
@@ -95,152 +94,150 @@ const createTasksForm = function () {
 
         }
 
-    createDivMainTasks();
-    createDivContainerTasks();
-    createDivTasksTextHeader();
-    createTasksList();
-    createTasksCompletedHeader();
-    createTasksListCompleted();
-    createDivAddTasksToForm();
-    createFormAddTasksToForm();
-}
-createDomTasksForm();
+        createDivMainTasks();
+        createDivContainerTasks();
+        createDivTasksTextHeader();
+        createTasksList();
+        createTasksCompletedHeader();
+        createTasksListCompleted();
+        createDivAddTasksToForm();
+        createFormAddTasksToForm();
+    }
+    createDomTasksForm();
 
-const buttonAddNewTask = document.querySelector('#button-add__task');
-const buttonAddRandomTask = document.querySelector('#button-add__randomTask')
-const inputTask = document.querySelector('#add-task');
-const tasks = document.querySelector('.container-tasks')
-const headerTasksMenu = document.querySelector('.tasks');
-const tasksCompleted = document.querySelector('.tasks-completed');
+    const buttonAddNewTask = document.querySelector('#button-add__task');
+    const buttonAddRandomTask = document.querySelector('#button-add__randomTask')
+    const inputTask = document.querySelector('#add-task');
+    const tasks = document.querySelector('.container-tasks')
+    const headerTasksMenu = document.querySelector('.tasks');
+    const tasksCompleted = document.querySelector('.tasks-completed');
 
-fetch('https://jsonplaceholder.typicode.com/todos/')
-    .then(response => response.json())
-    .then(json => {
-        let { completed, inProgress } = json.reduce((prev, cur) => {
-            if (cur.completed) {
-                prev.completed.push(cur)
-            } else {
-                prev.inProgress.push(cur)
-            } return prev;
-        },
-            {
-                completed: [],
-                inProgress: []
-            })
+    fetch('https://jsonplaceholder.typicode.com/todos/')
+        .then(response => response.json())
+        .then(json => {
+            let { completed, inProgress } = json.reduce((prev, cur) => {
+                if (cur.completed) {
+                    prev.completed.push(cur)
+                } else {
+                    prev.inProgress.push(cur)
+                } return prev;
+            },
+                {
+                    completed: [],
+                    inProgress: []
+                })
 
-        buttonAddRandomTask.addEventListener('click', function (e) {
-            e.preventDefault();
-            completed.forEach(function (el, i) {
-
-                const div = document.createElement('div');
-                div.style.position = 'relative';
-
-                const divClose = document.createElement('div');
-                divClose.classList.add('header-burger');
-
-                const inputAddNewTask = document.createElement('input');
-                const labelAddNewTask = document.createElement('label');
-
-                inputAddNewTask.type = 'checkbox';
-                inputAddNewTask.name = 'new-task'
-                inputAddNewTask.classList.add('task-form__text');
-
-                labelAddNewTask.setAttribute('for', inputAddNewTask.name);
-                labelAddNewTask.textContent = inProgress[i]['title'];
-                labelAddNewTask.classList.add('task-form__text');
-
-
-                div.append(inputAddNewTask);
-                div.append(divClose);
-                inputAddNewTask.after(labelAddNewTask)
-                headerTasksMenu.append(div)
-            })
-
-            inProgress.forEach(function (el, i) {
-                const div = document.createElement('div');
-                div.style.position = 'relative'
-
-                const divClose = document.createElement('div');
-                divClose.classList.add('header-burger');
-
-                const inputAddNewTask = document.createElement('input');
-                const labelAddNewTask = document.createElement('label');
-
-                inputAddNewTask.type = 'checkbox';
-                inputAddNewTask.name = 'new-task'
-                inputAddNewTask.checked = 'checked';
-                inputAddNewTask.classList.add('task-form__text');
-
-                labelAddNewTask.setAttribute('for', inputAddNewTask.name);
-                labelAddNewTask.textContent = inProgress[i]['title'];
-                labelAddNewTask.classList.add('task-form__text');
-
-
-                div.append(inputAddNewTask);
-                div.append(divClose);
-                inputAddNewTask.after(labelAddNewTask)
-                tasksCompleted.append(div)
-            })
-        })
-
-        buttonAddNewTask.addEventListener('click', function (e) {
-
-            if (inputTask.value.length >= 1) {
+            buttonAddRandomTask.addEventListener('click', function (e) {
                 e.preventDefault();
-                const div = document.createElement('div')
-                div.style.position = 'relative'
+                inProgress.forEach(function (el, i) {
 
-                const divClose = document.createElement('div');
-                divClose.classList.add('header-burger');
+                    const div = document.createElement('div');
+                    div.style.position = 'relative';
 
-                const inputAddNewTask = document.createElement('input');
-                const labelAddNewTask = document.createElement('label');
+                    const divClose = document.createElement('div');
+                    divClose.classList.add('header-burger');
 
-                inputAddNewTask.type = 'checkbox';
-                inputAddNewTask.name = 'new-task';
-                inputAddNewTask.id = 'new-task';
-                inputAddNewTask.classList.add('task-form__text');
+                    const inputAddNewTask = document.createElement('input');
+                    const labelAddNewTask = document.createElement('label');
 
-                labelAddNewTask.setAttribute('for', inputAddNewTask.name);
-                labelAddNewTask.textContent = inputTask.value;
-                labelAddNewTask.classList.add('task-form__text');
+                    inputAddNewTask.type = 'checkbox';
+                    inputAddNewTask.name = 'new-task'
+                    inputAddNewTask.classList.add('task-form__checkbox');
 
-                completed.push(inputTask.value)
-                console.log(completed);
+                    labelAddNewTask.setAttribute('for', inputAddNewTask.name);
+                    labelAddNewTask.textContent = inProgress[i]['title'];
+                    labelAddNewTask.classList.add('task-form__text');
 
+                    // div.id = inProgress[i]['id']
+                    div.append(inputAddNewTask);
+                    div.append(divClose);
+                    inputAddNewTask.after(labelAddNewTask)
+                    headerTasksMenu.append(div);
+                })
+                
+                completed.forEach(function (el, i) {
+                    const div = document.createElement('div');
+                    div.style.position = 'relative'
 
-                div.append(inputAddNewTask);
-                div.append(divClose)
-                inputAddNewTask.after(labelAddNewTask)
-                headerTasksMenu.append(div)
+                    const divClose = document.createElement('div');
+                    divClose.classList.add('header-burger');
 
-                console.log();
-            }
+                    const inputAddNewTask = document.createElement('input');
+                    const labelAddNewTask = document.createElement('label');
+
+                    inputAddNewTask.type = 'checkbox';
+                    inputAddNewTask.name = 'new-task'
+                    inputAddNewTask.checked = 'checked';
+                    inputAddNewTask.classList.add('task-form__checkbox');
+
+                    labelAddNewTask.setAttribute('for', inputAddNewTask.name);
+                    labelAddNewTask.textContent = completed[i]['title'];
+                    labelAddNewTask.classList.add('task-form__text');
+
+                    div.append(inputAddNewTask);
+                    div.append(divClose);
+                    inputAddNewTask.after(labelAddNewTask)
+                    tasksCompleted.append(div)
+                })
+                
+            })
+
+            buttonAddNewTask.addEventListener('click', function (e) {
+
+                if (inputTask.value.length >= 1) {
+                    e.preventDefault();
+                    const div = document.createElement('div')
+                    div.style.position = 'relative'
+
+                    const divClose = document.createElement('div');
+                    divClose.classList.add('header-burger');
+
+                    const inputAddNewTask = document.createElement('input');
+                    const labelAddNewTask = document.createElement('label');
+
+                    inputAddNewTask.type = 'checkbox';
+                    inputAddNewTask.name = 'new-task';
+                    inputAddNewTask.id = 'new-task';
+                    inputAddNewTask.classList.add('task-form__checkbox');
+
+                    labelAddNewTask.setAttribute('for', inputAddNewTask.name);
+                    labelAddNewTask.textContent = inputTask.value;
+                    labelAddNewTask.classList.add('task-form__text');
+
+                    div.append(inputAddNewTask);
+                    div.append(divClose)
+                    inputAddNewTask.after(labelAddNewTask)
+                    headerTasksMenu.append(div)
+
+                }
+            })
+
+            tasks.addEventListener('change', function (e) {
+        
+                const inputNextSibling = e.target.nextSibling
+                const parent = inputNextSibling.parentNode;
+        
+                if (e.target.checked) {
+                    tasksCompleted.append(parent)
+                    console.log(completed); // После нажатия выполнения увеличиваются
+                    console.log(e.target.parentNode);
+        
+                }
+                if (!(e.target.checked)) {
+                    headerTasksMenu.append(parent)
+                    console.log(inProgress); //После нажатия не выполненые увеличиваются
+                    console.log(e.target.parentNode);
+                }
+            })
+        
+            tasks.addEventListener('click', function (e) {
+                if (e.target.classList == 'header-burger') {
+                    e.target.parentNode.remove();
+                }
+            })
+
         })
 
-
-    })
-
-tasks.addEventListener('change', function (e) {
-
-    const inputNextSibling = e.target.nextSibling
-    const parent = inputNextSibling.parentNode;
-
-    if (e.target.checked) {
-        tasksCompleted.append(parent)
-
-    }
-    if (!(e.target.checked)) {
-        headerTasksMenu.append(parent)
-
-    }
-})
-
-tasks.addEventListener('click', function (e) {
-    if (e.target.classList == 'header-burger') {
-        e.target.parentNode.remove();
-    }
-})
 
 }
 
