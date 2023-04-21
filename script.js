@@ -38,9 +38,13 @@ const createForm = function () {
             if (e.target.classList.value == 'main-img') {
                 console.log(e.target.classList.contains);
                 urlImg.href = e.target.src  
+                urlImg.classList.add('url-img')
                 urlImg.textContent = 'Ссылка на картинку'
                 urlImg.target = '_blank'
                 e.target.after(figcaption);
+                if (document.querySelector('.url-img')) {
+                    urlImg.remove();
+                }
                 figcaption.append(urlImg);
             };
         });
