@@ -127,6 +127,28 @@ const createTasksForm = function () {
                     inProgress: []
                 })
 
+                const sendData = async(url, elJson) => {
+                    const response = await fetch(url, {
+                        method: 'POST',
+                        body: elJson,
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Ошибка по адресу ${url}, статус ошибки${response}`)
+                    }
+                }
+
+                const removeData = async(url, data) => {
+                    const response = await fetch(url, {
+                        method: 'DELETE',
+                        body: data,
+                    });
+
+                    if (!response.ok) {
+                        throw new Error(`Ошибка по адресу ${url}, статус ошибки${response}`)
+                    }
+                }
+
             buttonAddRandomTask.addEventListener('click', function (e) {
                 e.preventDefault();
                 inProgress.forEach(function (el, i) {
@@ -148,13 +170,15 @@ const createTasksForm = function () {
                     labelAddNewTask.textContent = inProgress[i]['title'];
                     labelAddNewTask.classList.add('task-form__text');
 
-                    // div.id = inProgress[i]['id']
+
+                    div.id = el['id'];
+
                     div.append(inputAddNewTask);
                     div.append(divClose);
                     inputAddNewTask.after(labelAddNewTask)
                     headerTasksMenu.append(div);
                 })
-                
+
                 completed.forEach(function (el, i) {
                     const div = document.createElement('div');
                     div.style.position = 'relative'
@@ -174,12 +198,14 @@ const createTasksForm = function () {
                     labelAddNewTask.textContent = completed[i]['title'];
                     labelAddNewTask.classList.add('task-form__text');
 
+
+                    div.id = el['id'];
                     div.append(inputAddNewTask);
                     div.append(divClose);
                     inputAddNewTask.after(labelAddNewTask)
                     tasksCompleted.append(div)
                 })
-                
+
             })
 
             buttonAddNewTask.addEventListener('click', function (e) {
@@ -213,28 +239,38 @@ const createTasksForm = function () {
             })
 
             tasks.addEventListener('change', function (e) {
-        
-                const inputNextSibling = e.target.nextSibling
-                const parent = inputNextSibling.parentNode;
-        
+                const parent = e.target.parentNode;
+
                 if (e.target.checked) {
-                    tasksCompleted.append(parent)
-                    console.log(completed); // После нажатия выполнения увеличиваются
-                    console.log(e.target.parentNode);
-        
+                    inProgress.forEach(function (el) {
+                        if (el['id'] == parent['id']) {
+                            el['completed'] = true;
+                            console.log(el);
+                            const elJson = JSON.stringify(el);
+                            console.log(elJson);
+                            sendData('https://jsonplaceholder.typicode.com/todos/', elJson);
+                        }
+                    })
+                    tasksCompleted.append(parent);
                 }
                 if (!(e.target.checked)) {
-                    headerTasksMenu.append(parent)
-                    console.log(inProgress); //После нажатия не выполненые увеличиваются
-                    console.log(e.target.parentNode);
+                    completed.forEach(function (el) {
+                        if (el['id'] == parent['id']) {
+                            el['completed'] = false;
+                            sendData('https://jsonplaceholder.typicode.com/todos/', el);
+                        }
+                    })
+                    console.log(completed[parent['id']]);
+                    headerTasksMenu.append(parent);
                 }
             })
-        
+
             tasks.addEventListener('click', function (e) {
                 if (e.target.classList == 'header-burger') {
                     e.target.parentNode.remove();
+                    removeData('https://jsonplaceholder.typicode.com/todos/', e.target.parentNode);
                 }
-            })
+            });
 
         })
 
