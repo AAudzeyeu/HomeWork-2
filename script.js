@@ -138,10 +138,10 @@ const createTasksForm = function () {
                     }
                 }
 
-                const removeData = async(url, data) => {
+                const removeData = async(url, elJson) => {
                     const response = await fetch(url, {
                         method: 'DELETE',
-                        body: data,
+                        body: elJson,
                     });
 
                     if (!response.ok) {
@@ -245,7 +245,6 @@ const createTasksForm = function () {
                     inProgress.forEach(function (el) {
                         if (el['id'] == parent['id']) {
                             el['completed'] = true;
-                            console.log(el);
                             const elJson = JSON.stringify(el);
                             console.log(elJson);
                             sendData('https://jsonplaceholder.typicode.com/todos/', elJson);
@@ -257,7 +256,8 @@ const createTasksForm = function () {
                     completed.forEach(function (el) {
                         if (el['id'] == parent['id']) {
                             el['completed'] = false;
-                            sendData('https://jsonplaceholder.typicode.com/todos/', el);
+                            const elJson = JSON.stringify(el);
+                            sendData('https://jsonplaceholder.typicode.com/todos/', elJson);
                         }
                     })
                     console.log(completed[parent['id']]);
@@ -268,7 +268,13 @@ const createTasksForm = function () {
             tasks.addEventListener('click', function (e) {
                 if (e.target.classList == 'header-burger') {
                     e.target.parentNode.remove();
-                    removeData('https://jsonplaceholder.typicode.com/todos/', e.target.parentNode);
+                    completed.forEach(function (el) {
+                        if (el['id'] == parent['id']) {
+                            const elJson = JSON.stringify(el);
+                            console.log(el);
+                            removeData('https://jsonplaceholder.typicode.com/todos/', elJson);
+                        }
+                    })
                 }
             });
 
