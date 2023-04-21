@@ -246,7 +246,7 @@ const createTasksForm = function () {
                         if (el['id'] == parent['id']) {
                             el['completed'] = true;
                             const elJson = JSON.stringify(el);
-                            console.log(elJson);
+                            // console.log(elJson);
                             sendData('https://jsonplaceholder.typicode.com/todos/', elJson);
                         }
                     })
@@ -260,7 +260,7 @@ const createTasksForm = function () {
                             sendData('https://jsonplaceholder.typicode.com/todos/', elJson);
                         }
                     })
-                    console.log(completed[parent['id']]);
+                    // console.log(completed[parent['id']]);
                     headerTasksMenu.append(parent);
                 }
             })
@@ -271,7 +271,7 @@ const createTasksForm = function () {
                     completed.forEach(function (el) {
                         if (el['id'] == parent['id']) {
                             const elJson = JSON.stringify(el);
-                            console.log(el);
+                            // console.log(el);
                             removeData('https://jsonplaceholder.typicode.com/todos/', elJson);
                         }
                     })
