@@ -10,4 +10,5 @@ const string = 'qweqweqweLorem we need Loremto check Lorem up Lorem, nice to mee
 // console.log(check);
 // const regex = new RegExp("Lorem", 'gi')
 const regex = /Lorem/gi
+const regexInMail = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
 console.log(regex.test(string));
