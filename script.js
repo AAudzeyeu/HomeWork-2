@@ -112,6 +112,29 @@ const createTasksForm = function () {
     const headerTasksMenu = document.querySelector('.tasks');
     const tasksCompleted = document.querySelector('.tasks-completed');
 
+    const sendData = async (url, data) => {
+        console.log(data);
+        const response = await fetch(url, {
+            method: 'POST',
+            body: data,
+        });
+
+        if (!response.ok) {
+            throw new Error(`Ошибка по адресу ${url}, статус ошибки${response}`)
+        }
+    };
+
+    const removeData = async (url, elJson) => {
+        const response = await fetch(url, {
+            method: 'DELETE',
+            body: elJson,
+        });
+
+        if (!response.ok) {
+            throw new Error(`Ошибка по адресу ${url}, статус ошибки${response}`)
+        };
+    };
+
     fetch('https://jsonplaceholder.typicode.com/todos/')
         .then(response => response.json())
         .then(json => {
@@ -126,28 +149,6 @@ const createTasksForm = function () {
                     completed: [],
                     inProgress: []
                 })
-
-                const sendData = async(url, elJson) => {
-                    const response = await fetch(url, {
-                        method: 'POST',
-                        body: elJson,
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`Ошибка по адресу ${url}, статус ошибки${response}`)
-                    }
-                }
-
-                const removeData = async(url, elJson) => {
-                    const response = await fetch(url, {
-                        method: 'DELETE',
-                        body: elJson,
-                    });
-
-                    if (!response.ok) {
-                        throw new Error(`Ошибка по адресу ${url}, статус ошибки${response}`)
-                    }
-                }
 
             buttonAddRandomTask.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -171,7 +172,8 @@ const createTasksForm = function () {
                     labelAddNewTask.classList.add('task-form__text');
 
 
-                    div.id = el['id'];
+                    div.id = el.id;
+                    div.classList.add('back-div__style')
 
                     div.append(inputAddNewTask);
                     div.append(divClose);
@@ -199,14 +201,15 @@ const createTasksForm = function () {
                     labelAddNewTask.classList.add('task-form__text');
 
 
-                    div.id = el['id'];
+                    div.id = el.id;
+                    div.classList.add('back-div__style')
                     div.append(inputAddNewTask);
                     div.append(divClose);
                     inputAddNewTask.after(labelAddNewTask)
                     tasksCompleted.append(div)
-                })
+                });
 
-            })
+            });
 
             buttonAddNewTask.addEventListener('click', function (e) {
 
@@ -231,9 +234,9 @@ const createTasksForm = function () {
                     labelAddNewTask.classList.add('task-form__text');
 
                     div.append(inputAddNewTask);
-                    div.append(divClose)
-                    inputAddNewTask.after(labelAddNewTask)
-                    headerTasksMenu.append(div)
+                    div.append(divClose);
+                    inputAddNewTask.after(labelAddNewTask);
+                    headerTasksMenu.append(div);
 
                 }
             })
@@ -268,6 +271,13 @@ const createTasksForm = function () {
             tasks.addEventListener('click', function (e) {
                 if (e.target.classList == 'header-burger') {
                     e.target.parentNode.remove();
+                    inProgress.forEach(function (el) {
+                        if (el['id'] == parent['id']) {
+                            const elJson = JSON.stringify(el);
+                            // console.log(el);
+                            removeData('https://jsonplaceholder.typicode.com/todos/', elJson);
+                        }
+                    })
                     completed.forEach(function (el) {
                         if (el['id'] == parent['id']) {
                             const elJson = JSON.stringify(el);
@@ -284,3 +294,8 @@ const createTasksForm = function () {
 }
 
 createTasksForm();
+
+
+//Сгенерировать кастомное событие о том что таска была изменена
+//Работать с перебором массивов
+// Сделать через темплейт
