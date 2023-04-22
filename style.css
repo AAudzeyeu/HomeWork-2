@@ -15,6 +15,16 @@ body {
 
 }
 
+.back-div__style {
+    background: #FFF;
+    border: 0px;
+    border-radius: 15px;
+    margin: 10px 0;
+    padding: 5px;
+    -webkit-box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.5);
+}
+
 #tasks-text,
 #completed-tasks__text {
     text-align: center;
