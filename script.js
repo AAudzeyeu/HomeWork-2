@@ -12,8 +12,11 @@ const createForm = function () {
 
     const createImg = function () {
         
-        Promise.all(imgUrl)
-        .then(imgUrl.forEach(function (element) {
+        const promise = new Promise((resolve, reject) => {
+            resolve(imgUrl);
+        })
+        
+        promise.then(imgUrl.forEach(function (element) {
             const li = document.createElement('li');
             const figure = document.createElement('figure');
             const img = document.createElement('img');
@@ -35,8 +38,7 @@ const createForm = function () {
 
         mainImg.addEventListener('click', function (e) {
     
-            if (e.target.classList.value == 'main-img') {
-                console.log(e.target.classList.contains);
+            if (e.target.classList.contains('main-img')) {
                 urlImg.href = e.target.src  
                 urlImg.classList.add('url-img')
                 urlImg.textContent = 'Ссылка на картинку'
