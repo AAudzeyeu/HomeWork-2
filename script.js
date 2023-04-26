@@ -9,11 +9,11 @@ const createTasksForm = function () {
         }
 
         const createDivContainerTasks = function () {
-            const DivMainTasks = document.querySelector('.main-tasks');
+            const divMainTasks = document.querySelector('.main-tasks');
             const div = document.createElement('div');
 
             div.classList.add('container-tasks');
-            DivMainTasks.append(div);
+            divMainTasks.append(div);
         }
 
         const createDivTasksTextHeader = function () {
@@ -56,13 +56,13 @@ const createTasksForm = function () {
         }
 
         const createDivAddTasksToForm = function () {
-            const DivMainTasks = document.querySelector('.main-tasks');
+            const divMainTasks = document.querySelector('.main-tasks');
             const div = document.createElement('div');
             const form = document.createElement('form');
             const button = document.createElement('button');
 
             div.classList.add('tasks-add');
-            DivMainTasks.append(div);
+            divMainTasks.append(div);
 
             form.id = 'form-button__task';
             div.append(form);
