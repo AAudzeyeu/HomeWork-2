@@ -9,27 +9,26 @@ const createForm = function () {
     const ul = document.createElement('ul');
     ul.classList.add('main-ul');
     
-
-    const createImg = function () {
-        
-        const promise = new Promise((resolve, reject) => {
-            resolve(imgUrl);
-        })
-        
-        promise.then(imgUrl.forEach(function (element) {
-            const li = document.createElement('li');
-            const figure = document.createElement('figure');
-            const img = document.createElement('img');
-            ul.prepend(li);
-            
-            img.classList.add('main-img')
-            img.style.width = 400 + 'px';
-            img.style.height = 250 + 'px';
-            img.src = element;
-            
-            li.append(figure)
-            figure.append(img);
-        }));
+        const imgResult = imgUrl.map(function (element) {
+            return element
+        })   
+    
+        if (imgResult.length === imgUrl.length) {
+            imgResult.forEach(function (element) {
+                const li = document.createElement('li');
+                const figure = document.createElement('figure');
+                const img = document.createElement('img');
+                ul.prepend(li);
+                
+                img.classList.add('main-img')
+                img.style.width = 400 + 'px';
+                img.style.height = 250 + 'px';
+                img.src = element;
+                
+                li.append(figure)
+                figure.append(img);
+            });
+        }
         document.body.prepend(ul);
         
         const mainImg = document.querySelector('.main-ul');
@@ -50,8 +49,6 @@ const createForm = function () {
                 figcaption.append(urlImg);
             };
         });
-    };
-    createImg();
     
 };
 
