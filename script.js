@@ -105,6 +105,7 @@ const createTasksForm = function () {
     }
     createDomTasksForm();
 
+    
     const buttonAddNewTask = document.querySelector('#button-add__task');
     const buttonAddRandomTask = document.querySelector('#button-add__randomTask')
     const inputTask = document.querySelector('#add-task');
@@ -155,7 +156,6 @@ const createTasksForm = function () {
                 inProgress.forEach(function (el, i) {
 
                     const div = document.createElement('div');
-                    div.style.position = 'relative';
 
                     const divClose = document.createElement('div');
                     divClose.classList.add('header-burger');
@@ -183,7 +183,6 @@ const createTasksForm = function () {
 
                 completed.forEach(function (el, i) {
                     const div = document.createElement('div');
-                    div.style.position = 'relative'
 
                     const divClose = document.createElement('div');
                     divClose.classList.add('header-burger');
@@ -288,7 +287,7 @@ const createTasksForm = function () {
                 }
             });
 
-        })
+        });
 
 
 }

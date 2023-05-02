@@ -16,6 +16,7 @@ body {
 }
 
 .back-div__style {
+    position: relative;
     background: #FFF;
     border: 0px;
     border-radius: 15px;
