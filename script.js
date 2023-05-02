@@ -14,7 +14,7 @@ const createForm = function () {
         })   
     
         if (imgResult.length === imgUrl.length) {
-            imgResult.forEach(function (element) {
+            imgResult.forEach(function (imgResultElement) {
                 const li = document.createElement('li');
                 const figure = document.createElement('figure');
                 const img = document.createElement('img');
@@ -23,7 +23,7 @@ const createForm = function () {
                 img.classList.add('main-img')
                 img.style.width = 400 + 'px';
                 img.style.height = 250 + 'px';
-                img.src = element;
+                img.src = imgResultElement;
                 
                 li.append(figure)
                 figure.append(img);
