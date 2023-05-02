@@ -114,7 +114,7 @@ const createTasksForm = function () {
     const tasksCompleted = document.querySelector('.tasks-completed');
 
     const sendData = async (url, data) => {
-        console.log(data);
+        // console.log(data);
         const response = await fetch(url, {
             method: 'POST',
             body: data,
@@ -153,7 +153,7 @@ const createTasksForm = function () {
 
             buttonAddRandomTask.addEventListener('click', function (e) {
                 e.preventDefault();
-                inProgress.forEach(function (el, i) {
+                inProgress.forEach(function (inProgressElement, i) {
 
                     const div = document.createElement('div');
 
@@ -172,7 +172,7 @@ const createTasksForm = function () {
                     labelAddNewTask.classList.add('task-form__text');
 
 
-                    div.id = el.id;
+                    div.id = inProgressElement.id;
                     div.classList.add('back-div__style')
 
                     div.append(inputAddNewTask);
@@ -181,7 +181,7 @@ const createTasksForm = function () {
                     headerTasksMenu.append(div);
                 })
 
-                completed.forEach(function (el, i) {
+                completed.forEach(function (completedElement, i) {
                     const div = document.createElement('div');
 
                     const divClose = document.createElement('div');
@@ -200,7 +200,7 @@ const createTasksForm = function () {
                     labelAddNewTask.classList.add('task-form__text');
 
 
-                    div.id = el.id;
+                    div.id = completedElement.id;
                     div.classList.add('back-div__style')
                     div.append(inputAddNewTask);
                     div.append(divClose);
@@ -244,10 +244,10 @@ const createTasksForm = function () {
                 const parent = e.target.parentNode;
 
                 if (e.target.checked) {
-                    inProgress.forEach(function (el) {
-                        if (el['id'] == parent['id']) {
-                            el['completed'] = true;
-                            const elJson = JSON.stringify(el);
+                    inProgress.forEach(function (inProgressElement) {
+                        if (inProgressElement['id'] == parent['id']) {
+                            inProgressElement['completed'] = true;
+                            const elJson = JSON.stringify(inProgressElement);
                             // console.log(elJson);
                             sendData('https://jsonplaceholder.typicode.com/todos/', elJson);
                         }
@@ -255,10 +255,10 @@ const createTasksForm = function () {
                     tasksCompleted.append(parent);
                 }
                 if (!(e.target.checked)) {
-                    completed.forEach(function (el) {
-                        if (el['id'] == parent['id']) {
-                            el['completed'] = false;
-                            const elJson = JSON.stringify(el);
+                    completed.forEach(function (completedElement) {
+                        if (completedElement['id'] == parent['id']) {
+                            completedElement['completed'] = false;
+                            const elJson = JSON.stringify(completedElement);
                             sendData('https://jsonplaceholder.typicode.com/todos/', elJson);
                         }
                     })
