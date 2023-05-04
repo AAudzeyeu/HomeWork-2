@@ -91,7 +91,7 @@
 // console.log(egor.residents);
 
 
-class Post {
+export default class Post {
     constructor(title) {
         this.title = title
         this.data = new Date()
