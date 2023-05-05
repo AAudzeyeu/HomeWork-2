@@ -11,14 +11,14 @@ const TerserWebpackPlugin = require('terser-webpack-plugin')
 // const isProd = !isDev
 // console.log(`isDev: ${isDev}`);
 
-// const optimization = () => {
-//     const config = {
-//         splitChunks: {
-//             chunks: 'all'
-//         }
-//     }
-//     return config
-// }
+const optimization = () => {
+    const config = {
+        splitChunks: {
+            chunks: 'all'
+        }
+    }
+    return config
+}
 
 // if (true) {
 //     config.minimizer = [
