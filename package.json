@@ -4,9 +4,10 @@
   "description": "webpack course",
   "main": "index.js",
   "scripts": {
-    "start": "webpack serve",
+    "start": "webpack-dev-server --open --config webpack.config.js",
     "dev": "webpack --mode development",
     "build": "webpack --mode production",
+    "watch": "webpack --mode development --watch",
     "prod": "webpack --node-env=production",
     "clear": "rd /s /q dist"
   },
@@ -19,11 +20,23 @@
   "license": "ISC",
   "devDependencies": {
     "clean-webpack-plugin": "^4.0.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "cross-env": "^7.0.3",
     "css-loader": "^6.7.3",
+    "css-minimizer-webpack-plugin": "^5.0.0",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.1",
+    "less-loader": "^11.1.0",
+    "mini-css-extract-plugin": "^2.7.5",
+    "papaparse": "^5.4.1",
     "style-loader": "^3.3.2",
+    "terser-webpack-plugin": "^5.3.7",
     "webpack": "^5.82.0",
     "webpack-cli": "^5.0.2",
     "webpack-dev-server": "^4.13.3"
+  },
+  "dependencies": {
+    "normalize.css": "^8.0.1",
+    "xml-loader": "^1.2.1"
   }
 }
