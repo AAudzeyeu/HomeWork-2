@@ -20,4 +20,4 @@ const createAnalytics = () => {
     }
 }
 
-window.analitics = createAnalytics()
+window.analitics = createAnalytics();
