@@ -12,7 +12,7 @@ module.exports = {
         path: path.resolve(PATHS.DIST)
     },
     resolve: {
-        extensions: ['.js'], 
+        extensions: ['.js'],
         alias: {
             assets: path.resolve(PATHS.ASSETS),
             src: path.resolve(PATHS.SRC)
@@ -21,13 +21,25 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(?:js|mjs|cjs)$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                        presets: [
+                            ['@babel/preset-env', { targets: "defaults" }]
+                        ]
+                    }
+                }
+            },
+            {
                 test: /\.css$/,
                 use: [
                     'style-loader',
                     MiniCssExtractPlugin.loader,
                     {
                         loader: 'css-loader',
-                        options: {sourceMap: true}
+                        options: { sourceMap: true }
                     },
                     'sass-loader'
                 ]
@@ -39,7 +51,7 @@ module.exports = {
                     "css-loader",
                     "sass-loader"
                 ],
-                
+
             },
             {
                 test: /\.(png|jpg?e|gif)$/i,
