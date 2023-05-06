@@ -81,18 +81,18 @@ module.exports = {
                         }
                     }, 'css-loader']
             },
-            {
-                test: /\.css$/,
-                use: [
-                    {
-                        loader: MiniCssExtractPlugin.loader,
-                        options: {
-                            // hmr: isDev,
-                            // reloadAll: true,
-                            // publicPath: '/public/path/to',
-                        }
-                    }, 'css-loader']
-            },
+            // {
+            //     test: /\.css$/,
+            //     use: [
+            //         {
+            //             loader: MiniCssExtractPlugin.loader,
+            //             options: {
+            //                 // hmr: isDev,
+            //                 // reloadAll: true,
+            //                 // publicPath: '/public/path/to',
+            //             }
+            //         }, 'css-loader']
+            // },
             // {
             //     test: /\.xml$/,
             //     use: ['xml-loader']
