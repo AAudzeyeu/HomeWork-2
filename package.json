@@ -6,11 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --open --config webpack.config.dev.js",
     "dev": "webpack --mode development",
-    "build": "webpack --mode production",
-    "build-start": "webpack --config --open webpack.config.build.js",
-    "watch": "webpack --mode development --watch",
-    "prod": "webpack --node-env=production",
-    "clear": "rd /s /q dist"
+    "build": "webpack --config webpack.config.build.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +19,7 @@
   },
   "homepage": "https://github.com/AAudzeyeu/JavaScript#readme",
   "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.7.3",
     "dotenv": "^16.0.3",
     "html-webpack-plugin": "^5.5.1",

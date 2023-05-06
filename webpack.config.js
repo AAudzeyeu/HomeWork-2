@@ -1,27 +1,3 @@
-// // const miniCssExtractPlugin = require('mini-css-extract-plugin')
-
-// // module.exports = {
-// //     entry: '/src/index.js',
-// //     output: {
-// //         filename: 'bundle.js',
-// //         path: '/dist'
-// //     },
-// //     resolve: {
-// //         extensions: ['.js'], 
-// //     },
-// //     module: {
-// //         rules: [
-// //             {
-// //                 test: /\.scss$/,
-// //                 use [
-// //                     'style-loader'
-// //                 ]
-// //             }
-// //         ]
-// //     }
-// // }
-
-// const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PATHS = require('./paths.js');
