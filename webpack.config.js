@@ -24,18 +24,26 @@
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+require('dotenv').config();
+
+const PATHS = {
+    SRC: path.join(__dirname, '/src'),
+    DIST: path.join(__dirname, '/dist'),
+    ASSETS: path.join(__dirname, '/assets'),
+    PUBLIC: path.join(__dirname, '/public')
+}
 
 module.exports = {
     mode: 'development',
-    entry: './src/index.js',
+    entry: path.join(PATHS.SRC, '/index.js'),
     watch: true,
     output: {
         filename: 'bundle.js',
-        path: '/dist'
+        path: path.resolve(PATHS.DIST)
     },
     devServer: {
         static: {
-            directory: path.join(__dirname, 'public'),
+            directory: path.PUBLIC,
         },
         compress: true,
         port: 9000,
@@ -61,7 +69,7 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             filename: "index.html",
-            template: path.join(__dirname, '/public/index.html')
+            template: path.join(PATHS.PUBLIC, 'index.html')
             // favicon: "/public/favicon.ico"
         })
     ]
