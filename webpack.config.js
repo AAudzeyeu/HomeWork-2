@@ -2,7 +2,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const PATHS = require('./paths.js');
 const path = require('path');
-require('dotenv').config();
 
 
 module.exports = {
@@ -55,7 +54,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: path.join(PATHS.PUBLIC, 'index.html')
-            // favicon: "/public/favicon.ico"
         })
     ]
 }
