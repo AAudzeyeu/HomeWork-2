@@ -23,6 +23,7 @@
 
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 require('dotenv').config();
 
@@ -50,11 +51,26 @@ module.exports = {
     },
     resolve: {
         extensions: ['.js'], 
+        alias: {
+            assets: path.resolve(PATHS.ASSETS),
+            src: path.resolve(PATHS.SRC)
+        }
     },
     module: {
         rules: [
             {
-                test: /\.css$/i,
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: 'css-loader',
+                        options: {sourceMap: true}
+                    }
+                ]
+            },
+            {
+                test: /\.scss$/i,
                 use: [
                     "style-loader",
                     "css-loader"
@@ -67,6 +83,9 @@ module.exports = {
         ]
     },
     plugins: [
+        new MiniCssExtractPlugin({
+            filename: '[name].[contenthash].css'
+        }),
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: path.join(PATHS.PUBLIC, 'index.html')
