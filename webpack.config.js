@@ -24,30 +24,17 @@
 // const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const PATHS = require('./paths.js');
 const path = require('path');
 require('dotenv').config();
 
-const PATHS = {
-    SRC: path.join(__dirname, '/src'),
-    DIST: path.join(__dirname, '/dist'),
-    ASSETS: path.join(__dirname, '/assets'),
-    PUBLIC: path.join(__dirname, '/public')
-}
 
 module.exports = {
-    mode: 'development',
     entry: path.join(PATHS.SRC, '/index.js'),
     watch: true,
     output: {
-        filename: 'bundle.js',
+        filename: '[name].[hash].js',
         path: path.resolve(PATHS.DIST)
-    },
-    devServer: {
-        static: {
-            directory: path.PUBLIC,
-        },
-        compress: true,
-        port: 9000,
     },
     resolve: {
         extensions: ['.js'], 
@@ -66,15 +53,18 @@ module.exports = {
                     {
                         loader: 'css-loader',
                         options: {sourceMap: true}
-                    }
+                    },
+                    'sass-loader'
                 ]
             },
             {
                 test: /\.scss$/i,
                 use: [
                     "style-loader",
-                    "css-loader"
+                    "css-loader",
+                    "sass-loader"
                 ],
+                
             },
             {
                 test: /\.(png|jpg?e|gif)$/i,
@@ -84,7 +74,7 @@ module.exports = {
     },
     plugins: [
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].css'
+            filename: '[name].[hash].css'
         }),
         new HtmlWebpackPlugin({
             filename: "index.html",

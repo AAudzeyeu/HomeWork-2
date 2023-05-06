@@ -1,3 +1,11 @@
 h1 {
+    text-align: center;
+}
+
+.container:hover {
     background: red;
+    transition: .35s ease;
+    h1 {
+       cursor: pointer;
+    }
 }
