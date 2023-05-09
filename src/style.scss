@@ -5,11 +5,9 @@
 }
 
 body {
-    background: rgba($color: #888888, $alpha: .5);
-    h1 {
-        color: black;
-    }
+    background: #888888;
 }
-img {
-    z-index: 2px;
+
+.logo {
+    background-image: url();
 }
