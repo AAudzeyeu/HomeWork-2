@@ -9,7 +9,8 @@ body {
 }
 
 .logo {
+    background-image: url('./img/background.png');
+    background-size: cover;
     width: 500px;
     height: 500px;
-    background-image: url('./img/background.png');
 }
