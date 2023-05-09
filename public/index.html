@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Netflix/title>
+    <title>Netflix</title>
     <link rel="stylesheet" href="../src/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,7 +19,12 @@
             <p class="logo-main__text"><span class="bold">netflix</span>roulette</p>
             <button class="button-add__movie">+add movie</button>
             <div class="main-search">
-
+                <h1 class="header-logo__text">FIND YOUR MOViE</h1>
+                <form id="form-search__movie">
+                    <input required="true" placeholder="What do you want to watch?" type="text" id="main-search__movie" name="search-movie">
+                    <label for="search-movie"></label>
+                    <button id="button-search__movie">Search</button>
+                </form>
             </div>
 
 
@@ -46,6 +51,15 @@
                 <li class="navbar-li__details">Results filter <p class="navbar-additional__text">Filter the results by genre</p></li>
                 <li class="navbar-li__details">Item context menu <p class="navbar-additional__text">Visible against each card on hover</p></li>
             </ol>
+
+            <h2 class="navbar-header__text" colorPalette>color palette</h2>
+            <ul class="navbar-ol__color">
+                <li class="navbar-li__color">F65261</li>
+                <li class="navbar-li__color">424242</li>
+                <li class="navbar-li__color">232323</li>
+                <li class="navbar-li__color">555555</li>
+                <li class="navbar-li__color">FFFFFF</li>
+            </ul>
         </div>
         <script src="../src/index.js"></script>
 </body>
