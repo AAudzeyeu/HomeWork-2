@@ -47,6 +47,13 @@ body {
     padding: 15px;
     text-transform: uppercase;
     background: rgba(96, 96, 96, 0.68);
+    -webkit-transition: all .35s ease;
+    -o-transition: all .35s ease;
+    transition: all .35s ease;
+}
+
+.button-add__movie:hover {
+    box-shadow: 0px 0px 10px #F65261;
 }
 
 .header-logo__text {
@@ -68,7 +75,7 @@ body {
 #main-search__movie {
     position: relative;
     margin-right: 5px;
-    width: 50vw;
+    width: 45vw;
     height: 57px;
     color: #FFF;
     font: 500 1.35rem/1rem 'Montserrat', sans-serif;
@@ -90,8 +97,14 @@ body {
     background: #F65261;
     border: 0;
     border-radius: 4px;
+    -webkit-transition: all .35s ease;
+    -o-transition: all .35s ease;
+    transition: all .35s ease;
 }
 
+#button-search__movie:hover {
+    box-shadow: 0px 0px 10px #FFF;
+}
 
 
 
@@ -116,8 +129,9 @@ body {
     letter-spacing: .2em;
     margin-bottom: 15px;
 }
-.navbar-header__text[class=""] {
-   margin-top: 30px;
+
+.navbar-header__text[colorPalette] {
+    margin-top: 30px;
 }
 
 .navbar-additional__text {
@@ -163,4 +177,28 @@ body {
     color: #FFF;
     margin: 0 0 15px 0;
     padding: 0 0 10px 30px;
+}
+
+.navbar-li__colorF65261 {
+    list-style-image: url('./img/F65261.png');
+}
+
+.navbar-li__color424242 {
+    list-style-image: url('./img/424242.png');
+}
+
+.navbar-li__color232323 {
+    list-style-image: url('./img/232323.png');
+}
+
+.navbar-li__color555555 {
+    list-style-image: url('./img/555555.png');
+}
+
+.navbar-li__colorFFFFFF {
+    list-style-image: url('./img/FFFFFF.png');
+}
+
+.navbar-ol__color .navbar-li__color{
+    padding-left: 50px;
 }
