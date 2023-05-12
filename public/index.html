@@ -13,55 +13,121 @@
 </head>
 
 <body>
-    <div class="main-container">
 
-        <div class="content-container">
-            <div class="content-search__movie logo">
-                <p class="logo-main__text"><span class="bold">netflix</span>roulette</p>
-                <button class="button-add__movie">+add movie</button>
-                <div class="main-search">
-                    <h1 class="header-logo__text">FIND YOUR MOViE</h1>
-                    <form id="form-search__movie">
-                        <input required="true" placeholder="What do you want to watch?" type="text"
-                            id="main-search__movie" name="search-movie">
-                        <label for="search-movie"></label>
-                        <button id="button-search__movie">Search</button>
-                    </form>
-                </div>
-            </div>
-
-            <div class="both"></div>
-
-            <div class="content-movie__container">
-                <div class="navbar-movie__border">
-                    <div class="navbar-movie__container">
-
-                        <nav class="navbar-search__movie">
-                            <button class="button-search__movie"><span class="navbar-movie__text">All</span></button>
-                            <button class="button-search__movie"><span
-                                    class="navbar-movie__text">Documentary</span></button>
-                            <button class="button-search__movie"><span class="navbar-movie__text">Comedy</span></button>
-                            <button class="button-search__movie"><span class="navbar-movie__text">Horror</span></button>
-                            <button class="button-search__movie"><span class="navbar-movie__text">Crime</span></button>
-                        </nav>
-
-                        <nav class="navbar-sort__movie">
-                            <p class="navbar-sort__text">Sort by</p>
-                            <button class="button-search__movie"><span class="navbar-movie__text">Release
-                                    date</span></button>
-                        </nav>
-                    </div>
-                </div>
-
+    <div class="content-container">
+        <div class="content-search__movie logo">
+            <p class="logo-main__text"><span class="bold">netflix</span>roulette</p>
+            <button class="button-add__movie">+add movie</button>
+            <div class="main-search">
+                <h1 class="header-logo__text">FIND YOUR MOViE</h1>
+                <form id="form-search__movie">
+                    <input required="true" placeholder="What do you want to watch?" type="text" id="main-search__movie"
+                        name="search-movie">
+                    <label for="search-movie"></label>
+                    <button id="button-search__movie">Search</button>
+                </form>
             </div>
         </div>
 
+        <div class="both"></div>
+
+        <div class="content-movie__container">
+            <div class="navbar-movie__border">
+                <div class="navbar-movie__container">
+
+                    <nav class="navbar-search__movie">
+                        <button class="button-search__movie"><span class="navbar-movie__text">All</span></button>
+                        <button class="button-search__movie"><span
+                                class="navbar-movie__text">Documentary</span></button>
+                        <button class="button-search__movie"><span class="navbar-movie__text">Comedy</span></button>
+                        <button class="button-search__movie"><span class="navbar-movie__text">Horror</span></button>
+                        <button class="button-search__movie"><span class="navbar-movie__text">Crime</span></button>
+                    </nav>
+
+                    <nav class="navbar-sort__movie">
+                        <p class="navbar-sort__text">Sort by</p>
+                        <button class="button-search__movie"><span class="navbar-movie__text">Release
+                                date
+                                <div class="arrow-4">
+                                    <span class="arrow-4-left"></span>
+                                    <span class="arrow-4-right"></span>
+                                </div>
+                            </span></button>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="movies-found">
+                <p class="movies-found__text"><span class="found-text__finished bold">39</span> movies found</p>
+            </div>
+
+            <div class="main-movies__cards">
+                <figure class="movie-card">
+                    <img src="../src/img/card-1.png" class="card-picture__1">
+                    <button class="button-movie__card"></button>
+                    </img>
+                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Pulp Fiction</span> <span
+                            class="figcaption-date_movie">2004</span></figcaption>
+                    <figcaption class="figcaption-smaller_movie figcaption-margin">Action & Adventure</figcaption>
+                </figure>
+
+                <figure class="movie-card">
+                    <img src="../src/img/card-2.png" class="card-picture__1">
+                    <button class="button-movie__card"></button>
+                    </img>
+                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Bohemian Rhapsody</span> <span
+                            class="figcaption-date_movie">2003</span></figcaption>
+                    <figcaption class="figcaption-smaller_movie figcaption-margin">Drama, Biography, Music</figcaption>
+                </figure>
+
+                <figure class="movie-card">
+                    <img src="../src/img/card-3.png" class="card-picture__1">
+                    <button class="button-movie__card"></button>
+                    </img>
+                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Kill Bill: Vol 2</span> <span
+                            class="figcaption-date_movie">1994</span></figcaption>
+                    <figcaption class="figcaption-smaller_movie figcaption-margin">Oscar winning Movie</figcaption>
+                </figure>
+
+                <figure class="movie-card">
+                    <img src="../src/img/card-4.png" class="card-picture__1">
+                    <button class="button-movie__card"></button>
+                    </img>
+                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Avengers: War of Infinity</span> <span
+                            class="figcaption-date_movie">2004</span></figcaption>
+                    <figcaption class="figcaption-smaller_movie figcaption-margin">Action & Adventure</figcaption>
+                </figure>
+
+                <figure class="movie-card">
+                    <img src="../src/img/card-5.png" class="card-picture__1">
+                    <button class="button-movie__card"></button>
+                    </img>
+                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Inception</span> <span
+                            class="figcaption-date_movie">2003</span></figcaption>
+                    <figcaption class="figcaption-smaller_movie figcaption-margin">Action & Adventure</figcaption>
+                </figure>
+
+                <figure class="movie-card">
+                    <img src="../src/img/card-6.png" class="card-picture__1">
+                    <button class="button-movie__card"></button>
+                    </img>
+                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Reservoir dogs</span> <span
+                            class="figcaption-date_movie">1994</span></figcaption>
+                    <figcaption class="figcaption-smaller_movie figcaption-margin">Oscar winning Movie</figcaption>
+                </figure>
+            </div>
+
+
+
+        </div>
+
+    </div>
 
 
 
 
 
-        <nav class="navbar-container">
+    <!-- <nav class="navbar-container">
             <h2 class="navbar-header__text">Details</h2>
             <ol class="navbar-ol__details">
                 <li class="navbar-li__details">Search <p class="navbar-additional__text">Enter button should work as
@@ -97,8 +163,8 @@
                 <li class="navbar-li__color navbar-li__color555555"><span class="li-color__text">555555</span></li>
                 <li class="navbar-li__color navbar-li__colorFFFFFF"><span class="li-color__text">FFFFFF</span></li>
             </ul>
-        </nav>
-        <script src="../src/index.js"></script>
+        </nav> -->
+    <script src="../src/index.js"></script>
 </body>
 
 </html>
