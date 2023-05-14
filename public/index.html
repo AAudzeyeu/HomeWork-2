@@ -36,17 +36,17 @@
                 <div class="navbar-movie__container">
 
                     <nav class="navbar-search__movie">
-                        <button class="button-search__movie"><span class="navbar-movie__text">All</span></button>
-                        <button class="button-search__movie"><span
+                        <button class="button-type__movie"><span class="navbar-movie__text">All</span></button>
+                        <button class="button-type__movie"><span
                                 class="navbar-movie__text">Documentary</span></button>
-                        <button class="button-search__movie"><span class="navbar-movie__text">Comedy</span></button>
-                        <button class="button-search__movie"><span class="navbar-movie__text">Horror</span></button>
-                        <button class="button-search__movie"><span class="navbar-movie__text">Crime</span></button>
+                        <button class="button-type__movie"><span class="navbar-movie__text">Comedy</span></button>
+                        <button class="button-type__movie"><span class="navbar-movie__text">Horror</span></button>
+                        <button class="button-type__movie"><span class="navbar-movie__text">Crime</span></button>
                     </nav>
 
                     <nav class="navbar-sort__movie">
                         <p class="navbar-sort__text">Sort by</p>
-                        <button class="button-search__movie"><span class="navbar-movie__text">Release
+                        <button class="button-type__movie"><span class="navbar-movie__text">Release
                                 date
                                 <div class="arrow-4">
                                     <span class="arrow-4-left"></span>
@@ -63,16 +63,16 @@
 
             <div class="main-movies__cards">
                 <figure class="movie-card">
-                    <img src="../src/img/card-1.png" class="card-picture__1">
+                    <img src="../src/img/card-1.png" class="card-picture">
                     <button class="button-movie__card"></button>
                     </img>
-                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Pulp Fiction</span> <span
+                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Pulp Fiction</span><span
                             class="figcaption-date_movie">2004</span></figcaption>
                     <figcaption class="figcaption-smaller_movie figcaption-margin">Action & Adventure</figcaption>
                 </figure>
 
                 <figure class="movie-card">
-                    <img src="../src/img/card-2.png" class="card-picture__1">
+                    <img src="../src/img/card-2.png" class="card-picture">
                     <button class="button-movie__card"></button>
                     </img>
                     <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Bohemian Rhapsody</span> <span
@@ -81,7 +81,7 @@
                 </figure>
 
                 <figure class="movie-card">
-                    <img src="../src/img/card-3.png" class="card-picture__1">
+                    <img src="../src/img/card-3.png" class="card-picture">
                     <button class="button-movie__card"></button>
                     </img>
                     <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Kill Bill: Vol 2</span> <span
@@ -90,7 +90,7 @@
                 </figure>
 
                 <figure class="movie-card">
-                    <img src="../src/img/card-4.png" class="card-picture__1">
+                    <img src="../src/img/card-4.png" class="card-picture">
                     <button class="button-movie__card"></button>
                     </img>
                     <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Avengers: War of Infinity</span> <span
@@ -99,7 +99,7 @@
                 </figure>
 
                 <figure class="movie-card">
-                    <img src="../src/img/card-5.png" class="card-picture__1">
+                    <img src="../src/img/card-5.png" class="card-picture">
                     <button class="button-movie__card"></button>
                     </img>
                     <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Inception</span> <span
@@ -108,7 +108,7 @@
                 </figure>
 
                 <figure class="movie-card">
-                    <img src="../src/img/card-6.png" class="card-picture__1">
+                    <img src="../src/img/card-6.png" class="card-picture">
                     <button class="button-movie__card"></button>
                     </img>
                     <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Reservoir dogs</span> <span
@@ -124,46 +124,6 @@
     </div>
 
 
-
-
-
-    <!-- <nav class="navbar-container">
-            <h2 class="navbar-header__text">Details</h2>
-            <ol class="navbar-ol__details">
-                <li class="navbar-li__details">Search <p class="navbar-additional__text">Enter button should work as
-                        well</p>
-                </li>
-                <li class="navbar-li__details">Add Movie <p class="navbar-additional__text">This leads to a new screen
-                        to add a new movie</p>
-                </li>
-                <li class="navbar-li__details">Search button</li>
-                <li class="navbar-li__details">Result Count</li>
-                <li class="navbar-li__details">Results sort <p class="navbar-additional__text">“release date” is
-                        selected by default. Click to switch option.</p>
-                </li>
-                <li class="navbar-li__details">Item image <p class="navbar-additional__text">URL for the image you will
-                        get from the server</p>
-                </li>
-                <li class="navbar-li__details">Item release date</li>
-                <li class="navbar-li__details">Item genre</li>
-                <li class="navbar-li__details">Item title</li>
-                <li class="navbar-li__details">Results filter <p class="navbar-additional__text">Filter the results by
-                        genre</p>
-                </li>
-                <li class="navbar-li__details">Item context menu <p class="navbar-additional__text">Visible against each
-                        card on hover</p>
-                </li>
-            </ol>
-
-            <h2 class="navbar-header__text" colorPalette>color palette</h2>
-            <ul class="navbar-ul__color">
-                <li class="navbar-li__color navbar-li__colorF65261"><span class="li-color__text">F65261</span></li>
-                <li class="navbar-li__color navbar-li__color424242"><span class="li-color__text">424242</span></li>
-                <li class="navbar-li__color navbar-li__color232323"><span class="li-color__text">232323</span></li>
-                <li class="navbar-li__color navbar-li__color555555"><span class="li-color__text">555555</span></li>
-                <li class="navbar-li__color navbar-li__colorFFFFFF"><span class="li-color__text">FFFFFF</span></li>
-            </ul>
-        </nav> -->
     <script src="../src/index.js"></script>
 </body>
 
