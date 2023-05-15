@@ -14,7 +14,57 @@
 
 <body>
 
+    <div class="add-movie__container">
+        <div class="add-movie__main">
+            <div class="closeModal"></div>
+
+            <p class="header-add__text">Add Movie</p>
+            <form id="add-movie__form">
+                <div class="form-movie__container left">
+                    <label for="title" class="label-add__movie">Title</label><br>
+                    <input type="text" name="title" placeholder="Select Date" class="input-add__left" required="true">
+                </div>
+                <div class="form-movie__container right">
+                    <label for="title" class="label-add__movie">Release date</label><br>
+                    <input type="text" name="title" placeholder="Select Date" class="input-add__right" required="true">
+                </div>
+                <div class="form-movie__container left">
+                    <label for="title" class="label-add__movie">Movie Url</label><br>
+                    <input type="text" name="title" placeholder="https://" class="input-add__left" required="true">
+                </div>
+                <div class="form-movie__container right">
+                    <label for="title" class="label-add__movie">Rating</label><br>
+                    <input type="text" name="title" placeholder="7.8" class="input-add__right" required="true">
+                </div>
+                <div class="form-movie__container left">
+                    <label for="title" class="label-add__movie">Genre</label><br>
+                    <div class="select">
+                        <select type="text" name="title" placeholder="minutes" class="input-add__left">
+                            <option label="Horror"></option>
+                            <option label="Fantastic"></option>
+                            <option label="Documentary"></option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-movie__container right">
+                    <label for="title" class="label-add__movie">Runtime</label><br>
+                    <input type="text" name="title" placeholder="minutes" class="input-add__right" required="true">
+                </div>
+                <div class="form-movie__container left">
+                    <label for="title" class="label-add__movie">Overview</label><br>
+                    <textarea type="text" name="title" placeholder="Movie description" class="input-add__big" required="true"></textarea>
+                </div>
+                <div class="form-movie__container right">
+                    <button type="submit" class="button-movie__submit">Submit</button>
+                </div>
+                <div class="form-movie__container right">
+                    <button type="reset" class="button-movie__reset">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="content-container">
+
         <div class="content-search__movie logo">
             <p class="logo-main__text"><span class="bold">netflix</span>roulette</p>
             <button class="button-add__movie">+add movie</button>
@@ -37,8 +87,7 @@
 
                     <nav class="navbar-search__movie">
                         <button class="button-type__movie"><span class="navbar-movie__text">All</span></button>
-                        <button class="button-type__movie"><span
-                                class="navbar-movie__text">Documentary</span></button>
+                        <button class="button-type__movie"><span class="navbar-movie__text">Documentary</span></button>
                         <button class="button-type__movie"><span class="navbar-movie__text">Comedy</span></button>
                         <button class="button-type__movie"><span class="navbar-movie__text">Horror</span></button>
                         <button class="button-type__movie"><span class="navbar-movie__text">Crime</span></button>
@@ -75,8 +124,9 @@
                     <img src="../src/img/card-2.png" class="card-picture">
                     <button class="button-movie__card"></button>
                     </img>
-                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Bohemian Rhapsody</span> <span
-                            class="figcaption-date_movie">2003</span></figcaption>
+                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Bohemian Rhapsody</span>
+                        <span class="figcaption-date_movie">2003</span>
+                    </figcaption>
                     <figcaption class="figcaption-smaller_movie figcaption-margin">Drama, Biography, Music</figcaption>
                 </figure>
 
@@ -84,8 +134,9 @@
                     <img src="../src/img/card-3.png" class="card-picture">
                     <button class="button-movie__card"></button>
                     </img>
-                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Kill Bill: Vol 2</span> <span
-                            class="figcaption-date_movie">1994</span></figcaption>
+                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Kill Bill: Vol 2</span>
+                        <span class="figcaption-date_movie">1994</span>
+                    </figcaption>
                     <figcaption class="figcaption-smaller_movie figcaption-margin">Oscar winning Movie</figcaption>
                 </figure>
 
@@ -93,8 +144,8 @@
                     <img src="../src/img/card-4.png" class="card-picture">
                     <button class="button-movie__card"></button>
                     </img>
-                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Avengers: War of Infinity</span> <span
-                            class="figcaption-date_movie">2004</span></figcaption>
+                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Avengers: War of
+                            Infinity</span> <span class="figcaption-date_movie">2004</span></figcaption>
                     <figcaption class="figcaption-smaller_movie figcaption-margin">Action & Adventure</figcaption>
                 </figure>
 
@@ -111,8 +162,9 @@
                     <img src="../src/img/card-6.png" class="card-picture">
                     <button class="button-movie__card"></button>
                     </img>
-                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Reservoir dogs</span> <span
-                            class="figcaption-date_movie">1994</span></figcaption>
+                    <figcaption class="figcaption-margin"><span class="figcaption-name_movie">Reservoir dogs</span>
+                        <span class="figcaption-date_movie">1994</span>
+                    </figcaption>
                     <figcaption class="figcaption-smaller_movie figcaption-margin">Oscar winning Movie</figcaption>
                 </figure>
             </div>

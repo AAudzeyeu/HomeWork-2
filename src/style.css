@@ -8,9 +8,17 @@
     clear: both;
 }
 
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
 body {
     background: #555;
-    z-index: -5;
+    z-index: -1;
     overflow-x: hidden;
 }
 
@@ -21,8 +29,112 @@ body {
 
 .content-container {
     position: relative;
-    height: 50vh;
     margin: 0 0 8px 0;
+}
+
+.add-movie__container {
+    display: none;
+    position: fixed;
+    width: 70vw;
+    height: 90vh;
+    background: #232323;
+    top: 5vh;
+    left: 15vw;
+    z-index: 2;
+}
+
+.form-movie__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    align-content: flex-start;
+    width: auto;
+    margin: 0 auto 30px auto;
+}
+
+.add-movie__main {
+    position: relative;
+    margin: 50px;
+}
+
+.header-add__text {
+    font: 300 2rem/1rem 'Montserrat', sans-serif;
+    color: #FFF;
+    text-transform: uppercase;
+}
+
+#add-movie__form {
+    margin-top: 35px;
+    display: block;
+}
+
+.row-1 {}
+
+.label-add__movie {
+    font: 300 1rem/1rem 'Montserrat', sans-serif;
+    color: #F65261;
+    text-transform: uppercase;
+}
+
+.input-add__left {
+    font: 300 1rem/1rem 'Montserrat', sans-serif;
+    color: #FFF;
+    background: #424242;
+    border: 0;
+    width: 40vw;
+    padding: 12px 0;
+    text-indent: 15px;
+}
+
+.input-add__right {
+    font: 300 1rem/1rem 'Montserrat', sans-serif;
+    color: #FFF;
+    background: #424242;
+    border: 0;
+    width: 20vw;
+    padding: 12px 0;
+    text-indent: 15px;
+}
+
+.input-add__big {
+    position: relative;
+    font: 300 1rem/1rem 'Montserrat', sans-serif;
+    top: 0;
+    color: #FFF;
+    background: #424242;
+    border: 0;
+    width: 65vw;
+    height: 170px;
+    padding: 12px 0;
+    text-indent: 15px;
+
+}
+
+.button-movie__submit {
+    font: 500 1.3rem/1rem 'Montserrat', sans-serif;
+    cursor: pointer;
+    padding: 20px;
+    border: solid 2px #F65261;
+    color: #FFF;
+    text-transform: uppercase;
+    background: #F65261;
+    width: 180px;
+    height: 57px;
+    margin: 25px 0 0 15px;
+}
+
+.button-movie__reset {
+    font: 500 1.3rem/1rem 'Montserrat', sans-serif;
+    cursor: pointer;
+    padding: 20px;
+    border: solid 2px #F65261;
+    color: #F65261;
+    text-transform: uppercase;
+    background: #232323;
+    width: 180px;
+    height: 57px;
+    margin: 25px 0 0 15px;
 }
 
 .logo {
@@ -125,6 +237,7 @@ body {
     margin-top: 10px;
     position: relative;
     background: #232323;
+    z-index: 1;
 }
 
 .navbar-movie__container {
@@ -254,6 +367,62 @@ body {
     transform: rotate(70deg);
 }
 
+.select {
+    position: relative;
+    display: inline-block;
+}
+
+.select:after {
+    content: "▼";
+    color: #F65261;
+    padding: 0 8px;
+    font-size: 12px;
+    position: absolute;
+    right: 0px;
+    top: 15px;
+    z-index: 1;
+    text-align: center;
+    width: 10%;
+    height: 100%;
+    pointer-events: none;
+    box-sizing: border-box;
+}
+
+select {
+    padding-right: 25px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+.closeModal {
+	position: absolute;
+	top: -15px;
+	right: -15px;
+	width: 24px;
+	height: 24px;
+	cursor: pointer;
+}
+
+.closeModal::before,
+.closeModal::after {
+	content: '';
+	position: absolute;
+	top: 10px;
+	display: block;
+	width: 24px;
+	height: 3px;
+	background: #FFF;
+}
+
+.closeModal::before {
+	transform: rotate(45deg);
+}
+
+.closeModal::after {
+	transform: rotate(-45deg);
+}
+
 .movies-found {
     position: relative;
     margin: 25px 62px 25px 59px;
@@ -367,7 +536,7 @@ body {
     }
 
     .navbar-movie__container {
-        justify-content:center ;
+        justify-content: center;
     }
 
     .navbar-search__movie {
@@ -413,7 +582,7 @@ body {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .main-movies__cards {
         flex-direction: column;
         align-items: center;
@@ -431,7 +600,8 @@ body {
         padding: 22.5px;
     }
 
-    .navbar-movie__text, .navbar-sort__text {
+    .navbar-movie__text,
+    .navbar-sort__text {
         font-size: 1.15rem;
         margin: 0 0 15px 0;
     }
