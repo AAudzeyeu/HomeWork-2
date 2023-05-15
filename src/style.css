@@ -102,14 +102,17 @@ body {
     color: #FFF;
     background: #424242;
     border: 0;
-    width: 65vw;
-    height: 170px;
+    max-width: 65vw;
+    min-width: 65vw;
+    min-height: 40px;
+    max-height: 170px;
     padding: 12px 0;
     text-indent: 15px;
 
 }
 
 .button-movie__submit {
+    position: relative;
     font: 500 1.3rem/1rem 'Montserrat', sans-serif;
     cursor: pointer;
     padding: 20px;
@@ -123,6 +126,7 @@ body {
 }
 
 .button-movie__reset {
+    position: relative;
     font: 500 1.3rem/1rem 'Montserrat', sans-serif;
     cursor: pointer;
     padding: 20px;
