@@ -1,1 +1,3 @@
-import './style.scss'
+import "./style.scss";
+
+document.querySelector("#id");
