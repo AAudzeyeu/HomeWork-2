@@ -443,7 +443,7 @@ select {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: 25px 62px 25px 59px;
+    margin: 25px 62px 0px 59px;
 }
 
 .movie-card {
