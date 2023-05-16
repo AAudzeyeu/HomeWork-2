@@ -1,4 +1,4 @@
-// import './style.css'
+import "./style.css";
 
 const addMovie = () => {
 	const button = document.querySelector(".button-add__movie");
