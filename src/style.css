@@ -29,7 +29,7 @@ body {
 
 .content-container {
     position: relative;
-    margin: 0 0 8px 0;
+    margin: 0;
 }
 
 .add-movie__container {
@@ -398,31 +398,31 @@ select {
 }
 
 .closeModal {
-	position: absolute;
-	top: -15px;
-	right: -15px;
-	width: 24px;
-	height: 24px;
-	cursor: pointer;
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
 }
 
 .closeModal::before,
 .closeModal::after {
-	content: '';
-	position: absolute;
-	top: 10px;
-	display: block;
-	width: 24px;
-	height: 3px;
-	background: #FFF;
+    content: '';
+    position: absolute;
+    top: 10px;
+    display: block;
+    width: 24px;
+    height: 3px;
+    background: #FFF;
 }
 
 .closeModal::before {
-	transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 
 .closeModal::after {
-	transform: rotate(-45deg);
+    transform: rotate(-45deg);
 }
 
 .movies-found {
@@ -443,7 +443,7 @@ select {
     flex-direction: row;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin: 25px 62px 25px 59px;
+    margin: 25px 62px 0 59px;
 }
 
 .movie-card {
@@ -517,6 +517,11 @@ select {
         margin-left: 20px;
     }
 
+    .input-add__big {
+        max-width: 63.5vw;
+        min-width: 63.5vw;
+    }
+
 }
 
 @media all and (max-width: 1236px) {
@@ -557,6 +562,20 @@ select {
 
     .main-movies__cards {
         justify-content: space-around;
+    }
+
+    .add-movie__container {
+        width: 80vw;
+        left: 10vw;
+    }
+
+    .input-add__right {
+        width: 25vw;
+    }
+
+    .input-add__big {
+        max-width: 72vw;
+        min-width: 72vw;
     }
 }
 
@@ -610,6 +629,60 @@ select {
 
     .arrow-4 {
         left: 145px;
+    }
+
+    .closeModal {
+        top: 5px;
+        right: 5px;
+        z-index: 3;
+    }
+
+    .add-movie__container {
+        overflow: auto;
+        z-index: 3;
+        -webkit-transition: all .35s ease;
+        -o-transition: all .35s ease;
+        transition: all .35s ease;
+    }
+
+    .add-movie__main {
+        height: 960px;
+    }
+
+    .header-add__text {
+        font-size: 1.2rem;
+    }
+
+    .input-add__left {
+        width: 60vw;
+    }
+
+    .input-add__right {
+        width: 60vw;
+        float: left;
+    }
+
+    .input-add__big {
+        max-width: 60vw;
+        min-width: 60vw;
+    }
+
+    .right {
+        float: left;
+    }
+
+    .button-movie__submit {
+        font-size: .85rem;
+        width: 110px;
+    }
+
+    .button-movie__reset {
+        font-size: .85rem;
+        width: 110px;
+    }
+
+    .add-movie__main {
+        margin: 25px;
     }
 }
 
