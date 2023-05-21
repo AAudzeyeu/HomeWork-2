@@ -141,7 +141,6 @@ body {
 
 .logo {
     position: relative;
-    background-image: url('./img/background.png');
     background-size: cover;
     height: 50vh;
 }
@@ -456,7 +455,7 @@ select {
 .button-movie__card {
     position: absolute;
     cursor: pointer;
-    background-image: url('./img/tripple-dots__black.jpg');
+    background-image: url('../public/images/tripple-dots__black.jpg');
     background-size: cover;
     border: 0;
     padding: 15px;
