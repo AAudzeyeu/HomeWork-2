@@ -1,6 +1,6 @@
 import { getMovies } from "../api";
 
-const container = document.querySelector(".main-movies__cards");
+const containerCard = document.querySelector(".main-movies__cards");
 const template = document.querySelector("#movie-item");
 const defaultPoster =
 	"https://m.media-amazon.com/images/I/71Jxq2p5YWL._AC_UF894,1000_QL80_.jpg";
@@ -34,6 +34,60 @@ export const createMovies = () => {
 		const movies = data.data;
 		const moviesElements = movies.map(createMovie);
 
-		container.append(...moviesElements);
+		containerCard.append(...moviesElements);
 	});
 };
+
+const movieInfoDownload = () => {
+	const contentMovieContainer = document.querySelector(
+		".content-movie__container"
+	);
+	const contentSearchMovie = document.querySelector(".content-search__movie");
+	const movieInfo = document.getElementById("movie-info");
+	const imgMovieInfo = document.querySelector(".img-movie__info");
+	contentMovieContainer.addEventListener("click", (e) => {
+		if (e.target.classList.contains("card-picture")) {
+			contentSearchMovie.style.display = "none";
+			movieInfo.style.visibility = "visible";
+			movieInfo.style.position = "relative";
+			imgMovieInfo.src = defaultPoster;
+		}
+	});
+	movieInfo.addEventListener("click", (e) => {
+		if (e.target.classList.contains("magnifying-glass")) {
+			contentSearchMovie.style.display = "block";
+			movieInfo.style.visibility = "hidden";
+			movieInfo.style.position = "absolute";
+		}
+	});
+};
+
+movieInfoDownload();
+
+const submitAddMovie = () => {
+	const submitButton = document.querySelector(".button-movie__submit");
+	submitButton.addEventListener("click", (e) => {
+		e.preventDefault();
+		const container = document.querySelector(".content-container");
+		const congratulationsWindow = document.querySelector(
+			".add-movie__congratulations"
+		);
+		const addMovieContainer = document.querySelector(".add-movie__container");
+		congratulationsWindow.style.visibility = "visible";
+		addMovieContainer.style.visibility = "hidden";
+		container.style.opacity = "1";
+	});
+};
+submitAddMovie();
+
+const closeCongratulations = () => {
+	const congratulationsWindow = document.querySelector(
+		".add-movie__congratulations"
+	);
+	congratulationsWindow.addEventListener("click", (e) => {
+		if (e.target.classList.contains("closeModal")) {
+			congratulationsWindow.style.visibility = "hidden";
+		}
+	});
+};
+closeCongratulations();

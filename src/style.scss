@@ -33,8 +33,8 @@ body {
 }
 
 .add-movie__container {
-    display: none;
     position: fixed;
+    visibility: hidden;
     width: 70vw;
     height: 90vh;
     background: #232323;
@@ -67,6 +67,11 @@ body {
 #add-movie__form {
     margin-top: 35px;
     display: block;
+
+    fieldset {
+        border: 0;
+    }
+
 }
 
 .label-add__movie {
@@ -139,8 +144,96 @@ body {
     margin: 25px 0 0 15px;
 }
 
+.add-movie__congratulations {
+    position: fixed;
+    visibility: hidden;
+    width: 60vw;
+    height: 55vh;
+    background: #232323;
+    top: 15vh;
+    left: 20vw;
+    z-index: 3;
+
+    .closeModal {
+        top: 10px;
+        right: 10px;
+    }
+
+    .successfully-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+
+        .successfully {
+            position: relative;
+            width: 66px;
+            height: 66px;
+            background: #F65261;
+            border-radius: 100%;
+            margin-top: 42px;
+        }
+
+        .successfully::before {
+            position: absolute;
+            left: 20px;
+            bottom: 15px;
+            height: 35%;
+            width: 5px;
+            background-color: #FFF;
+            border-radius: 10px 10px 00px 0px;
+            content: "";
+            transform: translateX(10px) rotate(-45deg);
+            transform-origin: left bottom;
+        }
+
+        .successfully::after {
+            position: absolute;
+            left: 20px;
+            bottom: 15px;
+            height: 5px;
+            width: 60%;
+            background-color: #FFF;
+            border-radius: 0px 10px 10px 0px;
+            content: "";
+            transform: translateX(10px) rotate(-45deg);
+            transform-origin: left bottom;
+        }
+    }
+
+
+    .header-text__congratulations {
+        position: absolute;
+        width: 100%;
+        top: 40%;
+        text-align: center;
+        color: #FFF;
+        text-transform: uppercase;
+        font: 500 3rem/1rem 'Montserrat', sans-serif;
+        letter-spacing: .55rem;
+        text-shadow: 1px 1px 5px #232323;
+    }
+
+    .text-congratulations__container {
+        display: flex;
+        justify-content: center;
+        position: absolute;
+        top: 65%;
+        width: 100%;
+
+        .text-congratulations {
+            font: 500 1.5rem/2.5rem 'Montserrat', sans-serif;
+            width: 440px;
+            text-align: center;
+            color: #FFF;
+            text-transform: uppercase;
+        }
+    }
+
+}
+
 .content-search__movie {
     position: relative;
+    display: block;
     height: 50vh;
     width: auto;
     box-sizing: cover;
@@ -233,6 +326,108 @@ body {
     box-shadow: 0px 0px 10px #FFF;
 }
 
+#movie-info {
+    position: absolute;
+    visibility: hidden;
+    width: auto;
+    height: 90vh;
+    background: #232323;
+}
+
+.figure-card__info {
+    width: 30vw;
+    height: auto;
+    float: left;
+    margin-right: 35px;
+}
+
+#movie-info__container {
+    position: relative;
+    width: 30vw;
+    height: 70vh;
+    padding: 25px 62px 0 59px;
+}
+
+.img-movie__info {
+    width: 30vw;
+    height: 75vh;
+    cursor: pointer;
+}
+
+.text-figcaption__info {
+    font: 500 1.5rem/1rem 'Montserrat', sans-serif;
+    width: 100vw;
+    color: #F65261;
+    letter-spacing: .1em;
+    text-shadow: 1px 1px 5px #232323;
+    margin-bottom: 50px;
+}
+
+.movie-description__info {
+    position: relative;
+    width: 100vw;
+    margin-top: 50px;
+}
+
+.movie-description__name {
+    position: relative;
+    margin: 0 0 0 25px;
+}
+
+.description-info__name {
+    display: flex;
+    align-items: center;
+}
+
+.header-description__text {
+    font: 500 3rem/2.5rem 'Montserrat', sans-serif;
+    letter-spacing: .35rem;
+    text-transform: uppercase;
+    color: #FFF;
+}
+
+.rating {
+    font: 500 1.8rem/2.5rem 'Montserrat', sans-serif;
+    color: #FFF;
+    letter-spacing: 0.1rem;
+    padding: 15px;
+    border: solid #FFF 1px;
+    border-radius: 100%;
+    margin-left: 35px;
+}
+
+.description-text {
+    position: relative;
+    font: 500 1.2rem/2.5rem 'Montserrat', sans-serif;
+    color: #555;
+}
+
+.description-date__time {
+    position: relative;
+    font: 300 2.5rem/2.5rem 'Montserrat', sans-serif;
+    color: #F65261;
+    margin: 50px 0 25px 0;
+}
+
+.description-date {
+    margin-right: 50px;
+}
+
+.description-movie__container {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    padding-right: 55px;
+}
+
+.description-movie {
+    position: relative;
+    font: 500 2.2rem/2rem 'Montserrat', sans-serif;
+    width: 60vw;
+    color: #424242;
+}
+
 .content-movie__container {
     margin-top: 10px;
     position: relative;
@@ -266,6 +461,7 @@ body {
 
 .navbar-search__movie {
     position: relative;
+    visibility: visible;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -275,6 +471,7 @@ body {
         border-bottom: #F65261 solid 3px;
     }
 }
+
 
 
 .navbar-sort__movie {
@@ -289,7 +486,7 @@ body {
 .navbar-movie__text {
     color: #FFF;
     font: 1.5rem/1rem 'Montserrat', sans-serif;
-    background:#232323;
+    background: #232323;
     text-transform: uppercase;
     padding-bottom: 22px;
 }
@@ -358,6 +555,35 @@ body {
     border-radius: 10px 6px 6px 10px;
     transition: all 0.5s cubic-bezier(0.25, 1.7, 0.35, 0.8);
     z-index: -1;
+}
+
+.magnifying-glass {
+    position: absolute;
+    top: -55px;
+    right: 100px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    box-sizing: border-box;
+    background-color: #232323;
+    border: 2px solid #F65261;
+    border-radius: 50%;
+}
+
+.magnifying-glass:after {
+    content: "";
+    position: absolute;
+    bottom: -25px;
+    right: -23px;
+
+    width: 35px;
+    height: 2px;
+    background-color: #F65261;
+
+    border-radius: 0 7.5px 7.5px 0;
+
+    transform-origin: 0 50%;
+    transform: translateX(-100%) rotate(-45deg);
 }
 
 .open .arrow-4-left:after {
@@ -468,6 +694,7 @@ select {
     max-width: 35vw;
     height: 70vh;
     margin-bottom: 15px;
+    cursor: pointer;
 }
 
 .figcaption-name_movie {

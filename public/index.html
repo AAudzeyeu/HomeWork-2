@@ -20,49 +20,63 @@
 
             <p class="header-add__text">Add Movie</p>
             <form id="add-movie__form">
-                <div class="form-movie__container left">
-                    <label for="title" class="label-add__movie">Title</label><br>
-                    <input type="text" name="title" placeholder="Name" class="input-add__left" required="true">
-                </div>
-                <div class="form-movie__container right">
-                    <label for="title" class="label-add__movie">Release date</label><br>
-                    <input type="date" name="title" placeholder="Select Date" class="input-add__right" required="true">
-                </div>
-                <div class="form-movie__container left">
-                    <label for="title" class="label-add__movie">Movie Url</label><br>
-                    <input type="text" name="title" placeholder="https://" class="input-add__left" required="true">
-                </div>
-                <div class="form-movie__container right">
-                    <label for="title" class="label-add__movie">Rating</label><br>
-                    <input type="text" name="title" placeholder="7.8" class="input-add__right" required="true">
-                </div>
-                <div class="form-movie__container left">
-                    <label for="title" class="label-add__movie">Genre</label><br>
-                    <div class="select">
-                        <select type="text" name="title" placeholder="minutes" class="input-add__left">
-                            <option label="Horror"></option>
-                            <option label="Fantastic"></option>
-                            <option label="Documentary"></option>
-                        </select>
+                    <div class="form-movie__container left">
+                        <label for="title" class="label-add__movie">Title</label><br>
+                        <input type="text" name="title" placeholder="Name" class="input-add__left" required="true">
                     </div>
-                </div>
-                <div class="form-movie__container right">
-                    <label for="title" class="label-add__movie">Runtime</label><br>
-                    <input type="text" name="title" placeholder="minutes" class="input-add__right" required="true">
-                </div>
-                <div class="form-movie__container left">
-                    <label for="title" class="label-add__movie">Overview</label><br>
-                    <textarea type="text" name="title" placeholder="Movie description" class="input-add__big"
-                        required="true"></textarea>
-                </div>
-                <div class="form-movie__container right">
-                    <button type="submit" class="button-movie__submit">Submit</button>
-                </div>
-                <div class="form-movie__container right">
-                    <button type="reset" class="button-movie__reset">Reset</button>
-                </div>
+                    <div class="form-movie__container right">
+                        <label for="title" class="label-add__movie">Release date</label><br>
+                        <input type="date" name="title" placeholder="Select Date" class="input-add__right"
+                            required="true">
+                    </div>
+                    <div class="form-movie__container left">
+                        <label for="title" class="label-add__movie">Movie Url</label><br>
+                        <input type="text" name="title" placeholder="https://" class="input-add__left" required="true">
+                    </div>
+                    <div class="form-movie__container right">
+                        <label for="title" class="label-add__movie">Rating</label><br>
+                        <input type="text" name="title" placeholder="7.8" class="input-add__right" required="true">
+                    </div>
+                    <div class="form-movie__container left">
+                        <label for="title" class="label-add__movie">Genre</label><br>
+                        <div class="select">
+                            <select type="text" name="title" placeholder="minutes" class="input-add__left">
+                                <option label="Horror"></option>
+                                <option label="Fantastic"></option>
+                                <option label="Documentary"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-movie__container right">
+                        <label for="title" class="label-add__movie">Runtime</label><br>
+                        <input type="text" name="title" placeholder="minutes" class="input-add__right" required="true">
+                    </div>
+                    <div class="form-movie__container left">
+                        <label for="title" class="label-add__movie">Overview</label><br>
+                        <textarea type="text" name="title" placeholder="Movie description" class="input-add__big"
+                            required="true"></textarea>
+                    </div>
+                    <div class="form-movie__container right">
+                        <input type="submit" class="button-movie__submit" value="Submit">
+                    </div>
+                    <div class="form-movie__container right">
+                        <button type="reset" class="button-movie__reset">Reset</button>
+                    </div>
             </form>
         </div>
+    </div>
+    <div class="add-movie__congratulations">
+        <div class="closeModal"></div>
+        <div class="successfully-container">
+            <div class="successfully">
+            </div>
+        </div>
+
+        <h1 class="header-text__congratulations">congratulations !</h1>
+        <div class="text-congratulations__container">
+            <p class="text-congratulations">The movie has been added to database successfully</p>
+        </div>
+
     </div>
     <div class="content-container">
 
@@ -77,6 +91,33 @@
                     <label for="search-movie"></label>
                     <button id="button-search__movie">Search</button>
                 </form>
+            </div>
+        </div>
+        <div id="movie-info">
+            <div id="movie-info__container">
+                <figure class="figure-card__info">
+                    <figcaption class="text-figcaption__info">netflixroulette</figcaption>
+                    <img src="../public/images/card-2.png" alt="movies" class="img-movie__info">
+                </figure>
+                <div class="movie-description__info">
+                    <div class="magnifying-glass"></div>
+                    <div class="movie-description__name">
+                        <div class="description-info__name">
+                            <p class="header-description__text">pulp Fiction</p>
+                            <p class="rating">8.9</p>
+                        </div>
+                        <p class="description-text">Action & Adventure</p>
+                        <p class="description-date__time"><span class="description-date">1994</span> <span
+                                class="description time">2h 34min</span></p>
+                        <div class="description-movie__container">
+                            <p class="description-movie">a sd asdass dasdasdasd saas dasdsa dsad asd sad d sad sads asa
+                                asd
+                                sasda
+                                dsa asd sad asasd dsaddds SDa dd sad asd asdas asd sa as assad asd assda </p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
