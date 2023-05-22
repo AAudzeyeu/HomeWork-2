@@ -72,10 +72,16 @@ const submitAddMovie = () => {
 		const congratulationsWindow = document.querySelector(
 			".add-movie__congratulations"
 		);
+		const body = document.querySelector("body");
+		const contentMovieContainer = document.querySelector(
+			".content-movie__container"
+		);
 		const addMovieContainer = document.querySelector(".add-movie__container");
 		congratulationsWindow.style.visibility = "visible";
 		addMovieContainer.style.visibility = "hidden";
 		container.style.opacity = "1";
+		body.style.overflowY = "auto";
+		contentMovieContainer.style.overflow = "auto";
 	});
 };
 submitAddMovie();
