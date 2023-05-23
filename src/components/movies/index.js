@@ -1,9 +1,10 @@
-import { getMovies } from "../api";
+import defaultImage from "../../../public/images/card-2.png";
+import { getMovies } from "../../api";
+import { searchToObject } from "../../utils/search";
 
-const containerCard = document.querySelector(".main-movies__cards");
 const template = document.querySelector("#movie-item");
-const defaultPoster =
-	"https://m.media-amazon.com/images/I/71Jxq2p5YWL._AC_UF894,1000_QL80_.jpg";
+// const defaultPoster =
+// 	"https://m.media-amazon.com/images/I/71Jxq2p5YWL._AC_UF894,1000_QL80_.jpg";
 const background =
 	"https://wallpapershome.ru/images/wallpapers/beguschiy-v-labirinte-lekarstvo-ot-smerti-1920x1080-beguschiy-v-labirinte-lekarstvo-ot-smerti-16947.jpg";
 
@@ -13,7 +14,7 @@ const createMovie = (movie) => {
 	backgroundLogo.style.background = `url(${background})`;
 
 	movieElement.querySelector("img").onerror = (e) => {
-		e.target.src = defaultPoster;
+		e.target.src = defaultImage;
 	};
 	movieElement.querySelector(".figcaption-name_movie").textContent =
 		movie.title;
@@ -29,12 +30,14 @@ const createMovie = (movie) => {
 	return movieElement;
 };
 
-export const createMovies = () => {
+export const createMovies = (container) => {
+	const params = window.location.search;
+	console.log(searchToObject(params));
 	getMovies().then((data) => {
 		const movies = data.data;
 		const moviesElements = movies.map(createMovie);
 
-		containerCard.append(...moviesElements);
+		container.append(...moviesElements);
 	});
 };
 
@@ -50,7 +53,7 @@ const movieInfoDownload = () => {
 			contentSearchMovie.style.display = "none";
 			movieInfo.style.visibility = "visible";
 			movieInfo.style.position = "relative";
-			imgMovieInfo.src = defaultPoster;
+			imgMovieInfo.src = defaultImage;
 		}
 	});
 	movieInfo.addEventListener("click", (e) => {
@@ -97,3 +100,12 @@ const closeCongratulations = () => {
 	});
 };
 closeCongratulations();
+
+// export const searchToObject = (searchString) => {
+// 	const regex = searchString.match(/[a-z,=0-9]/gm);
+// 	console.log(regex);
+// 	regex.join(" ");
+// 	console.log(regex);
+// };
+
+// searchToObject("&page=2&asd=22");

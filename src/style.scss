@@ -722,6 +722,16 @@ select {
     padding: 4px 8px 5px 8px;
 }
 
+#show-more {
+    display: block;
+    margin: 20px auto;
+    padding: 10px;
+    background: red;
+    color: #FFF;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
 
 @media all and (max-width: 1600px) {
 

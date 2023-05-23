@@ -1,3 +1,4 @@
+import { createMoreButton } from "./components/moreMoviesButton/createButton";
 import { createMovies } from "./components/movies";
 import "./style.scss";
 
@@ -29,7 +30,10 @@ const addMovie = () => {
 addMovie();
 
 const initApp = () => {
-	createMovies();
+	const moviesContainer = document.querySelector(".main-movies__cards");
+	createMovies(moviesContainer);
+	const buttonContainer = document.querySelector(".button-container");
+	createMoreButton(buttonContainer);
 };
 
 initApp();
