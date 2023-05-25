@@ -1,6 +1,20 @@
+import "./style.scss";
+
 import { createMoreButton } from "./components/moreMoviesButton/createButton";
 import { createMovies } from "./components/movies";
-import "./style.scss";
+import { createAddMovieForm } from "./addMovie";
+import { createMainContentContainer } from "./mainContent";
+
+const initApp = () => {
+	createAddMovieForm();
+	createMainContentContainer();
+	const moviesContainer = document.querySelector(".main-movies__cards");
+	createMovies(moviesContainer);
+	const buttonContainer = document.querySelector(".button-container");
+	createMoreButton(buttonContainer);
+};
+
+initApp();
 
 const addMovie = () => {
 	const button = document.querySelector(".button-add__movie");
@@ -28,12 +42,3 @@ const addMovie = () => {
 };
 
 addMovie();
-
-const initApp = () => {
-	const moviesContainer = document.querySelector(".main-movies__cards");
-	createMovies(moviesContainer);
-	const buttonContainer = document.querySelector(".button-container");
-	createMoreButton(buttonContainer);
-};
-
-initApp();

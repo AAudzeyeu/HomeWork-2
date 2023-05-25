@@ -1,20 +1,19 @@
-import defaultImage from "../../../public/images/card-2.png";
-import { getMovies } from "../../api";
-import { searchToObject } from "../../utils/search";
+import { getMovies } from "../api";
 
+const containerCard = document.querySelector(".main-movies__cards");
 const template = document.querySelector("#movie-item");
-// const defaultPoster =
-// 	"https://m.media-amazon.com/images/I/71Jxq2p5YWL._AC_UF894,1000_QL80_.jpg";
+const defaultPoster =
+	"https://m.media-amazon.com/images/I/71Jxq2p5YWL._AC_UF894,1000_QL80_.jpg";
 const background =
 	"https://wallpapershome.ru/images/wallpapers/beguschiy-v-labirinte-lekarstvo-ot-smerti-1920x1080-beguschiy-v-labirinte-lekarstvo-ot-smerti-16947.jpg";
 
-export const createMovie = (movie) => {
+const createMovie = (movie) => {
 	const movieElement = template.content.cloneNode(true);
 	const backgroundLogo = document.querySelector(".content-search__movie");
 	backgroundLogo.style.background = `url(${background})`;
 
 	movieElement.querySelector("img").onerror = (e) => {
-		e.target.src = defaultImage;
+		e.target.src = defaultPoster;
 	};
 	movieElement.querySelector(".figcaption-name_movie").textContent =
 		movie.title;
@@ -30,42 +29,40 @@ export const createMovie = (movie) => {
 	return movieElement;
 };
 
-export const createMovies = (container) => {
-	const params = window.location.search;
-	console.log(searchToObject(params));
+export const createMovies = () => {
 	getMovies().then((data) => {
 		const movies = data.data;
 		const moviesElements = movies.map(createMovie);
 
-		container.append(...moviesElements);
+		containerCard.append(...moviesElements);
 	});
 };
 
-// const movieInfoDownload = () => {
-// 	const contentMovieContainer = document.querySelector(
-// 		".content-movie__container"
-// 	);
-// 	const contentSearchMovie = document.querySelector(".content-search__movie");
-// 	const movieInfo = document.getElementById("movie-info");
-// 	const imgMovieInfo = document.querySelector(".img-movie__info");
-// 	contentMovieContainer.addEventListener("click", (e) => {
-// 		if (e.target.classList.contains("card-picture")) {
-// 			contentSearchMovie.style.display = "none";
-// 			movieInfo.style.visibility = "visible";
-// 			movieInfo.style.position = "relative";
-// 			imgMovieInfo.src = defaultImage;
-// 		}
-// 	});
-// 	movieInfo.addEventListener("click", (e) => {
-// 		if (e.target.classList.contains("magnifying-glass")) {
-// 			contentSearchMovie.style.display = "block";
-// 			movieInfo.style.visibility = "hidden";
-// 			movieInfo.style.position = "absolute";
-// 		}
-// 	});
-// };
+const movieInfoDownload = () => {
+	const contentMovieContainer = document.querySelector(
+		".content-movie__container"
+	);
+	const contentSearchMovie = document.querySelector(".content-search__movie");
+	const movieInfo = document.getElementById("movie-info");
+	const imgMovieInfo = document.querySelector(".img-movie__info");
+	contentMovieContainer.addEventListener("click", (e) => {
+		if (e.target.classList.contains("card-picture")) {
+			contentSearchMovie.style.display = "none";
+			movieInfo.style.visibility = "visible";
+			movieInfo.style.position = "relative";
+			imgMovieInfo.src = defaultPoster;
+		}
+	});
+	movieInfo.addEventListener("click", (e) => {
+		if (e.target.classList.contains("magnifying-glass")) {
+			contentSearchMovie.style.display = "block";
+			movieInfo.style.visibility = "hidden";
+			movieInfo.style.position = "absolute";
+		}
+	});
+};
 
-// movieInfoDownload();
+movieInfoDownload();
 
 // const submitAddMovie = () => {
 // 	const submitButton = document.querySelector(".button-movie__submit");
