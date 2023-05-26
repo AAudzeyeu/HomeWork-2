@@ -49,6 +49,7 @@ export const createMainContentContainer = () => {
 	const buttonSearchMovie = document.createElement("button");
 	buttonSearchMovie.id = "button-search__movie";
 	buttonSearchMovie.textContent = "Search";
+	formSearchMovie.append(buttonSearchMovie);
 
 	const divMovieInfo = document.createElement("div");
 	divMovieInfo.id = "movie-info";
@@ -126,5 +127,157 @@ export const createMainContentContainer = () => {
 	const divClearBoth = document.createElement("div");
 	divClearBoth.classList.add("both");
 	divContentContainer.append(divClearBoth);
-	console.log(divMovieDescriptionInfo);
+
+	const divContentMovieContainer = document.createElement("div");
+	divContentMovieContainer.classList.add("content-movie__container");
+	divContentContainer.append(divContentMovieContainer);
+
+	const divNavbarMovieBorder = document.createElement("div");
+	divNavbarMovieBorder.classList.add("navbar-movie__border");
+	divContentMovieContainer.append(divNavbarMovieBorder);
+
+	const divNavbarMovieContainer = document.createElement("div");
+	divNavbarMovieContainer.classList.add("navbar-movie__container");
+	divNavbarMovieBorder.append(divNavbarMovieContainer);
+
+	const navbarSearchMovie = document.createElement("nav");
+	navbarSearchMovie.classList.add("navbar-search__movie");
+	divNavbarMovieContainer.append(navbarSearchMovie);
+
+	const buttonTypeAll = document.createElement("button");
+	buttonTypeAll.classList.add("button-type__movie");
+	navbarSearchMovie.append(buttonTypeAll);
+
+	const spanNavbarAll = document.createElement("span");
+	spanNavbarAll.classList.add("navbar-movie__text");
+	spanNavbarAll.textContent = "All";
+	buttonTypeAll.append(spanNavbarAll);
+
+	const buttonTypeDocumentary = document.createElement("button");
+	buttonTypeDocumentary.classList.add("button-type__movie");
+	navbarSearchMovie.append(buttonTypeDocumentary);
+
+	const spanNavbarDocumentary = document.createElement("span");
+	spanNavbarDocumentary.classList.add("navbar-movie__text");
+	spanNavbarDocumentary.textContent = "Documentary";
+	buttonTypeDocumentary.append(spanNavbarDocumentary);
+
+	const buttonTypeComedy = document.createElement("button");
+	buttonTypeComedy.classList.add("button-type__movie");
+	navbarSearchMovie.append(buttonTypeComedy);
+
+	const spanNavbarComedy = document.createElement("span");
+	spanNavbarComedy.classList.add("navbar-movie__text");
+	spanNavbarComedy.textContent = "Comedy";
+	buttonTypeComedy.append(spanNavbarComedy);
+
+	const buttonTypeHorror = document.createElement("button");
+	buttonTypeHorror.classList.add("button-type__movie");
+	navbarSearchMovie.append(buttonTypeHorror);
+
+	const spanNavbarHorror = document.createElement("span");
+	spanNavbarHorror.classList.add("navbar-movie__text");
+	spanNavbarHorror.textContent = "Horror";
+	buttonTypeHorror.append(spanNavbarHorror);
+
+	const buttonTypeCrime = document.createElement("button");
+	buttonTypeCrime.classList.add("button-type__movie");
+	navbarSearchMovie.append(buttonTypeCrime);
+
+	const spanNavbarCrime = document.createElement("span");
+	spanNavbarCrime.classList.add("navbar-movie__text");
+	spanNavbarCrime.textContent = "Crime";
+	buttonTypeCrime.append(spanNavbarCrime);
+
+	const navbarSortMovie = document.createElement("nav");
+	navbarSortMovie.classList.add("navbar-sort__movie");
+	divNavbarMovieContainer.append(navbarSortMovie);
+
+	const paragraphNavbarSort = document.createElement("p");
+	paragraphNavbarSort.classList.add("navbar-sort__text");
+	paragraphNavbarSort.textContent = "Sort by";
+	navbarSortMovie.append(paragraphNavbarSort);
+
+	const buttonTypeMovie = document.createElement("button");
+	buttonTypeMovie.classList.add("button-type__movie");
+	navbarSortMovie.append(buttonTypeMovie);
+
+	const spanNavbarMovie = document.createElement("span");
+	spanNavbarMovie.classList.add("navbar-movie__text");
+	spanNavbarMovie.textContent = "Release Date";
+	buttonTypeMovie.append(spanNavbarMovie);
+
+	const divArrowFour = document.createElement("div");
+	divArrowFour.classList.add("arrow-4");
+	spanNavbarMovie.append(divArrowFour);
+
+	const spanArrowFourLeft = document.createElement("span");
+	spanArrowFourLeft.classList.add("arrow-4-left");
+	divArrowFour.append(spanArrowFourLeft);
+
+	const spanArrowFourRight = document.createElement("span");
+	spanArrowFourRight.classList.add("arrow-4-right");
+	divArrowFour.append(spanArrowFourRight);
+
+	const divMovieFound = document.createElement("div");
+	divMovieFound.classList.add("movies-found");
+	divContentMovieContainer.append(divMovieFound);
+
+	const paragraphMoviesFound = document.createElement("p");
+	paragraphMoviesFound.classList.add("movies-found__text");
+	paragraphMoviesFound.textContent = "movies found";
+	divMovieFound.append(paragraphMoviesFound);
+
+	const spanFoundFinished = document.createElement("span");
+	spanFoundFinished.classList.add("found-text__finished", "bold");
+	spanFoundFinished.textContent = "39";
+	paragraphMoviesFound.prepend(spanFoundFinished);
+
+	const divMainMoviesCards = document.createElement("div");
+	divMainMoviesCards.classList.add("main-movies__cards");
+	divContentMovieContainer.append(divMainMoviesCards);
+
+	const templateMovieItem = document.createElement("template");
+	templateMovieItem.id = "movie-item";
+	divMainMoviesCards.append(templateMovieItem);
+
+	const figureMovieCard = document.createElement("figure");
+	figureMovieCard.classList.add("movie-card");
+	templateMovieItem.append(figureMovieCard);
+
+	const imgCardPicture = document.createElement("img");
+	imgCardPicture.classList.add("card-picture");
+	imgCardPicture.alt = "movies";
+	figureMovieCard.append(imgCardPicture);
+
+	const buttonMovieCard = document.createElement("button");
+	buttonMovieCard.classList.add("button-movie__card");
+	imgCardPicture.append(buttonMovieCard);
+
+	const figcaptionMargin = document.createElement("figcaption");
+	figcaptionMargin.classList.add("figcaption-margin");
+	figureMovieCard.append(figcaptionMargin);
+
+	const spanFigcaptionNameMovie = document.createElement("span");
+	spanFigcaptionNameMovie.classList.add("figcaption-name_movie");
+	figcaptionMargin.append(spanFigcaptionNameMovie);
+
+	const spanFigcaptionDateMovie = document.createElement("span");
+	spanFigcaptionDateMovie.classList.add("figcaption-date_movie");
+	figcaptionMargin.append(spanFigcaptionDateMovie);
+
+	const figcaptionSmallerMovie = document.createElement("figcaption");
+	figcaptionSmallerMovie.classList.add(
+		"figcaption-smaller_movie",
+		"figcaption-margin"
+	);
+	figureMovieCard.append(figcaptionSmallerMovie);
+
+	const buttonContainer = document.createElement("button");
+	buttonContainer.classList.add("button-container");
+	divContentMovieContainer.append(buttonContainer);
+
+	console.log(divContentMovieContainer);
+	const { body } = document;
+	body.append(divContentContainer);
 };
