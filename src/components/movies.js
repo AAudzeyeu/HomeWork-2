@@ -38,31 +38,31 @@ export const createMovies = () => {
 	});
 };
 
-// const movieInfoDownload = () => {
-// 	const contentMovieContainer = document.querySelector(
-// 		".content-movie__container"
-// 	);
-// 	const contentSearchMovie = document.querySelector(".content-search__movie");
-// 	const movieInfo = document.getElementById("movie-info");
-// 	const imgMovieInfo = document.querySelector(".img-movie__info");
-// 	contentMovieContainer.addEventListener("click", (e) => {
-// 		if (e.target.classList.contains("card-picture")) {
-// 			contentSearchMovie.style.display = "none";
-// 			movieInfo.style.visibility = "visible";
-// 			movieInfo.style.position = "relative";
-// 			imgMovieInfo.src = defaultPoster;
-// 		}
-// 	});
-// 	movieInfo.addEventListener("click", (e) => {
-// 		if (e.target.classList.contains("magnifying-glass")) {
-// 			contentSearchMovie.style.display = "block";
-// 			movieInfo.style.visibility = "hidden";
-// 			movieInfo.style.position = "absolute";
-// 		}
-// 	});
-// };
+const movieInfoDownload = () => {
+	const contentMovieContainer = document.querySelector(
+		".content-movie__container"
+	);
+	const contentSearchMovie = document.querySelector(".content-search__movie");
+	const movieInfo = document.getElementById("movie-info");
+	const imgMovieInfo = document.querySelector(".img-movie__info");
+	contentMovieContainer.addEventListener("click", (e) => {
+		if (e.target.classList.contains("card-picture")) {
+			contentSearchMovie.style.display = "none";
+			movieInfo.style.visibility = "visible";
+			movieInfo.style.position = "relative";
+			imgMovieInfo.src = defaultPoster;
+		}
+	});
+	movieInfo.addEventListener("click", (e) => {
+		if (e.target.classList.contains("magnifying-glass")) {
+			contentSearchMovie.style.display = "block";
+			movieInfo.style.visibility = "hidden";
+			movieInfo.style.position = "absolute";
+		}
+	});
+};
 
-// movieInfoDownload();
+movieInfoDownload();
 
 // const submitAddMovie = () => {
 // 	const submitButton = document.querySelector(".button-movie__submit");
