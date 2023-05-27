@@ -10,6 +10,7 @@ export const createMoreButton = (container) => {
 		url.searchParams.set("page", 2);
 		window.history.pushState(null, "", url.toString());
 		// window.location.search = "?hello";
-	});
+	}); 
+
 	container.append(button);
 };

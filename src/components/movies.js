@@ -1,30 +1,31 @@
 import { getMovies } from "../api";
+import { divMainMoviesCards } from "../mainContent";
 
-const containerCard = document.querySelector(".main-movies__cards");
-const template = document.querySelector("#movie-item");
+// const containerCard = document.querySelector(".main-movies__cards");
+// const template = document.querySelector("#movie-item");
 const defaultPoster =
 	"https://m.media-amazon.com/images/I/71Jxq2p5YWL._AC_UF894,1000_QL80_.jpg";
 const background =
 	"https://wallpapershome.ru/images/wallpapers/beguschiy-v-labirinte-lekarstvo-ot-smerti-1920x1080-beguschiy-v-labirinte-lekarstvo-ot-smerti-16947.jpg";
 
 const createMovie = (movie) => {
-	const movieElement = template.content.cloneNode(true);
+	// const movieElement = template.content.cloneNode(true);
 	const backgroundLogo = document.querySelector(".content-search__movie");
 	backgroundLogo.style.background = `url(${background})`;
 
-	movieElement.querySelector("img").onerror = (e) => {
-		e.target.src = defaultPoster;
-	};
-	movieElement.querySelector(".figcaption-name_movie").textContent =
-		movie.title;
+	// movieElement.querySelector("img").onerror = (e) => {
+	// 	e.target.src = defaultPoster;
+	// };
+	// movieElement.querySelector(".figcaption-name_movie").textContent =
+	// 	movie.title;
 
-	movieElement.querySelector(".figcaption-smaller_movie").textContent =
-		movie.genres.join(", ");
+	// movieElement.querySelector(".figcaption-smaller_movie").textContent =
+	// 	movie.genres.join(", ");
 
-	movieElement.querySelector(".figcaption-date_movie").textContent = parseInt(
-		movie.release_date,
-		10
-	);
+	// movieElement.querySelector(".figcaption-date_movie").textContent = parseInt(
+	// 	movie.release_date,
+	// 	10
+	// );
 
 	return movieElement;
 };
@@ -34,35 +35,35 @@ export const createMovies = () => {
 		const movies = data.data;
 		const moviesElements = movies.map(createMovie);
 
-		containerCard.append(...moviesElements);
+		divMainMoviesCards.append(...moviesElements);
 	});
 };
 
-const movieInfoDownload = () => {
-	const contentMovieContainer = document.querySelector(
-		".content-movie__container"
-	);
-	const contentSearchMovie = document.querySelector(".content-search__movie");
-	const movieInfo = document.getElementById("movie-info");
-	const imgMovieInfo = document.querySelector(".img-movie__info");
-	contentMovieContainer.addEventListener("click", (e) => {
-		if (e.target.classList.contains("card-picture")) {
-			contentSearchMovie.style.display = "none";
-			movieInfo.style.visibility = "visible";
-			movieInfo.style.position = "relative";
-			imgMovieInfo.src = defaultPoster;
-		}
-	});
-	movieInfo.addEventListener("click", (e) => {
-		if (e.target.classList.contains("magnifying-glass")) {
-			contentSearchMovie.style.display = "block";
-			movieInfo.style.visibility = "hidden";
-			movieInfo.style.position = "absolute";
-		}
-	});
-};
+// const movieInfoDownload = () => {
+// 	const contentMovieContainer = document.querySelector(
+// 		".content-movie__container"
+// 	);
+// 	const contentSearchMovie = document.querySelector(".content-search__movie");
+// 	const movieInfo = document.getElementById("movie-info");
+// 	const imgMovieInfo = document.querySelector(".img-movie__info");
+// 	contentMovieContainer.addEventListener("click", (e) => {
+// 		if (e.target.classList.contains("card-picture")) {
+// 			contentSearchMovie.style.display = "none";
+// 			movieInfo.style.visibility = "visible";
+// 			movieInfo.style.position = "relative";
+// 			imgMovieInfo.src = defaultPoster;
+// 		}
+// 	});
+// 	movieInfo.addEventListener("click", (e) => {
+// 		if (e.target.classList.contains("magnifying-glass")) {
+// 			contentSearchMovie.style.display = "block";
+// 			movieInfo.style.visibility = "hidden";
+// 			movieInfo.style.position = "absolute";
+// 		}
+// 	});
+// };
 
-movieInfoDownload();
+// movieInfoDownload();
 
 // const submitAddMovie = () => {
 // 	const submitButton = document.querySelector(".button-movie__submit");
