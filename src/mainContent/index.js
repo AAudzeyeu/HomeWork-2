@@ -1,8 +1,17 @@
+// export const template = document.querySelector("#movie-item");
+export const divTemplate = document.createElement("div");
+export const imgCardPicture = document.createElement("img");
+export const spanFigcaptionNameMovie = document.createElement("span");
+export const figcaptionSmallerMovie = document.createElement("figcaption");
+export const spanFigcaptionDateMovie = document.createElement("span");
+export const divMainMoviesCards = document.createElement("div");
+export const divContentSearchMovie = document.createElement("div");
+
 export const createMainContentContainer = () => {
 	const divContentContainer = document.createElement("div");
 	divContentContainer.classList.add("content-container");
 
-	const divContentSearchMovie = document.createElement("div");
+	// const divContentSearchMovie = document.createElement("div");
 	divContentSearchMovie.classList.add("content-search__movie", "logo");
 	divContentContainer.append(divContentSearchMovie);
 
@@ -233,19 +242,19 @@ export const createMainContentContainer = () => {
 	spanFoundFinished.textContent = "39";
 	paragraphMoviesFound.prepend(spanFoundFinished);
 
-	const divMainMoviesCards = document.createElement("div");
+	// const divMainMoviesCards = document.createElement("div");
 	divMainMoviesCards.classList.add("main-movies__cards");
 	divContentMovieContainer.append(divMainMoviesCards);
 
-	const templateMovieItem = document.createElement("template");
-	templateMovieItem.id = "movie-item";
-	divMainMoviesCards.append(templateMovieItem);
+	// const divTemplate = document.createElement("div");
+	divTemplate.id = "movie-item";
+	// divMainMoviesCards.append(divTemplate);
 
 	const figureMovieCard = document.createElement("figure");
 	figureMovieCard.classList.add("movie-card");
-	templateMovieItem.append(figureMovieCard);
+	divTemplate.append(figureMovieCard);
 
-	const imgCardPicture = document.createElement("img");
+	// const imgCardPicture = document.createElement("img");
 	imgCardPicture.classList.add("card-picture");
 	imgCardPicture.alt = "movies";
 	figureMovieCard.append(imgCardPicture);
@@ -258,22 +267,22 @@ export const createMainContentContainer = () => {
 	figcaptionMargin.classList.add("figcaption-margin");
 	figureMovieCard.append(figcaptionMargin);
 
-	const spanFigcaptionNameMovie = document.createElement("span");
+	// const spanFigcaptionNameMovie = document.createElement("span");
 	spanFigcaptionNameMovie.classList.add("figcaption-name_movie");
 	figcaptionMargin.append(spanFigcaptionNameMovie);
 
-	const spanFigcaptionDateMovie = document.createElement("span");
+	// const spanFigcaptionDateMovie = document.createElement("span");
 	spanFigcaptionDateMovie.classList.add("figcaption-date_movie");
 	figcaptionMargin.append(spanFigcaptionDateMovie);
 
-	const figcaptionSmallerMovie = document.createElement("figcaption");
+	// const figcaptionSmallerMovie = document.createElement("figcaption");
 	figcaptionSmallerMovie.classList.add(
 		"figcaption-smaller_movie",
 		"figcaption-margin"
 	);
 	figureMovieCard.append(figcaptionSmallerMovie);
 
-	const buttonContainer = document.createElement("button");
+	const buttonContainer = document.createElement("div");
 	buttonContainer.classList.add("button-container");
 	divContentMovieContainer.append(buttonContainer);
 

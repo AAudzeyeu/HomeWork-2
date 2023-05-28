@@ -1,3 +1,6 @@
+export const inputAddSubmit = document.createElement("input");
+export const divAddMovieCongratulations = document.createElement("div");
+
 export const createAddMovieForm = () => {
 	const divAddMovieContainer = document.createElement("div");
 	divAddMovieContainer.classList.add("add-movie__container");
@@ -186,7 +189,7 @@ export const createAddMovieForm = () => {
 	divFormMovieContainerSubmit.classList.add("form-movie__container", "right");
 	formAddMovieForm.append(divFormMovieContainerSubmit);
 
-	const inputAddSubmit = document.createElement("input");
+	// const inputAddSubmit = document.createElement("input");
 	inputAddSubmit.type = "submit";
 	inputAddSubmit.classList.add("button-movie__submit");
 	inputAddSubmit.value = "Submit";
@@ -202,7 +205,7 @@ export const createAddMovieForm = () => {
 	inputAddReset.value = "Reset";
 	divFormMovieContainerReset.append(inputAddReset);
 
-	const divAddMovieCongratulations = document.createElement("div");
+	// const divAddMovieCongratulations = document.createElement("div");
 	divAddMovieCongratulations.classList.add("add-movie__congratulations");
 
 	const divCloseModalTwo = document.createElement("div");

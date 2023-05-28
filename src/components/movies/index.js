@@ -2,8 +2,8 @@ import defaultImage from "../../../public/images/card-2.png";
 import { getMovies } from "../../api";
 import { searchToObject } from "../../utils/search";
 
-const template = document.querySelector("#movie-item");
-console.log(template);
+
+// console.log(template);
 // const defaultPoster =
 // 	"https://m.media-amazon.com/images/I/71Jxq2p5YWL._AC_UF894,1000_QL80_.jpg";
 const background =
