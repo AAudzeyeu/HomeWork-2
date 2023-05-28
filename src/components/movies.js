@@ -3,6 +3,9 @@ import {
 	divMainMoviesCards,
 	divContentSearchMovie,
 	divTemplate,
+	divContentMovieContainer,
+	divMovieInfo,
+	imgMovieInfo,
 } from "../mainContent";
 
 import { inputAddSubmit, divAddMovieCongratulations } from "../addMovie";
@@ -41,31 +44,25 @@ export const createMovies = () => {
 	});
 };
 
-// const movieInfoDownload = () => {
-// 	const contentMovieContainer = document.querySelector(
-// 		".content-movie__container"
-// 	);
-// 	const contentSearchMovie = document.querySelector(".content-search__movie");
-// 	const movieInfo = document.getElementById("movie-info");
-// 	const imgMovieInfo = document.querySelector(".img-movie__info");
-// 	contentMovieContainer.addEventListener("click", (e) => {
-// 		if (e.target.classList.contains("card-picture")) {
-// 			contentSearchMovie.style.display = "none";
-// 			movieInfo.style.visibility = "visible";
-// 			movieInfo.style.position = "relative";
-// 			imgMovieInfo.src = defaultPoster;
-// 		}
-// 	});
-// 	movieInfo.addEventListener("click", (e) => {
-// 		if (e.target.classList.contains("magnifying-glass")) {
-// 			contentSearchMovie.style.display = "block";
-// 			movieInfo.style.visibility = "hidden";
-// 			movieInfo.style.position = "absolute";
-// 		}
-// 	});
-// };
+const movieInfoDownload = () => {
+	divContentMovieContainer.addEventListener("click", (e) => {
+		if (e.target.classList.contains("card-picture")) {
+			divContentSearchMovie.style.display = "none";
+			divMovieInfo.style.visibility = "visible";
+			divMovieInfo.style.position = "relative";
+			imgMovieInfo.src = defaultPoster;
+		}
+	});
+	divMovieInfo.addEventListener("click", (e) => {
+		if (e.target.classList.contains("magnifying-glass")) {
+			divContentSearchMovie.style.display = "block";
+			divMovieInfo.style.visibility = "hidden";
+			divMovieInfo.style.position = "absolute";
+		}
+	});
+};
 
-// movieInfoDownload();
+movieInfoDownload();
 
 const submitAddMovie = () => {
 	inputAddSubmit.addEventListener("click", (e) => {

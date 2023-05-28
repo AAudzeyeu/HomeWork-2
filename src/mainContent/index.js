@@ -6,6 +6,9 @@ export const figcaptionSmallerMovie = document.createElement("figcaption");
 export const spanFigcaptionDateMovie = document.createElement("span");
 export const divMainMoviesCards = document.createElement("div");
 export const divContentSearchMovie = document.createElement("div");
+export const divContentMovieContainer = document.createElement("div");
+export const divMovieInfo = document.createElement("div");
+export const imgMovieInfo = document.createElement("img");
 
 export const createMainContentContainer = () => {
 	const divContentContainer = document.createElement("div");
@@ -60,7 +63,7 @@ export const createMainContentContainer = () => {
 	buttonSearchMovie.textContent = "Search";
 	formSearchMovie.append(buttonSearchMovie);
 
-	const divMovieInfo = document.createElement("div");
+	// const divMovieInfo = document.createElement("div");
 	divMovieInfo.id = "movie-info";
 	divContentContainer.append(divMovieInfo);
 
@@ -77,7 +80,7 @@ export const createMainContentContainer = () => {
 	figcaptionTextInfo.textContent = "netflixroulette";
 	figureCardInfo.append(figcaptionTextInfo);
 
-	const imgMovieInfo = document.createElement("img");
+	// const imgMovieInfo = document.createElement("img");
 	imgMovieInfo.alt = "movies";
 	imgMovieInfo.classList.add("img-movie__info");
 	figureCardInfo.append(imgMovieInfo);
@@ -137,7 +140,7 @@ export const createMainContentContainer = () => {
 	divClearBoth.classList.add("both");
 	divContentContainer.append(divClearBoth);
 
-	const divContentMovieContainer = document.createElement("div");
+	// const divContentMovieContainer = document.createElement("div");
 	divContentMovieContainer.classList.add("content-movie__container");
 	divContentContainer.append(divContentMovieContainer);
 
