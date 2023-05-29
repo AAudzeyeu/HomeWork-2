@@ -8,7 +8,8 @@ import {
 	imgMovieInfo,
 } from "../mainContent";
 
-import { inputAddSubmit, divAddMovieCongratulations } from "../addMovie";
+import { inputAddSubmit } from "../addMovie";
+import { divAddMovieCongratulations } from "../addMovieCongratulation";
 
 const defaultPoster =
 	"https://m.media-amazon.com/images/I/71Jxq2p5YWL._AC_UF894,1000_QL80_.jpg";
@@ -18,7 +19,6 @@ const background =
 const createMovie = (movie) => {
 	const movieElement = divTemplate.cloneNode(true);
 	divContentSearchMovie.style.background = `url("${background}")`;
-	console.log();
 	movieElement.querySelector("img").src = defaultPoster;
 	movieElement.querySelector(".figcaption-name_movie").textContent =
 		movie.title;
@@ -30,7 +30,7 @@ const createMovie = (movie) => {
 		movie.release_date,
 		10
 	);
-	console.log(movieElement);
+
 	return movieElement;
 };
 
@@ -38,8 +38,6 @@ export const createMovies = () => {
 	getMovies().then((data) => {
 		const movies = data.data;
 		const moviesElements = movies.map(createMovie);
-		console.log(moviesElements);
-
 		divMainMoviesCards.append(...moviesElements);
 	});
 };

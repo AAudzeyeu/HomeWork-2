@@ -4,9 +4,11 @@ import { createMoreButton } from "./components/moreMoviesButton/createButton";
 import { createMovies } from "./components/movies";
 import { createAddMovieForm } from "./addMovie";
 import { createMainContentContainer } from "./mainContent";
+import { createAddMovieCongratulations } from "./addMovieCongratulation";
 
 const initApp = () => {
 	createAddMovieForm();
+	createAddMovieCongratulations();
 	createMainContentContainer();
 	const moviesContainer = document.querySelector(".main-movies__cards");
 	createMovies(moviesContainer);
