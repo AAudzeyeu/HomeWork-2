@@ -1,6 +1,5 @@
-import { getMovies } from "../api";
+import { updateMoviesState } from "../api";
 import {
-	divMainMoviesCards,
 	divContentSearchMovie,
 	divTemplate,
 	divContentMovieContainer,
@@ -16,7 +15,7 @@ const defaultPoster =
 const background =
 	"https://wallpapershome.ru/images/wallpapers/beguschiy-v-labirinte-lekarstvo-ot-smerti-1920x1080-beguschiy-v-labirinte-lekarstvo-ot-smerti-16947.jpg";
 
-const createMovie = (movie) => {
+export const createMovie = (movie) => {
 	const movieElement = divTemplate.cloneNode(true);
 	divContentSearchMovie.style.background = `url("${background}")`;
 	movieElement.querySelector("img").src = defaultPoster;
@@ -34,11 +33,11 @@ const createMovie = (movie) => {
 	return movieElement;
 };
 
-export const createMovies = () => {
-	getMovies().then((data) => {
+export const createMovies = (container) => {
+	updateMoviesState().then((data) => {
 		const movies = data.data;
 		const moviesElements = movies.map(createMovie);
-		divMainMoviesCards.append(...moviesElements);
+		container.append(...moviesElements);
 	});
 };
 

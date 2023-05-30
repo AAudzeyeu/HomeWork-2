@@ -1,6 +1,6 @@
 export const inputAddSubmit = document.createElement("input");
 
-export const createAddMovieForm = () => {
+export const createAddMovieForm = (container) => {
 	const divAddMovieContainer = document.createElement("div");
 	divAddMovieContainer.classList.add("add-movie__container");
 
@@ -203,6 +203,5 @@ export const createAddMovieForm = () => {
 	inputAddReset.value = "Reset";
 	divFormMovieContainerReset.append(inputAddReset);
 
-	const { body } = document;
-	body.append(divAddMovieContainer);
+	container.append(divAddMovieContainer);
 };

@@ -8,7 +8,6 @@ module.exports = merge(baseWebpackConfig, {
 		static: {
 			directory: PATHS.PUBLIC,
 		},
-		compress: true,
 		port: 9000,
 	},
 });

@@ -4,8 +4,9 @@ export const divContentSearchMovie = document.createElement("div");
 export const divContentMovieContainer = document.createElement("div");
 export const divMovieInfo = document.createElement("div");
 export const imgMovieInfo = document.createElement("img");
+export const buttonContainer = document.createElement("div");
 
-export const createMainContentContainer = () => {
+export const createMainContentContainer = (container) => {
 	const divContentContainer = document.createElement("div");
 	divContentContainer.classList.add("content-container");
 
@@ -273,11 +274,8 @@ export const createMainContentContainer = () => {
 	);
 	figureMovieCard.append(figcaptionSmallerMovie);
 
-	const buttonContainer = document.createElement("div");
 	buttonContainer.classList.add("button-container");
 	divContentMovieContainer.append(buttonContainer);
 
-	console.log(divContentMovieContainer);
-	const { body } = document;
-	body.append(divContentContainer);
+	container.append(divContentContainer);
 };

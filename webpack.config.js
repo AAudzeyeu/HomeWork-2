@@ -5,7 +5,6 @@ const PATHS = require("./paths");
 
 module.exports = {
 	entry: path.join(PATHS.SRC, "/index.js"),
-	watch: true,
 	output: {
 		filename: "[name].[hash].js",
 		path: path.resolve(PATHS.DIST),

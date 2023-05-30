@@ -1,6 +1,6 @@
 export const divAddMovieCongratulations = document.createElement("div");
 
-export const createAddMovieCongratulations = () => {
+export const createAddMovieCongratulations = (container) => {
 	divAddMovieCongratulations.classList.add("add-movie__congratulations");
 
 	const divCloseModalTwo = document.createElement("div");
@@ -32,6 +32,5 @@ export const createAddMovieCongratulations = () => {
 		"The movie has been added to database successfully";
 	divTextCongratulationsContainer.append(paragraphCongratulations);
 
-	const { body } = document;
-	body.append(divAddMovieCongratulations);
+	container.append(divAddMovieCongratulations);
 };
