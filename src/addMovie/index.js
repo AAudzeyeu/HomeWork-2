@@ -1,3 +1,5 @@
+export const inputAddSubmit = document.createElement("input");
+
 export const createAddMovieForm = () => {
 	const divAddMovieContainer = document.createElement("div");
 	divAddMovieContainer.classList.add("add-movie__container");
@@ -186,7 +188,6 @@ export const createAddMovieForm = () => {
 	divFormMovieContainerSubmit.classList.add("form-movie__container", "right");
 	formAddMovieForm.append(divFormMovieContainerSubmit);
 
-	const inputAddSubmit = document.createElement("input");
 	inputAddSubmit.type = "submit";
 	inputAddSubmit.classList.add("button-movie__submit");
 	inputAddSubmit.value = "Submit";
@@ -202,41 +203,6 @@ export const createAddMovieForm = () => {
 	inputAddReset.value = "Reset";
 	divFormMovieContainerReset.append(inputAddReset);
 
-	const divAddMovieCongratulations = document.createElement("div");
-	divAddMovieCongratulations.classList.add("add-movie__congratulations");
-
-	const divCloseModalTwo = document.createElement("div");
-	divCloseModalTwo.classList.add("closeModal");
-	divAddMovieCongratulations.append(divCloseModalTwo);
-
-	const divSuccessfullyContainer = document.createElement("div");
-	divSuccessfullyContainer.classList.add("successfully-container");
-	divAddMovieCongratulations.append(divSuccessfullyContainer);
-
-	const divSuccessfully = document.createElement("div");
-	divSuccessfully.classList.add("successfully");
-	divSuccessfullyContainer.append(divSuccessfully);
-
-	const heightHeaderCongratulations = document.createElement("h1");
-	heightHeaderCongratulations.classList.add("header-text__congratulations");
-	heightHeaderCongratulations.textContent = "congratulations !";
-	divAddMovieCongratulations.append(heightHeaderCongratulations);
-
-	const divTextCongratulationsContainer = document.createElement("div");
-	divTextCongratulationsContainer.classList.add(
-		"text-congratulations__container"
-	);
-	divAddMovieCongratulations.append(divTextCongratulationsContainer);
-
-	const paragraphCongratulations = document.createElement("p");
-	paragraphCongratulations.classList.add("text-congratulations");
-	paragraphCongratulations.textContent =
-		"The movie has been added to database successfully";
-	divTextCongratulationsContainer.append(paragraphCongratulations);
-
-	// console.log(divAddMovieCongratulations);
-
 	const { body } = document;
 	body.append(divAddMovieContainer);
-	body.append(divAddMovieCongratulations);
 };
