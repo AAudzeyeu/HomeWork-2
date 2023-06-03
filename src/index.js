@@ -2,11 +2,14 @@ import "./style.scss";
 
 import { createMoreButton } from "./components/moreMoviesButton/createButton";
 import { createMovies } from "./components/movies";
-import { createAddMovieForm } from "./addMovie";
+import { createAddMovieForm, divAddMovieContainer } from "./addMovie";
 import {
 	createMainContentContainer,
 	divMainMoviesCards,
 	buttonContainer,
+	buttonAddMovie,
+	divContentContainer,
+	divContentMovieContainer,
 } from "./mainContent";
 import { createAddMovieCongratulations } from "./addMovieCongratulation";
 
@@ -23,25 +26,18 @@ const initApp = () => {
 initApp();
 
 const addMovie = () => {
-	const button = document.querySelector(".button-add__movie");
-	const container = document.querySelector(".content-container");
-	const addMovieContainer = document.querySelector(".add-movie__container");
-	const contentMovieContainer = document.querySelector(
-		".content-movie__container"
-	);
-
-	button.addEventListener("click", () => {
-		container.style.opacity = 0.5;
+	buttonAddMovie.addEventListener("click", () => {
+		divContentContainer.style.opacity = 0.5;
 		body.style.overflowY = "hidden";
-		contentMovieContainer.style.overflow = "hidden";
-		addMovieContainer.style.visibility = "visible";
+		divContentMovieContainer.style.overflow = "hidden";
+		divAddMovieContainer.style.visibility = "visible";
 	});
-	addMovieContainer.addEventListener("click", (e) => {
+	divAddMovieContainer.addEventListener("click", (e) => {
 		if (e.target.classList.contains("closeModal")) {
-			container.style.opacity = 1;
+			divContentContainer.style.opacity = 1;
 			body.style.overflowY = "auto";
-			contentMovieContainer.style.overflow = "auto";
-			addMovieContainer.style.visibility = "hidden";
+			divContentMovieContainer.style.overflow = "auto";
+			divAddMovieContainer.style.visibility = "hidden";
 		}
 	});
 };

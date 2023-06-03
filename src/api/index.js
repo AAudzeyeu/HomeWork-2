@@ -4,6 +4,11 @@ import {
 	updateSearchParams,
 } from "../utils/search";
 
+import { createMovieItem } from "../components/movies";
+import { button } from "../components/moreMoviesButton/createButton";
+
+import { divMainMoviesCards, spanFoundFinished } from "../mainContent";
+
 const baseUrl = "http://localhost:4000/movies";
 
 export const defaultLimit = 10;
@@ -42,5 +47,20 @@ export const deleteMovie = (id) =>
 
 export const updateMoviesState = (params) => {
 	if (params) updateSearchParams(params);
-	return getMovies(getSearchparams() || defaultParams);
+	const currentParams = getSearchparams() || defaultParams;
+	return getMovies(currentParams).then((data) => {
+		const movies = data.data;
+		const moviesElements = movies.map(createMovieItem);
+
+		divMainMoviesCards.innerHTML = "";
+		divMainMoviesCards.append(...moviesElements);
+
+		spanFoundFinished.textContent = data.totalAmount;
+
+		if (data.totalAmount <= (currentParams.limit || defaultLimit)) {
+			button.classList.add("hidden");
+		} else {
+			button.classList.remove("hidden");
+		}
+	});
 };

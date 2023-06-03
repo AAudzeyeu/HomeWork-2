@@ -16,6 +16,14 @@
     float: left;
 }
 
+.hidden {
+    visibility: hidden !important;
+}
+
+.un-hidden {
+    visibility: visible;
+}
+
 body {
     background: #555;
     z-index: -1;

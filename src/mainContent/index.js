@@ -1,3 +1,5 @@
+import { searchFormHandler } from "../components/searchMovies";
+
 export const divTemplate = document.createElement("div");
 export const divMainMoviesCards = document.createElement("div");
 export const divContentSearchMovie = document.createElement("div");
@@ -5,9 +7,14 @@ export const divContentMovieContainer = document.createElement("div");
 export const divMovieInfo = document.createElement("div");
 export const imgMovieInfo = document.createElement("img");
 export const buttonContainer = document.createElement("div");
+export const buttonAddMovie = document.createElement("button");
+export const divContentContainer = document.createElement("div");
+export const buttonSearchMovie = document.createElement("button");
+export const inputMainSearchMovie = document.createElement("input");
+export const formSearchMovie = document.createElement("form");
+export const spanFoundFinished = document.createElement("span");
 
 export const createMainContentContainer = (container) => {
-	const divContentContainer = document.createElement("div");
 	divContentContainer.classList.add("content-container");
 
 	divContentSearchMovie.classList.add("content-search__movie", "logo");
@@ -23,7 +30,6 @@ export const createMainContentContainer = (container) => {
 	spanBold.textContent = "netflix";
 	paragraphLogoMain.prepend(spanBold);
 
-	const buttonAddMovie = document.createElement("button");
 	buttonAddMovie.classList.add("button-add__movie");
 	buttonAddMovie.textContent = "+add movie";
 	divContentSearchMovie.append(buttonAddMovie);
@@ -37,11 +43,9 @@ export const createMainContentContainer = (container) => {
 	heightHeaderLogoText.textContent = "Find your Movie";
 	divMainSearch.append(heightHeaderLogoText);
 
-	const formSearchMovie = document.createElement("form");
 	formSearchMovie.id = "form-search__movie";
 	divMainSearch.append(formSearchMovie);
 
-	const inputMainSearchMovie = document.createElement("input");
 	inputMainSearchMovie.id = "main-search__movie";
 	inputMainSearchMovie.type = "text";
 	inputMainSearchMovie.placeholder = "What do you want to watch?";
@@ -53,9 +57,11 @@ export const createMainContentContainer = (container) => {
 	labelMainSearchMovie.setAttribute("for", "search-movie");
 	formSearchMovie.append(labelMainSearchMovie);
 
-	const buttonSearchMovie = document.createElement("button");
 	buttonSearchMovie.id = "button-search__movie";
 	buttonSearchMovie.textContent = "Search";
+	buttonSearchMovie.type = "submit";
+
+	formSearchMovie.addEventListener("submit", searchFormHandler);
 	formSearchMovie.append(buttonSearchMovie);
 
 	divMovieInfo.id = "movie-info";
@@ -229,12 +235,10 @@ export const createMainContentContainer = (container) => {
 
 	const paragraphMoviesFound = document.createElement("p");
 	paragraphMoviesFound.classList.add("movies-found__text");
-	paragraphMoviesFound.textContent = "movies found";
+	paragraphMoviesFound.textContent = " movies found";
 	divMovieFound.append(paragraphMoviesFound);
 
-	const spanFoundFinished = document.createElement("span");
 	spanFoundFinished.classList.add("found-text__finished", "bold");
-	spanFoundFinished.textContent = "39";
 	paragraphMoviesFound.prepend(spanFoundFinished);
 
 	divMainMoviesCards.classList.add("main-movies__cards");

@@ -15,7 +15,7 @@ const defaultPoster =
 const background =
 	"https://wallpapershome.ru/images/wallpapers/beguschiy-v-labirinte-lekarstvo-ot-smerti-1920x1080-beguschiy-v-labirinte-lekarstvo-ot-smerti-16947.jpg";
 
-export const createMovie = (movie) => {
+export const createMovieItem = (movie) => {
 	const movieElement = divTemplate.cloneNode(true);
 	divContentSearchMovie.style.background = `url("${background}")`;
 	movieElement.querySelector("img").src = defaultPoster;
@@ -36,7 +36,7 @@ export const createMovie = (movie) => {
 export const createMovies = (container) => {
 	updateMoviesState().then((data) => {
 		const movies = data.data;
-		const moviesElements = movies.map(createMovie);
+		const moviesElements = movies.map(createMovieItem);
 		container.append(...moviesElements);
 	});
 };

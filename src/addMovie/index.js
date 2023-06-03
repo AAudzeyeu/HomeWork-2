@@ -1,7 +1,6 @@
 export const inputAddSubmit = document.createElement("input");
-
+export const divAddMovieContainer = document.createElement("div");
 export const createAddMovieForm = (container) => {
-	const divAddMovieContainer = document.createElement("div");
 	divAddMovieContainer.classList.add("add-movie__container");
 
 	const divAddMovieMain = document.createElement("div");
