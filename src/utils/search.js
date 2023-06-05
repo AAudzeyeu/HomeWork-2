@@ -37,10 +37,3 @@ export const updateSearchParams = (params) => {
 
 	window.history.pushState(null, "", url.toString());
 };
-
-// const updateNavigationField = () => {
-// 	const url = new URL(window.location);
-// 	console.log(url);
-// 	url.searchParams.set("limit", 2);
-// 	window.history.pushState(null, "", url.toString());
-// };

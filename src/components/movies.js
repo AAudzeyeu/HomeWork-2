@@ -2,13 +2,30 @@ import { updateMoviesState } from "../api";
 import {
 	divContentSearchMovie,
 	divTemplate,
+	divMainMoviesCards,
+	divContentContainer,
 	divContentMovieContainer,
+} from "../mainContent";
+
+import {
 	divMovieInfo,
 	imgMovieInfo,
-} from "../mainContent";
+	paragraphHeaderDescription,
+	paragraphRating,
+	paragraphDescriptionMovie,
+} from "../movieInfo";
 
 import { inputAddSubmit } from "../addMovie";
 import { divAddMovieCongratulations } from "../addMovieCongratulation";
+import {
+	formEditMovieForm,
+	inputEditTitle,
+	divEditMovieContainer,
+	inputEditRating,
+	textareaOverview,
+} from "../editMovie";
+
+const { body } = document;
 
 const defaultPoster =
 	"https://m.media-amazon.com/images/I/71Jxq2p5YWL._AC_UF894,1000_QL80_.jpg";
@@ -42,14 +59,43 @@ export const createMovies = (container) => {
 };
 
 const movieInfoDownload = () => {
-	divContentMovieContainer.addEventListener("click", (e) => {
-		if (e.target.classList.contains("card-picture")) {
-			divContentSearchMovie.style.display = "none";
-			divMovieInfo.style.visibility = "visible";
-			divMovieInfo.style.position = "relative";
-			imgMovieInfo.src = defaultPoster;
+	formEditMovieForm.addEventListener("submit", (e) => {
+		e.preventDefault();
+		divEditMovieContainer.style.opacity = 0;
+		divEditMovieContainer.style.visibility = "hidden";
+		divContentSearchMovie.style.display = "none";
+		divMovieInfo.style.opacity = 1;
+		divMovieInfo.style.visibility = "visible";
+		divMovieInfo.style.position = "relative";
+		imgMovieInfo.src = defaultPoster;
+		divContentContainer.style.opacity = 1;
+		body.style.overflowY = "auto";
+		divContentMovieContainer.style.overflow = "auto";
+		paragraphHeaderDescription.textContent = inputEditTitle.value;
+		paragraphRating.textContent = inputEditRating.value;
+		paragraphDescriptionMovie.textContent = textareaOverview.value;
+	});
+	divMainMoviesCards.addEventListener("click", (e) => {
+		if (e.target.classList.contains("button-movie__card")) {
+			const modalEditOrDelete = e.target.previousSibling;
+			modalEditOrDelete.firstChild.style.opacity = 1;
+			modalEditOrDelete.firstChild.style.visibility = "visible";
+			e.target.previousSibling.style.opacity = 1;
+			e.target.previousSibling.style.visibility = "visible";
+			e.target.style.visibility = "hidden";
+			e.target.style.opacity = 0;
+		}
+		if (e.target.classList.contains("closeModal")) {
+			const modalEditOrDelete = e.target.parentNode;
+			e.target.style.visibility = "hidden";
+			e.target.style.opacity = 0;
+			modalEditOrDelete.style.opacity = 0;
+			modalEditOrDelete.style.visibility = "hidden";
+			modalEditOrDelete.nextSibling.style.visibility = "visible";
+			modalEditOrDelete.nextSibling.style.opacity = 1;
 		}
 	});
+
 	divMovieInfo.addEventListener("click", (e) => {
 		if (e.target.classList.contains("magnifying-glass")) {
 			divContentSearchMovie.style.display = "block";
@@ -74,8 +120,9 @@ const submitAddMovie = () => {
 		);
 		const addMovieContainer = document.querySelector(".add-movie__container");
 		congratulationsWindow.style.visibility = "visible";
+		congratulationsWindow.style.visibility = 1;
 		addMovieContainer.style.visibility = "hidden";
-		container.style.opacity = "1";
+		container.style.opacity = 1;
 		body.style.overflowY = "auto";
 		contentMovieContainer.style.overflow = "auto";
 	});
