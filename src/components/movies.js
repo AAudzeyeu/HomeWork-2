@@ -74,6 +74,9 @@ const movieInfoDownload = () => {
 		paragraphHeaderDescription.textContent = inputEditTitle.value;
 		paragraphRating.textContent = inputEditRating.value;
 		paragraphDescriptionMovie.textContent = textareaOverview.value;
+		const searchValue = new FormData(e.target).delete("button-movie__submit");
+
+		updateMoviesState({ search: searchValue });
 	});
 	divMainMoviesCards.addEventListener("click", (e) => {
 		if (e.target.classList.contains("button-movie__card")) {
