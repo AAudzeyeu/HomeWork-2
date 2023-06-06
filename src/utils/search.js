@@ -37,3 +37,10 @@ export const updateSearchParams = (params) => {
 
 	window.history.pushState(null, "", url.toString());
 };
+
+export const goToMovieDetails = (id) => {
+	const url = new URL(window.location);
+	url.pathname = `/movies/${id}`;
+
+	window.history.pushState(null, "movie details", url.toString());
+};

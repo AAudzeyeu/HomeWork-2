@@ -45,12 +45,18 @@ export const deleteMovie = (id) =>
 		method: "DELETE",
 	});
 
+export const globalMoviesList = {};
+
 export const updateMoviesState = (params) => {
 	if (params) updateSearchParams(params);
 	const currentParams = getSearchparams() || defaultParams;
 	return getMovies(currentParams).then((data) => {
-		const movies = data.data;
-		const moviesElements = movies.map(createMovieItem);
+		data.data.forEach((movie) => {
+			globalMoviesList[movie.id] = movie;
+			console.log(globalMoviesList[movie.id]);
+		});
+		// globalMoviesList = data.data;
+		const moviesElements = Object.values(globalMoviesList).map(createMovieItem);
 
 		divMainMoviesCards.innerHTML = "";
 		divMainMoviesCards.append(...moviesElements);

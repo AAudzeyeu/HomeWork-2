@@ -24,6 +24,7 @@ import {
 	inputEditRating,
 	textareaOverview,
 } from "../editMovie";
+import { goToMovieDetails } from "../utils/search";
 
 const { body } = document;
 
@@ -46,17 +47,32 @@ export const createMovieItem = (movie) => {
 		movie.release_date,
 		10
 	);
+	movieElement.dataset.id = movie.id;
 
 	return movieElement;
 };
 
 export const createMovies = (container) => {
-	updateMoviesState().then((data) => {
-		const movies = data.data;
-		const moviesElements = movies.map(createMovieItem);
-		container.append(...moviesElements);
-	});
+	const clickHandler = (e) => {
+		const movieCard = e.target.closest("[data-id]");
+		if (movieCard) {
+			const { id } = movieCard.dataset;
+			goToMovieDetails(id);
+		}
+	};
+	container.addEventListener("click", clickHandler);
+	updateMoviesState();
 };
+
+// const globalMovies = {};
+
+// const onClick = (e) => {
+// 	const { id } = e.target.closet("[data-id]").dataset;
+
+// 	const movie = globalMovies[id];
+
+// 	showModal(movie)
+// }
 
 const movieInfoDownload = () => {
 	formEditMovieForm.addEventListener("submit", (e) => {
@@ -117,7 +133,6 @@ const submitAddMovie = () => {
 		const congratulationsWindow = document.querySelector(
 			".add-movie__congratulations"
 		);
-		const body = document.querySelector("body");
 		const contentMovieContainer = document.querySelector(
 			".content-movie__container"
 		);

@@ -1,3 +1,5 @@
+// import { deleteMovie } from "../api"
+
 export const divDeleteMovieCongratulations = document.createElement("div");
 
 export const createDeleteMovieCongratulations = (container) => {

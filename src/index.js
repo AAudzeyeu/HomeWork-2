@@ -18,21 +18,9 @@ import {
 	divContentContainer,
 	divContentMovieContainer,
 } from "./mainContent";
+import { createMovieDetails } from "./components/movieDetails";
 
 const { body } = document;
-
-const initApp = () => {
-	createAddMovieForm(body);
-	createAddMovieCongratulations(body);
-	createEditMovieForm(body);
-	createDeleteMovieCongratulations(body);
-	createMainContentContainer(body);
-	createMovies(divMainMoviesCards);
-	createMovieInfo(body);
-	createMoreButton(buttonContainer);
-};
-
-initApp();
 
 const addMovie = () => {
 	buttonAddMovie.addEventListener("click", () => {
@@ -53,9 +41,13 @@ const addMovie = () => {
 	});
 };
 
-addMovie();
+const editMovie = (movieItem) => {
+	const event = new CustomEvent("showModal", {
+		detail: movieItem,
+	});
 
-const editMovie = () => {
+	document.dispatchEvent(event);
+
 	divMainMoviesCards.addEventListener("click", (e) => {
 		if (e.target.classList.contains("text-modal__edit")) {
 			const modalEditOrDelete = e.target.parentNode;
@@ -79,7 +71,6 @@ const editMovie = () => {
 		}
 	});
 };
-editMovie();
 
 const deleteMovie = () => {
 	divMainMoviesCards.addEventListener("click", (e) => {
@@ -97,6 +88,8 @@ const deleteMovie = () => {
 		}
 	});
 
+	const movieId = 0;
+
 	divDeleteMovieCongratulations.addEventListener("click", (e) => {
 		if (e.target.classList.contains("closeModal")) {
 			divContentContainer.style.opacity = 1;
@@ -106,5 +99,37 @@ const deleteMovie = () => {
 			divDeleteMovieCongratulations.style.opacity = 0;
 		}
 	});
+	divDeleteMovieCongratulations.addEventListener("click", (e) => {
+		if (e.target.classList.contains("button-delete__movie")) {
+			console.log(e.currentTarget);
+		}
+	});
 };
-deleteMovie();
+
+const renderHomePage = () => {
+	addMovie();
+	editMovie();
+	deleteMovie();
+};
+
+const initApp = () => {
+	createAddMovieForm(body);
+	createAddMovieCongratulations(body);
+	createEditMovieForm(body);
+	createDeleteMovieCongratulations(body);
+	createMainContentContainer(body);
+	createMovies(body);
+	createMovieInfo(body);
+	createMoreButton(buttonContainer);
+
+	const { pathname } = window;
+	const movieDetailsRegex = /\/movies\//gi;
+
+	if (movieDetailsRegex.test(pathname)) {
+		createMovieDetails();
+	} else {
+		renderHomePage();
+	}
+};
+
+initApp();

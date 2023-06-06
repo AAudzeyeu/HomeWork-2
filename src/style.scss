@@ -780,6 +780,9 @@ select {
     width: 200px;
     height: 140px;
     border-radius: 5px;
+    -webkit-transition: all .35s ease;
+    -o-transition: all .35s ease;
+    transition: all .35s ease;
 
     .closeModal {
         opacity: 0;
@@ -817,7 +820,6 @@ select {
     max-width: 35vw;
     height: 70vh;
     margin-bottom: 15px;
-    cursor: pointer;
 }
 
 .figcaption-name_movie {
