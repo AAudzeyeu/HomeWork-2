@@ -53,7 +53,7 @@ export const updateMoviesState = (params) => {
 	return getMovies(currentParams).then((data) => {
 		data.data.forEach((movie) => {
 			globalMoviesList[movie.id] = movie;
-			console.log(globalMoviesList[movie.id]);
+			// console.log(globalMoviesList[movie.id]);
 		});
 		// globalMoviesList = data.data;
 		const moviesElements = Object.values(globalMoviesList).map(createMovieItem);

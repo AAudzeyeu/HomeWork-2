@@ -5,7 +5,17 @@ import { createMovies } from "./components/movies";
 import { createMovieInfo } from "./movieInfo";
 import { createAddMovieForm, divAddMovieContainer } from "./addMovie";
 import { createAddMovieCongratulations } from "./addMovieCongratulation";
-import { createEditMovieForm, divEditMovieContainer } from "./editMovie";
+import {
+	createEditMovieForm,
+	divEditMovieContainer,
+	inputEditTitle,
+	inputEditRating,
+	textareaOverview,
+	inputEditRuntime,
+	inputEditMovieUrl,
+	inputEditReleaseDate,
+	formEditMovieForm,
+} from "./editMovie";
 import {
 	createDeleteMovieCongratulations,
 	divDeleteMovieCongratulations,
@@ -19,10 +29,16 @@ import {
 	divContentMovieContainer,
 } from "./mainContent";
 import { createMovieDetails } from "./components/movieDetails";
+import {
+	deleteMovie,
+	globalMoviesList,
+	updateMoviesState,
+	updateMovie,
+} from "./api";
 
 const { body } = document;
 
-const addMovie = () => {
+const addMovieCard = () => {
 	buttonAddMovie.addEventListener("click", () => {
 		divContentContainer.style.opacity = 0.5;
 		body.style.overflowY = "hidden";
@@ -41,7 +57,7 @@ const addMovie = () => {
 	});
 };
 
-const editMovie = (movieItem) => {
+const editMovieCard = (movieItem) => {
 	const event = new CustomEvent("showModal", {
 		detail: movieItem,
 	});
@@ -49,6 +65,7 @@ const editMovie = (movieItem) => {
 	document.dispatchEvent(event);
 
 	divMainMoviesCards.addEventListener("click", (e) => {
+		const cardDataId = e.target.closest("[data-id]").getAttribute("data-id");
 		if (e.target.classList.contains("text-modal__edit")) {
 			const modalEditOrDelete = e.target.parentNode;
 			modalEditOrDelete.style.opacity = 0;
@@ -59,7 +76,45 @@ const editMovie = (movieItem) => {
 			body.style.overflowY = "hidden";
 			divEditMovieContainer.style.opacity = 1;
 			divEditMovieContainer.style.visibility = "visible";
+			inputEditTitle.value = globalMoviesList[cardDataId].title;
+			inputEditRating.value = globalMoviesList[cardDataId].vote_average;
+			textareaOverview.value = globalMoviesList[cardDataId].overview;
+			inputEditRuntime.value = globalMoviesList[cardDataId].runtime;
+			inputEditMovieUrl.value = globalMoviesList[cardDataId].poster_path;
+			inputEditReleaseDate.value = globalMoviesList[cardDataId].release_date;
+
+			// globalMoviesList.forEach((el, i) => {
+			// 	console.log(cardDataId.getAttribute("data-id"));
+			// });
 		}
+		formEditMovieForm.addEventListener("submit", (e) => {
+			e.preventDefault();
+			divEditMovieContainer.style.opacity = 0;
+			divEditMovieContainer.style.visibility = "hidden";
+			divContentContainer.style.opacity = 1;
+			body.style.overflowY = "auto";
+
+			const cardBody = {
+				id: cardDataId,
+				title: inputEditTitle.value,
+				vote_average: inputEditRating.value,
+				overview: textareaOverview.value,
+				runtime: inputEditRuntime.value,
+				poster_path: inputEditMovieUrl.value,
+				release_date: inputEditReleaseDate.value,
+			};
+			// globalMoviesList[cardDataId].title = inputEditTitle.value;
+			// globalMoviesList[cardDataId].vote_average = inputEditRating.value;
+			// globalMoviesList[cardDataId].overview = textareaOverview.value;
+			// globalMoviesList[cardDataId].runtime = inputEditRuntime.value;
+			// globalMoviesList[cardDataId].poster_path = inputEditMovieUrl.value;
+			// globalMoviesList[cardDataId].release_date = inputEditReleaseDate.value;
+
+			updateMovie(cardBody);
+
+			const searchValue = new FormData(e.target).delete("button-movie__submit");
+			updateMoviesState({ search: searchValue });
+		});
 	});
 
 	divEditMovieContainer.addEventListener("click", (e) => {
@@ -72,9 +127,13 @@ const editMovie = (movieItem) => {
 	});
 };
 
-const deleteMovie = () => {
+const deleteMovieCard = () => {
+	let cardDataId;
 	divMainMoviesCards.addEventListener("click", (e) => {
 		if (e.target.classList.contains("text-modal__delete")) {
+			cardDataId = e.target.parentNode
+				.closest("[data-id]")
+				.getAttribute("data-id");
 			const modalDeleteMovie = e.target.parentNode;
 			modalDeleteMovie.style.opacity = 0;
 			modalDeleteMovie.style.visibility = "hidden";
@@ -88,8 +147,6 @@ const deleteMovie = () => {
 		}
 	});
 
-	const movieId = 0;
-
 	divDeleteMovieCongratulations.addEventListener("click", (e) => {
 		if (e.target.classList.contains("closeModal")) {
 			divContentContainer.style.opacity = 1;
@@ -101,15 +158,20 @@ const deleteMovie = () => {
 	});
 	divDeleteMovieCongratulations.addEventListener("click", (e) => {
 		if (e.target.classList.contains("button-delete__movie")) {
-			console.log(e.currentTarget);
+			deleteMovie(cardDataId);
+			divContentContainer.style.opacity = 1;
+			body.style.overflowY = "auto";
+			divContentMovieContainer.style.overflow = "auto";
+			divDeleteMovieCongratulations.style.visibility = "hidden";
+			divDeleteMovieCongratulations.style.opacity = 0;
 		}
 	});
 };
 
 const renderHomePage = () => {
-	addMovie();
-	editMovie();
-	deleteMovie();
+	addMovieCard();
+	editMovieCard();
+	deleteMovieCard();
 };
 
 const initApp = () => {

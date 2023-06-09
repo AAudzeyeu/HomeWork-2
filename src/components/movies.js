@@ -2,28 +2,15 @@ import { updateMoviesState } from "../api";
 import {
 	divContentSearchMovie,
 	divTemplate,
-	divMainMoviesCards,
-	divContentContainer,
-	divContentMovieContainer,
+	divMainMoviesCards
 } from "../mainContent";
 
 import {
-	divMovieInfo,
-	imgMovieInfo,
-	paragraphHeaderDescription,
-	paragraphRating,
-	paragraphDescriptionMovie,
+	divMovieInfo
 } from "../movieInfo";
 
 import { inputAddSubmit } from "../addMovie";
 import { divAddMovieCongratulations } from "../addMovieCongratulation";
-import {
-	formEditMovieForm,
-	inputEditTitle,
-	divEditMovieContainer,
-	inputEditRating,
-	textareaOverview,
-} from "../editMovie";
 import { goToMovieDetails } from "../utils/search";
 
 const { body } = document;
@@ -55,7 +42,7 @@ export const createMovieItem = (movie) => {
 export const createMovies = (container) => {
 	const clickHandler = (e) => {
 		const movieCard = e.target.closest("[data-id]");
-		if (movieCard) {
+		if (movieCard && e.target.classList.contains("card-picture")) {
 			const { id } = movieCard.dataset;
 			goToMovieDetails(id);
 		}
@@ -75,25 +62,26 @@ export const createMovies = (container) => {
 // }
 
 const movieInfoDownload = () => {
-	formEditMovieForm.addEventListener("submit", (e) => {
-		e.preventDefault();
-		divEditMovieContainer.style.opacity = 0;
-		divEditMovieContainer.style.visibility = "hidden";
-		divContentSearchMovie.style.display = "none";
-		divMovieInfo.style.opacity = 1;
-		divMovieInfo.style.visibility = "visible";
-		divMovieInfo.style.position = "relative";
-		imgMovieInfo.src = defaultPoster;
-		divContentContainer.style.opacity = 1;
-		body.style.overflowY = "auto";
-		divContentMovieContainer.style.overflow = "auto";
-		paragraphHeaderDescription.textContent = inputEditTitle.value;
-		paragraphRating.textContent = inputEditRating.value;
-		paragraphDescriptionMovie.textContent = textareaOverview.value;
-		const searchValue = new FormData(e.target).delete("button-movie__submit");
+	// formEditMovieForm.addEventListener("submit", (e) => {
+	// 	e.preventDefault();
+	// 	divEditMovieContainer.style.opacity = 0;
+	// 	divEditMovieContainer.style.visibility = "hidden";
+	// 	divContentSearchMovie.style.display = "none";
+	// 	divMovieInfo.style.opacity = 1;
+	// 	divMovieInfo.style.visibility = "visible";
+	// 	divMovieInfo.style.position = "relative";
+	// 	imgMovieInfo.src = defaultPoster;
+	// 	divContentContainer.style.opacity = 1;
+	// 	body.style.overflowY = "auto";
+	// 	divContentMovieContainer.style.overflow = "auto";
+	// 	paragraphHeaderDescription.textContent = inputEditTitle.value;
+	// 	paragraphRating.textContent = inputEditRating.value;
+	// 	paragraphDescriptionMovie.textContent = textareaOverview.value;
+	// 	updateMovie()
 
-		updateMoviesState({ search: searchValue });
-	});
+	// 	const searchValue = new FormData(e.target).delete("button-movie__submit");
+	// 	updateMoviesState({ search: searchValue });
+	// });
 	divMainMoviesCards.addEventListener("click", (e) => {
 		if (e.target.classList.contains("button-movie__card")) {
 			const modalEditOrDelete = e.target.previousSibling;

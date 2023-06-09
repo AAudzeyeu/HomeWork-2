@@ -6,6 +6,10 @@ export const inputEditTitle = document.createElement("input");
 export const inputEditRating = document.createElement("input");
 export const selectGenre = document.createElement("select");
 export const textareaOverview = document.createElement("textarea");
+export const inputEditRuntime = document.createElement("input");
+export const inputEditMovieUrl = document.createElement("input");
+export const inputEditReleaseDate = document.createElement("input");
+
 export const createEditMovieForm = (container) => {
 	divEditMovieContainer.classList.add("edit-movie__container");
 
@@ -61,7 +65,6 @@ export const createEditMovieForm = (container) => {
 	const brIndentReleaseDate = document.createElement("br");
 	divFormMovieContainerReleaseDate.append(brIndentReleaseDate);
 
-	const inputEditReleaseDate = document.createElement("input");
 	inputEditReleaseDate.type = "date";
 	inputEditReleaseDate.name = "date";
 	inputEditReleaseDate.placeholder = "Select Date";
@@ -82,7 +85,6 @@ export const createEditMovieForm = (container) => {
 	const brIndentMovieUrl = document.createElement("br");
 	divFormMovieContainerMovieUrl.append(brIndentMovieUrl);
 
-	const inputEditMovieUrl = document.createElement("input");
 	inputEditMovieUrl.type = "text";
 	inputEditMovieUrl.name = "url";
 	inputEditMovieUrl.placeholder = "https://";
@@ -157,7 +159,6 @@ export const createEditMovieForm = (container) => {
 	const brIndentRuntime = document.createElement("br");
 	divFormMovieContainerRuntime.append(brIndentRuntime);
 
-	const inputEditRuntime = document.createElement("input");
 	inputEditRuntime.type = "text";
 	inputEditRuntime.name = "runtime";
 	inputEditRuntime.placeholder = "minutes";
