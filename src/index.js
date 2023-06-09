@@ -109,6 +109,7 @@ const editMovieCard = (movieItem) => {
 			// globalMoviesList[cardDataId].runtime = inputEditRuntime.value;
 			// globalMoviesList[cardDataId].poster_path = inputEditMovieUrl.value;
 			// globalMoviesList[cardDataId].release_date = inputEditReleaseDate.value;
+			// console.log(globalMoviesList[cardDataId]);
 
 			updateMovie(cardBody);
 
