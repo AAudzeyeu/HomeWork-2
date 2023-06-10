@@ -9,5 +9,7 @@ module.exports = merge(baseWebpackConfig, {
 			directory: PATHS.PUBLIC,
 		},
 		port: 9000,
+		hot: true,
+		historyApiFallback: true,
 	},
 });

@@ -2,12 +2,11 @@ import { updateMoviesState } from "../api";
 import {
 	divContentSearchMovie,
 	divTemplate,
-	divMainMoviesCards
+	divMainMoviesCards,
+	divContentContainer,
 } from "../mainContent";
 
-import {
-	divMovieInfo
-} from "../movieInfo";
+import { divMovieInfo } from "../movieInfo";
 
 import { inputAddSubmit } from "../addMovie";
 import { divAddMovieCongratulations } from "../addMovieCongratulation";
@@ -139,7 +138,21 @@ const closeCongratulations = () => {
 	divAddMovieCongratulations.addEventListener("click", (e) => {
 		if (e.target.classList.contains("closeModal")) {
 			divAddMovieCongratulations.style.visibility = "hidden";
+			divAddMovieCongratulations.style.opacity = 0;
+			body.style.overflowY = "auto";
+			divContentContainer.style.opacity = 1;
 		}
 	});
 };
 closeCongratulations();
+
+export const showAccessful = () => {
+	divAddMovieCongratulations.style.visibility = "visible";
+	divAddMovieCongratulations.style.opacity = 1;
+	body.style.overflowY = "hidden";
+	divContentContainer.style.opacity = 0.5;
+};
+
+export const showError = () => {
+	alert("Ой ой ой... ошибочка");
+};

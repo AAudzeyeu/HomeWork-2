@@ -7,6 +7,7 @@ module.exports = {
 	entry: path.join(PATHS.SRC, "/index.js"),
 	output: {
 		filename: "[name].[hash].js",
+		publicPath: "/",
 		path: path.resolve(PATHS.DIST),
 	},
 	resolve: {

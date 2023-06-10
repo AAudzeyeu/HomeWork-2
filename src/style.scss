@@ -156,12 +156,13 @@ body {
 .add-movie__congratulations {
     position: fixed;
     visibility: hidden;
+    opacity: 0;
     width: 60vw;
     height: 55vh;
     background: #232323;
     top: 15vh;
     left: 20vw;
-    z-index: 3;
+    z-index: 6;
 
     .closeModal {
         top: 10px;

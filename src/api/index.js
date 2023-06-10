@@ -4,7 +4,11 @@ import {
 	updateSearchParams,
 } from "../utils/search";
 
-import { createMovieItem } from "../components/movies";
+import {
+	createMovieItem,
+	showAccessful,
+	showError,
+} from "../components/movies";
 import { button } from "../components/moreMoviesButton/createButton";
 
 import { divMainMoviesCards, spanFoundFinished } from "../mainContent";
@@ -30,12 +34,23 @@ export const createMovie = (body) =>
 	fetch(baseUrl, {
 		method: "POST",
 		body,
-	}).then((data) => data.json());
+	})
+		.then((data) => data.json())
+		.then((data) => {
+			if (data.status > 299 || data.status < 200) throw new Error("Oh, oh");
+			showAccessful();
+		})
+		.catch(() => {
+			showError();
+		});
 
 export const updateMovie = (body) =>
 	fetch(baseUrl, {
 		method: "PUT",
-		body,
+		body: JSON.stringify(body),
+		headers: {
+			"Content-Type": "application/json",
+		},
 	}).then((data) => data.json());
 export const getMovie = (id) =>
 	fetch(`${baseUrl}/${id}`).then((data) => data.json());
@@ -43,7 +58,14 @@ export const getMovie = (id) =>
 export const deleteMovie = (id) =>
 	fetch(`${baseUrl}/${id}`, {
 		method: "DELETE",
-	});
+	})
+		.then((data) => {
+			if (data.status > 299 || data.status < 200) throw new Error("Oh, oh");
+			showAccessful();
+		})
+		.catch(() => {
+			showError();
+		});
 
 export const globalMoviesList = {};
 

@@ -1,3 +1,9 @@
+import { searchToObject } from "../../utils/search";
+import { getMovie } from "../../api";
+
 export const createMovieDetails = (container) => {
-	container.textContent = "hello from movie details";
+	const { id } = searchToObject(window.location.search);
+	getMovie(id).then((data) => {
+		container.textContent = data.title;
+	});
 };

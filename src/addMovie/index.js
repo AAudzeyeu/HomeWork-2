@@ -1,5 +1,6 @@
 export const inputAddSubmit = document.createElement("input");
 export const divAddMovieContainer = document.createElement("div");
+export const formAddMovieForm = document.createElement("form");
 export const createAddMovieForm = (container) => {
 	divAddMovieContainer.classList.add("add-movie__container");
 
@@ -16,7 +17,6 @@ export const createAddMovieForm = (container) => {
 	paragraphHeaderAddText.textContent = "Add Movie";
 	divAddMovieMain.append(paragraphHeaderAddText);
 
-	const formAddMovieForm = document.createElement("form");
 	formAddMovieForm.id = "add-movie__form";
 	divAddMovieMain.append(formAddMovieForm);
 
