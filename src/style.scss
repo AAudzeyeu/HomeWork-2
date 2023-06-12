@@ -496,7 +496,7 @@ body {
 
 .description-movie {
     position: relative;
-    font: 500 2.2rem/2rem 'Montserrat', sans-serif;
+    font: 500 2.2rem/2.72rem 'Montserrat', sans-serif;
     width: 60vw;
     color: #424242;
 }
@@ -818,6 +818,7 @@ select {
 }
 
 .card-picture {
+    cursor: pointer;
     max-width: 35vw;
     height: 70vh;
     margin-bottom: 15px;

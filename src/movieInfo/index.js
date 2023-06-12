@@ -7,6 +7,8 @@ export const paragraphHeaderDescription = document.createElement("p");
 export const paragraphRating = document.createElement("p");
 export const paragraphDescription = document.createElement("p");
 export const paragraphDescriptionMovie = document.createElement("p");
+export const spanDescriptionTime = document.createElement("span");
+export const spanDescriptionDate = document.createElement("span");
 
 export const createMovieInfo = () => {
 	divMovieInfo.id = "movie-info";
@@ -56,15 +58,13 @@ export const createMovieInfo = () => {
 	paragraphDescriptionDateTime.classList.add("description-date__time");
 	divMovieDescriptionInfo.append(paragraphDescriptionDateTime);
 
-	const spanDescriptionDate = document.createElement("span");
 	spanDescriptionDate.classList.add("description-date");
 	spanDescriptionDate.textContent = "1994";
 	paragraphDescriptionDateTime.append(spanDescriptionDate);
 
-	const spanDescriptionTi = document.createElement("span");
-	spanDescriptionTi.classList.add("description-time");
-	spanDescriptionTi.textContent = "2h 34min";
-	paragraphDescriptionDateTime.append(spanDescriptionTi);
+	spanDescriptionTime.classList.add("description-time");
+	spanDescriptionTime.textContent = "2h 34min";
+	paragraphDescriptionDateTime.append(spanDescriptionTime);
 
 	const divDescriptionMovieContainer = document.createElement("div");
 	divDescriptionMovieContainer.classList.add("description-movie__container");

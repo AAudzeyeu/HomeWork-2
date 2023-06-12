@@ -6,7 +6,7 @@ import {
 
 import {
 	createMovieItem,
-	showAccessful,
+	showSuccessful,
 	showError,
 } from "../components/movies";
 import { button } from "../components/moreMoviesButton/createButton";
@@ -38,7 +38,7 @@ export const createMovie = (body) =>
 		.then((data) => data.json())
 		.then((data) => {
 			if (data.status > 299 || data.status < 200) throw new Error("Oh, oh");
-			showAccessful();
+			showSuccessful();
 		})
 		.catch(() => {
 			showError();
@@ -61,7 +61,7 @@ export const deleteMovie = (id) =>
 	})
 		.then((data) => {
 			if (data.status > 299 || data.status < 200) throw new Error("Oh, oh");
-			showAccessful();
+			showSuccessful();
 		})
 		.catch(() => {
 			showError();

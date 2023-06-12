@@ -14,7 +14,7 @@ import { goToMovieDetails } from "../utils/search";
 
 const { body } = document;
 
-const defaultPoster =
+export const defaultPoster =
 	"https://m.media-amazon.com/images/I/71Jxq2p5YWL._AC_UF894,1000_QL80_.jpg";
 const background =
 	"https://wallpapershome.ru/images/wallpapers/beguschiy-v-labirinte-lekarstvo-ot-smerti-1920x1080-beguschiy-v-labirinte-lekarstvo-ot-smerti-16947.jpg";
@@ -104,8 +104,11 @@ const movieInfoDownload = () => {
 
 	divMovieInfo.addEventListener("click", (e) => {
 		if (e.target.classList.contains("magnifying-glass")) {
-			divContentSearchMovie.style.display = "block";
+			divContentSearchMovie.style.position = "relative";
+			divContentSearchMovie.style.opacity = 1;
+			divContentSearchMovie.style.visibility = "visible";
 			divMovieInfo.style.visibility = "hidden";
+			divMovieInfo.style.opacity = 0;
 			divMovieInfo.style.position = "absolute";
 		}
 	});
@@ -146,7 +149,7 @@ const closeCongratulations = () => {
 };
 closeCongratulations();
 
-export const showAccessful = () => {
+export const showSuccessful = () => {
 	divAddMovieCongratulations.style.visibility = "visible";
 	divAddMovieCongratulations.style.opacity = 1;
 	body.style.overflowY = "hidden";

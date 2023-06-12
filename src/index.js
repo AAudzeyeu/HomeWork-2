@@ -206,14 +206,13 @@ const initApp = () => {
 	createMovies(body);
 	createMovieInfo(body);
 	createMoreButton(buttonContainer);
+	renderHomePage();
 
 	const { pathname } = window.location;
 	const movieDetailsRegex = /\/movie/i;
 
 	if (movieDetailsRegex.test(pathname)) {
-		createMovieDetails(body);
-	} else {
-		renderHomePage();
+		createMovieDetails();
 	}
 };
 
