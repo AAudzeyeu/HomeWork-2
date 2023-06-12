@@ -170,6 +170,15 @@ export const createMainContentContainer = (container) => {
 	spanFoundFinished.classList.add("found-text__finished", "bold");
 	paragraphMoviesFound.prepend(spanFoundFinished);
 
+	divMainMoviesCards.addEventListener("click", (e) => {
+		if (e.target.classList.contains("card-picture")) {
+			window.scrollTo({
+				top: 0,
+				left: 0,
+				behavior: "smooth",
+			});
+		}
+	});
 	divMainMoviesCards.classList.add("main-movies__cards");
 	divContentMovieContainer.append(divMainMoviesCards);
 
