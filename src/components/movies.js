@@ -116,10 +116,10 @@ const movieInfoDownload = () => {
 			// divMovieInfo.style.visibility = "hidden";
 			// divMovieInfo.style.opacity = 0;
 			// divMovieInfo.style.position = "absolute";
-			const url = new URL(window.location);
-			url.searchParams.delete("movie");
-			console.log(url);
-			window.history.pushState(null, "movie details", url.toString());
+			// const url = new URL(window.location);
+			// url.searchParams.delete("movie");
+			// console.log(url);
+			// window.history.pushState(null, "movie details", url.toString());
 			renderHeaderOrDetails(headerContentContainer);
 		}
 	});
