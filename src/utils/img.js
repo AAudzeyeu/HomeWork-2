@@ -1,6 +1,7 @@
-import { defaultPoster } from "../../public/images/card-4.png";
+const defaultPoster =
+	"https://m.media-amazon.com/images/I/71Jxq2p5YWL._AC_UF894,1000_QL80_.jpg";
 
-export const makeSageImage = (img) => {
+export const makeSafeImage = (img) => {
 	img.onerror = (e) => {
 		e.target.src = defaultPoster;
 	};

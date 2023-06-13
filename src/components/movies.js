@@ -4,15 +4,16 @@ import {
 	divTemplate,
 	divMainMoviesCards,
 	divContentContainer,
+	headerContentContainer,
 } from "../mainContent";
 import { renderHeaderOrDetails } from "../index";
-import { createDivSearchMovie } from "./searchMovies";
 
 import { divMovieInfo } from "../movieInfo";
 
 import { inputAddSubmit } from "../addMovie";
 import { divAddMovieCongratulations } from "../addMovieCongratulation";
 import { goToMovieDetails } from "../utils/search";
+import { makeSafeImage } from "../utils/img";
 
 const { body } = document;
 
@@ -25,6 +26,7 @@ export const createMovieItem = (movie) => {
 	const movieElement = divTemplate.cloneNode(true);
 	divContentSearchMovie.style.background = `url("${background}")`;
 	movieElement.querySelector("img").src = defaultPoster;
+	makeSafeImage(movieElement);
 	movieElement.querySelector(".figcaption-name_movie").textContent =
 		movie.title;
 
@@ -47,7 +49,7 @@ export const createMovies = (container) => {
 			const { id } = movieCard.dataset;
 			goToMovieDetails(id);
 
-			renderHeaderOrDetails(divContentSearchMovie);
+			renderHeaderOrDetails(divContentContainer);
 		}
 	};
 	container.addEventListener("click", clickHandler);
@@ -114,8 +116,11 @@ const movieInfoDownload = () => {
 			// divMovieInfo.style.visibility = "hidden";
 			// divMovieInfo.style.opacity = 0;
 			// divMovieInfo.style.position = "absolute";
-			createDivSearchMovie(divContentContainer);
-			divMovieInfo.remove();
+			const url = new URL(window.location);
+			url.searchParams.delete("movie");
+			console.log(url);
+			window.history.pushState(null, "movie details", url.toString());
+			renderHeaderOrDetails(headerContentContainer);
 		}
 	});
 };

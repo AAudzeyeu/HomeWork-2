@@ -11,11 +11,10 @@ import {
 	divMovieInfo,
 } from "../../movieInfo";
 import { parseDate, parseTime } from "../../utils/date";
-import { divContentContainer } from "../../mainContent";
 import { defaultPoster } from "../movies";
 // import { makeSageImage } from "../../utils/";
 
-export const createMovieDetails = () => {
+export const createMovieDetails = (container) => {
 	const { id } = searchToObject(window.location.search);
 	getMovie(id).then((data) => {
 		// divContentSearchMovie.style.visibility = "hidden";
@@ -26,16 +25,14 @@ export const createMovieDetails = () => {
 		// divMovieInfo.style.opacity = 1;
 		// divMovieInfo.style.position = "relative";
 
-		console.log(data);
+		// console.log(data);
 		paragraphHeaderDescription.textContent = data.title;
 		paragraphRating.textContent = data.vote_average;
 		imgMovieInfo.src = defaultPoster;
 		spanDescriptionTime.textContent = parseTime(data.runtime);
 		spanDescriptionDate.textContent = parseDate(data.release_date).year;
-		console.log(data.release_date);
-		console.log(parseDate(data.release_date).year);
 		paragraphDescription.textContent = data.genres.join(", ");
 		paragraphDescriptionMovie.textContent = data.overview;
 	});
-	divContentContainer.prepend(divMovieInfo);
+	container.prepend(divMovieInfo);
 };

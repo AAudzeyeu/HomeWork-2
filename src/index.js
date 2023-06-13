@@ -35,6 +35,7 @@ import {
 	buttonAddMovie,
 	divContentContainer,
 	divContentMovieContainer,
+	headerContentContainer,
 } from "./mainContent";
 import { createMovieDetails } from "./components/movieDetails";
 import {
@@ -123,7 +124,6 @@ const editMovieCard = (movieItem) => {
 		globalMoviesList[cardDataId].runtime = +inputEditRuntime.value;
 		globalMoviesList[cardDataId].poster_path = inputEditMovieUrl.value;
 		globalMoviesList[cardDataId].release_date = inputEditReleaseDate.value;
-		console.log(globalMoviesList[cardDataId]);
 
 		updateMovie(globalMoviesList[cardDataId]);
 
@@ -192,14 +192,15 @@ const deleteMovieCard = () => {
 	});
 };
 
-export const renderHeaderOrDetails = () => {
+export const renderHeaderOrDetails = (container) => {
 	const { pathname } = window.location;
 	const movieDetailsRegex = /\/movie/i;
+	headerContentContainer.textContent = "";
 
 	if (movieDetailsRegex.test(pathname)) {
-		createMovieDetails();
+		createMovieDetails(container);
 	} else {
-		createDivSearchMovie(divContentContainer);
+		createDivSearchMovie(container);
 	}
 };
 
@@ -219,7 +220,7 @@ const initApp = () => {
 	createMovieInfo(body);
 	createMoreButton(buttonContainer);
 	renderHomePage();
-	renderHeaderOrDetails();
+	renderHeaderOrDetails(headerContentContainer);
 };
 
 initApp();

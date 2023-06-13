@@ -13,12 +13,15 @@ export const formSearchMovie = document.createElement("form");
 export const spanFoundFinished = document.createElement("span");
 export const paragraphModalEdit = document.createElement("p");
 export const modalEditOrDelete = document.createElement("div");
+export const headerContentContainer = document.createElement("header");
 
 export const createMainContentContainer = (container) => {
 	divContentContainer.classList.add("content-container");
 
 	divContentSearchMovie.classList.add("content-search__movie", "logo");
 	// divContentContainer.append(divContentSearchMovie);
+
+	divContentContainer.append(headerContentContainer);
 
 	const paragraphLogoMain = document.createElement("p");
 	paragraphLogoMain.classList.add("logo-main__text");

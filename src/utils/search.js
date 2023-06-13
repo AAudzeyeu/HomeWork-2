@@ -45,3 +45,11 @@ export const goToMovieDetails = (id) => {
 
 	window.history.pushState(null, "movie details", url.toString());
 };
+
+export const goToClosedMovieDetails = (id) => {
+	const url = new URL(window.location);
+	url.pathname = `/movie`;
+	url.searchParams.delete("id", id);
+
+	window.history.pushState(null, "movie details", url.toString());
+};
