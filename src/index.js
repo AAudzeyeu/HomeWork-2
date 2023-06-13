@@ -23,6 +23,7 @@ import {
 	inputEditReleaseDate,
 	formEditMovieForm,
 } from "./editMovie";
+import { createDivSearchMovie } from "./components/searchMovies";
 import {
 	createDeleteMovieCongratulations,
 	divDeleteMovieCongratulations,
@@ -191,6 +192,17 @@ const deleteMovieCard = () => {
 	});
 };
 
+export const renderHeaderOrDetails = () => {
+	const { pathname } = window.location;
+	const movieDetailsRegex = /\/movie/i;
+
+	if (movieDetailsRegex.test(pathname)) {
+		createMovieDetails();
+	} else {
+		createDivSearchMovie(divContentContainer);
+	}
+};
+
 const renderHomePage = () => {
 	addMovieCard();
 	editMovieCard();
@@ -207,13 +219,7 @@ const initApp = () => {
 	createMovieInfo(body);
 	createMoreButton(buttonContainer);
 	renderHomePage();
-
-	const { pathname } = window.location;
-	const movieDetailsRegex = /\/movie/i;
-
-	if (movieDetailsRegex.test(pathname)) {
-		createMovieDetails();
-	}
+	renderHeaderOrDetails();
 };
 
 initApp();

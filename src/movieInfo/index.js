@@ -1,5 +1,3 @@
-import { divContentContainer } from "../mainContent";
-
 export const divMovieInfo = document.createElement("div");
 export const imgMovieInfo = document.createElement("img");
 
@@ -74,6 +72,4 @@ export const createMovieInfo = () => {
 	paragraphDescriptionMovie.textContent =
 		"a sd asdass dasdasdasd saas dasdsa dsad asd sad d sad sads asaasdsasdadsa asd sad asasd dsaddds SDa dd sad asd asdas asd sa as assad asd assda";
 	divDescriptionMovieContainer.append(paragraphDescriptionMovie);
-
-	divContentContainer.prepend(divMovieInfo);
 };

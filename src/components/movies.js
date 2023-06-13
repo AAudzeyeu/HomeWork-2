@@ -5,6 +5,8 @@ import {
 	divMainMoviesCards,
 	divContentContainer,
 } from "../mainContent";
+import { renderHeaderOrDetails } from "../index";
+import { createDivSearchMovie } from "./searchMovies";
 
 import { divMovieInfo } from "../movieInfo";
 
@@ -44,6 +46,8 @@ export const createMovies = (container) => {
 		if (movieCard && e.target.classList.contains("card-picture")) {
 			const { id } = movieCard.dataset;
 			goToMovieDetails(id);
+
+			renderHeaderOrDetails(divContentSearchMovie);
 		}
 	};
 	container.addEventListener("click", clickHandler);
@@ -104,12 +108,14 @@ const movieInfoDownload = () => {
 
 	divMovieInfo.addEventListener("click", (e) => {
 		if (e.target.classList.contains("magnifying-glass")) {
-			divContentSearchMovie.style.position = "relative";
-			divContentSearchMovie.style.opacity = 1;
-			divContentSearchMovie.style.visibility = "visible";
-			divMovieInfo.style.visibility = "hidden";
-			divMovieInfo.style.opacity = 0;
-			divMovieInfo.style.position = "absolute";
+			// divContentSearchMovie.style.position = "relative";
+			// divContentSearchMovie.style.opacity = 1;
+			// divContentSearchMovie.style.visibility = "visible";
+			// divMovieInfo.style.visibility = "hidden";
+			// divMovieInfo.style.opacity = 0;
+			// divMovieInfo.style.position = "absolute";
+			createDivSearchMovie(divContentContainer);
+			divMovieInfo.remove();
 		}
 	});
 };

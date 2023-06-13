@@ -18,7 +18,7 @@ export const createMainContentContainer = (container) => {
 	divContentContainer.classList.add("content-container");
 
 	divContentSearchMovie.classList.add("content-search__movie", "logo");
-	divContentContainer.append(divContentSearchMovie);
+	// divContentContainer.append(divContentSearchMovie);
 
 	const paragraphLogoMain = document.createElement("p");
 	paragraphLogoMain.classList.add("logo-main__text");
