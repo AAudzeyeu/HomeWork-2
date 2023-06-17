@@ -7,6 +7,7 @@ export const paragraphDescription = document.createElement("p");
 export const paragraphDescriptionMovie = document.createElement("p");
 export const spanDescriptionTime = document.createElement("span");
 export const spanDescriptionDate = document.createElement("span");
+export const divMagnifyingGlass = document.createElement("div");
 
 export const createMovieInfo = () => {
 	divMovieInfo.id = "movie-info";
@@ -32,7 +33,6 @@ export const createMovieInfo = () => {
 	divMovieDescriptionInfo.classList.add("movie-description__info");
 	divMovieInfoContainer.append(divMovieDescriptionInfo);
 
-	const divMagnifyingGlass = document.createElement("div");
 	divMagnifyingGlass.classList.add("magnifying-glass");
 	divMovieDescriptionInfo.append(divMagnifyingGlass);
 

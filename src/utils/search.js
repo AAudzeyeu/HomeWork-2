@@ -1,3 +1,5 @@
+import { renderHeaderOrDetails } from "../index";
+
 export const searchToObject = (searchString) => {
 	const searchObject = {};
 	const separateString = searchString.substring(1);
@@ -23,8 +25,8 @@ export const objToSearch = (params) => {
 };
 export const getSearchparams = () => searchToObject(window.location.search);
 
-export const updateSearchParams = (params) => {
-	const url = new URL(window.location);
+export const updateSearchParams = (params, newUrl = window.location) => {
+	const url = new URL(newUrl);
 
 	if (params.filter) url.searchParams.set("filter", params.filter);
 	if (params.limit) url.searchParams.set("limit", params.limit);
@@ -46,10 +48,7 @@ export const goToMovieDetails = (id) => {
 	window.history.pushState(null, "movie details", url.toString());
 };
 
-export const goToClosedMovieDetails = (id) => {
-	const url = new URL(window.location);
-	url.pathname = `/movie`;
-	url.searchParams.delete("id", id);
-
-	window.history.pushState(null, "movie details", url.toString());
+export const goToClosedMovieDetails = () => {
+	updateSearchParams(getSearchparams(), window.location.origin);
+	renderHeaderOrDetails();
 };

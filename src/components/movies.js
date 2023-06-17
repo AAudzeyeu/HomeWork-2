@@ -4,29 +4,27 @@ import {
 	divTemplate,
 	divMainMoviesCards,
 	divContentContainer,
-	headerContentContainer,
 } from "../mainContent";
 import { renderHeaderOrDetails } from "../index";
 
-import { divMovieInfo } from "../movieInfo";
+import { divMagnifyingGlass } from "../movieInfo";
 
 import { inputAddSubmit } from "../addMovie";
 import { divAddMovieCongratulations } from "../addMovieCongratulation";
-import { goToMovieDetails } from "../utils/search";
+import { goToMovieDetails, goToClosedMovieDetails } from "../utils/search";
 import { makeSafeImage } from "../utils/img";
 
 const { body } = document;
 
-export const defaultPoster =
-	"https://m.media-amazon.com/images/I/71Jxq2p5YWL._AC_UF894,1000_QL80_.jpg";
 const background =
 	"https://wallpapershome.ru/images/wallpapers/beguschiy-v-labirinte-lekarstvo-ot-smerti-1920x1080-beguschiy-v-labirinte-lekarstvo-ot-smerti-16947.jpg";
 
 export const createMovieItem = (movie) => {
 	const movieElement = divTemplate.cloneNode(true);
+	const movieImg = movieElement.querySelector("img");
 	divContentSearchMovie.style.background = `url("${background}")`;
-	movieElement.querySelector("img").src = defaultPoster;
-	makeSafeImage(movieElement);
+	movieImg.src = movie.poster_path;
+	makeSafeImage(movieImg);
 	movieElement.querySelector(".figcaption-name_movie").textContent =
 		movie.title;
 
@@ -49,7 +47,7 @@ export const createMovies = (container) => {
 			const { id } = movieCard.dataset;
 			goToMovieDetails(id);
 
-			renderHeaderOrDetails(divContentContainer);
+			renderHeaderOrDetails();
 		}
 	};
 	container.addEventListener("click", clickHandler);
@@ -108,21 +106,7 @@ const movieInfoDownload = () => {
 		}
 	});
 
-	divMovieInfo.addEventListener("click", (e) => {
-		if (e.target.classList.contains("magnifying-glass")) {
-			// divContentSearchMovie.style.position = "relative";
-			// divContentSearchMovie.style.opacity = 1;
-			// divContentSearchMovie.style.visibility = "visible";
-			// divMovieInfo.style.visibility = "hidden";
-			// divMovieInfo.style.opacity = 0;
-			// divMovieInfo.style.position = "absolute";
-			// const url = new URL(window.location);
-			// url.searchParams.delete("movie");
-			// console.log(url);
-			// window.history.pushState(null, "movie details", url.toString());
-			renderHeaderOrDetails(headerContentContainer);
-		}
-	});
+	divMagnifyingGlass.addEventListener("click", goToClosedMovieDetails);
 };
 
 movieInfoDownload();

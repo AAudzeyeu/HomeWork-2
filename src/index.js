@@ -1,3 +1,4 @@
+import "./test.scss";
 import "./style.scss";
 
 import { createMoreButton } from "./components/moreMoviesButton/createButton";
@@ -108,15 +109,6 @@ const editMovieCard = (movieItem) => {
 		divEditMovieContainer.style.visibility = "hidden";
 		divContentContainer.style.opacity = 1;
 		body.style.overflowY = "auto";
-		// const cardBody = {
-		// 	id: cardDataId,
-		// 	title: inputEditTitle.value,
-		// 	vote_average: inputEditRating.value,
-		// 	overview: textareaOverview.value,
-		// 	runtime: inputEditRuntime.value,
-		// 	poster_path: inputEditMovieUrl.value,
-		// 	release_date: inputEditReleaseDate.value,
-		// };
 
 		globalMoviesList[cardDataId].title = inputEditTitle.value;
 		globalMoviesList[cardDataId].vote_average = +inputEditRating.value;
@@ -126,11 +118,6 @@ const editMovieCard = (movieItem) => {
 		globalMoviesList[cardDataId].release_date = inputEditReleaseDate.value;
 
 		updateMovie(globalMoviesList[cardDataId]);
-
-		// divAddMovieCongratulations.style.visibility = "visible";
-		// divAddMovieCongratulations.style.opacity = 1;
-		// body.style.overflowY = "hidden";
-		// divContentContainer.style.opacity = 0.5;
 
 		const searchValue = new FormData(e.target).delete("button-movie__submit");
 		updateMoviesState({ search: searchValue });
@@ -153,6 +140,7 @@ const deleteMovieCard = () => {
 			cardDataId = e.target.parentNode
 				.closest("[data-id]")
 				.getAttribute("data-id");
+			console.log(cardDataId);
 			const modalDeleteMovie = e.target.parentNode;
 			modalDeleteMovie.style.opacity = 0;
 			modalDeleteMovie.style.visibility = "hidden";
@@ -192,15 +180,16 @@ const deleteMovieCard = () => {
 	});
 };
 
-export const renderHeaderOrDetails = (container) => {
+export const renderHeaderOrDetails = (container = undefined) => {
+	const realContainer = container || headerContentContainer;
 	const { pathname } = window.location;
 	const movieDetailsRegex = /\/movie/i;
-	headerContentContainer.textContent = "";
+	realContainer.textContent = "";
 
 	if (movieDetailsRegex.test(pathname)) {
-		createMovieDetails(container);
+		createMovieDetails(realContainer);
 	} else {
-		createDivSearchMovie(container);
+		createDivSearchMovie(realContainer);
 	}
 };
 
@@ -220,7 +209,7 @@ const initApp = () => {
 	createMovieInfo(body);
 	createMoreButton(buttonContainer);
 	renderHomePage();
-	renderHeaderOrDetails(headerContentContainer);
+	renderHeaderOrDetails();
 };
 
 initApp();

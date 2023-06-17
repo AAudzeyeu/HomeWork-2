@@ -55,22 +55,11 @@ export const updateMovie = (body) =>
 export const getMovie = (id) =>
 	fetch(`${baseUrl}/${id}`).then((data) => data.json());
 
-export const deleteMovie = (id) =>
-	fetch(`${baseUrl}/${id}`, {
-		method: "DELETE",
-	})
-		.then((data) => {
-			if (data.status > 299 || data.status < 200) throw new Error("Oh, oh");
-			showSuccessful();
-		})
-		.catch(() => {
-			showError();
-		});
-
-export const globalMoviesList = {};
+export let globalMoviesList = {};
 
 export const updateMoviesState = (params) => {
 	if (params) updateSearchParams(params);
+	globalMoviesList = {};
 	const currentParams = getSearchparams() || defaultParams;
 	return getMovies(currentParams).then((data) => {
 		data.data.forEach((movie) => {
@@ -90,3 +79,17 @@ export const updateMoviesState = (params) => {
 		}
 	});
 };
+
+export const deleteMovie = (id) =>
+	fetch(`${baseUrl}/${id}`, {
+		method: "DELETE",
+	})
+		.then((data) => {
+			if (data.status > 299 || data.status < 200) throw new Error("Oh, oh");
+			showSuccessful();
+			console.log(id);
+			updateMoviesState();
+		})
+		.catch(() => {
+			showError();
+		});
