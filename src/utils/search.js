@@ -1,3 +1,4 @@
+import { updateMoviesState } from "../api";
 import { renderHeaderOrDetails } from "../index";
 
 export const searchToObject = (searchString) => {
@@ -24,6 +25,7 @@ export const objToSearch = (params) => {
 	return searchString;
 };
 export const getSearchparams = () => searchToObject(window.location.search);
+export const getGenreParams = () => searchToObject(window.location.genre);
 
 export const updateSearchParams = (params, newUrl = window.location) => {
 	const url = new URL(newUrl);
@@ -48,7 +50,26 @@ export const goToMovieDetails = (id) => {
 	window.history.pushState(null, "movie details", url.toString());
 };
 
+export const goToMovieType = (genre) => {
+	const url = new URL(window.location);
+	url.pathname = "card";
+	url.searchParams.set("genre", genre);
+
+	window.history.pushState(null, "movie details", url.toString());
+};
+
 export const goToClosedMovieDetails = () => {
 	updateSearchParams(getSearchparams(), window.location.origin);
 	renderHeaderOrDetails();
+};
+
+export const goToClosedMovieGenre = () => {
+	const url = new URL(window.location);
+	const searchRegex = /search/i;
+	if (searchRegex.test(url)) {
+		url.searchParams.delete("search");
+	}
+	url.searchParams.delete("filter");
+	window.history.pushState(null, "movie details", url.toString());
+	updateMoviesState();
 };

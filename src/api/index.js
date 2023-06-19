@@ -1,7 +1,7 @@
 import {
 	getSearchparams,
 	objToSearch,
-	updateSearchParams,
+	updateSearchParams
 } from "../utils/search";
 
 import {
@@ -17,7 +17,7 @@ const baseUrl = "http://localhost:4000/movies";
 
 export const defaultLimit = 10;
 
-const defaultParams = {
+export const defaultParams = {
 	limit: 10,
 	filter: undefined,
 	search: undefined,
@@ -87,7 +87,6 @@ export const deleteMovie = (id) =>
 		.then((data) => {
 			if (data.status > 299 || data.status < 200) throw new Error("Oh, oh");
 			showSuccessful();
-			console.log(id);
 			updateMoviesState();
 		})
 		.catch(() => {

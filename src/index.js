@@ -140,7 +140,6 @@ const deleteMovieCard = () => {
 			cardDataId = e.target.parentNode
 				.closest("[data-id]")
 				.getAttribute("data-id");
-			console.log(cardDataId);
 			const modalDeleteMovie = e.target.parentNode;
 			modalDeleteMovie.style.opacity = 0;
 			modalDeleteMovie.style.visibility = "hidden";

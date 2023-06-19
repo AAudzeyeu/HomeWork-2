@@ -40,6 +40,28 @@ export const createMovieItem = (movie) => {
 	return movieElement;
 };
 
+export const createMovieDocumentary = (movie) => {
+	const movieElement = divTemplate.cloneNode(true);
+	const movieImg = movieElement.querySelector("img");
+	divContentSearchMovie.style.background = `url("${background}")`;
+
+	movieImg.src = movie.poster_path;
+	makeSafeImage(movieImg);
+	movieElement.querySelector(".figcaption-name_movie").textContent =
+		movie.title;
+
+	movieElement.querySelector(".figcaption-smaller_movie").textContent =
+		movie.genres.join(", ");
+
+	movieElement.querySelector(".figcaption-date_movie").textContent = parseInt(
+		movie.release_date,
+		10
+	);
+	movieElement.dataset.id = movie.id;
+
+	return movieElement;
+};
+
 export const createMovies = (container) => {
 	const clickHandler = (e) => {
 		const movieCard = e.target.closest("[data-id]");
@@ -54,37 +76,7 @@ export const createMovies = (container) => {
 	updateMoviesState();
 };
 
-// const globalMovies = {};
-
-// const onClick = (e) => {
-// 	const { id } = e.target.closet("[data-id]").dataset;
-
-// 	const movie = globalMovies[id];
-
-// 	showModal(movie)
-// }
-
 const movieInfoDownload = () => {
-	// formEditMovieForm.addEventListener("submit", (e) => {
-	// 	e.preventDefault();
-	// 	divEditMovieContainer.style.opacity = 0;
-	// 	divEditMovieContainer.style.visibility = "hidden";
-	// 	divContentSearchMovie.style.display = "none";
-	// 	divMovieInfo.style.opacity = 1;
-	// 	divMovieInfo.style.visibility = "visible";
-	// 	divMovieInfo.style.position = "relative";
-	// 	imgMovieInfo.src = defaultPoster;
-	// 	divContentContainer.style.opacity = 1;
-	// 	body.style.overflowY = "auto";
-	// 	divContentMovieContainer.style.overflow = "auto";
-	// 	paragraphHeaderDescription.textContent = inputEditTitle.value;
-	// 	paragraphRating.textContent = inputEditRating.value;
-	// 	paragraphDescriptionMovie.textContent = textareaOverview.value;
-	// 	updateMovie()
-
-	// 	const searchValue = new FormData(e.target).delete("button-movie__submit");
-	// 	updateMoviesState({ search: searchValue });
-	// });
 	divMainMoviesCards.addEventListener("click", (e) => {
 		if (e.target.classList.contains("button-movie__card")) {
 			const modalEditOrDelete = e.target.previousSibling;

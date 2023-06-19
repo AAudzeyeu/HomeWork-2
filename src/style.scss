@@ -570,6 +570,35 @@ body {
     text-transform: uppercase;
 }
 
+.modal-sort__movie {
+    position: absolute;
+    opacity: 1;
+    visibility: visible;
+    text-align: center;
+    width: 223.57px;
+    top: 50px;
+    right: -40px;
+    z-index: 5;
+}
+.text-sort__movie {
+    font: 1.5rem/3rem 'Montserrat', sans-serif;    
+    color: #FFF;
+    -webkit-transition: all .35s ease;
+    -o-transition: all .35s ease;
+    transition: all .35s ease;
+}
+
+.text-sort__movie:hover {
+    cursor: pointer;
+    background: #F65261;
+}
+
+.navbar-sort__closed {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
 .arrow-4 {
     position: absolute;
     cursor: pointer;

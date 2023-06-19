@@ -1,5 +1,19 @@
 import { searchFormHandler } from "../components/searchMovies";
 
+import {
+	genreDocumentaryFormHandler,
+	genreHorrorFormHandler,
+	genreComedyFormHandler,
+	genreCrimeFormHandler,
+} from "../components/genresMovie";
+import {
+	sortTitleFormHandler,
+	sortGenreFormHandler,
+} from "../components/sortMovie";
+import { goToClosedMovieGenre } from "../utils/search";
+
+// import { genreFormHandler } from "../components/genresMovie";
+
 export const divTemplate = document.createElement("div");
 export const divMainMoviesCards = document.createElement("div");
 export const divContentSearchMovie = document.createElement("div");
@@ -19,7 +33,6 @@ export const createMainContentContainer = (container) => {
 	divContentContainer.classList.add("content-container");
 
 	divContentSearchMovie.classList.add("content-search__movie", "logo");
-	// divContentContainer.append(divContentSearchMovie);
 
 	divContentContainer.append(headerContentContainer);
 
@@ -87,6 +100,8 @@ export const createMainContentContainer = (container) => {
 	divNavbarMovieContainer.append(navbarSearchMovie);
 
 	const buttonTypeAll = document.createElement("button");
+
+	buttonTypeAll.addEventListener("click", goToClosedMovieGenre);
 	buttonTypeAll.classList.add("button-type__movie");
 	navbarSearchMovie.append(buttonTypeAll);
 
@@ -96,6 +111,7 @@ export const createMainContentContainer = (container) => {
 	buttonTypeAll.append(spanNavbarAll);
 
 	const buttonTypeDocumentary = document.createElement("button");
+	buttonTypeDocumentary.addEventListener("click", genreDocumentaryFormHandler);
 	buttonTypeDocumentary.classList.add("button-type__movie");
 	navbarSearchMovie.append(buttonTypeDocumentary);
 
@@ -105,6 +121,7 @@ export const createMainContentContainer = (container) => {
 	buttonTypeDocumentary.append(spanNavbarDocumentary);
 
 	const buttonTypeComedy = document.createElement("button");
+	buttonTypeComedy.addEventListener("click", genreComedyFormHandler);
 	buttonTypeComedy.classList.add("button-type__movie");
 	navbarSearchMovie.append(buttonTypeComedy);
 
@@ -114,6 +131,7 @@ export const createMainContentContainer = (container) => {
 	buttonTypeComedy.append(spanNavbarComedy);
 
 	const buttonTypeHorror = document.createElement("button");
+	buttonTypeHorror.addEventListener("click", genreHorrorFormHandler);
 	buttonTypeHorror.classList.add("button-type__movie");
 	navbarSearchMovie.append(buttonTypeHorror);
 
@@ -123,6 +141,7 @@ export const createMainContentContainer = (container) => {
 	buttonTypeHorror.append(spanNavbarHorror);
 
 	const buttonTypeCrime = document.createElement("button");
+	buttonTypeCrime.addEventListener("click", genreCrimeFormHandler);
 	buttonTypeCrime.classList.add("button-type__movie");
 	navbarSearchMovie.append(buttonTypeCrime);
 
@@ -160,6 +179,25 @@ export const createMainContentContainer = (container) => {
 	const spanArrowFourRight = document.createElement("span");
 	spanArrowFourRight.classList.add("arrow-4-right");
 	divArrowFour.append(spanArrowFourRight);
+
+	const modalSortMovie = document.createElement("div");
+	buttonTypeMovie.addEventListener("click", () => {
+		modalSortMovie.classList.toggle("navbar-sort__closed");
+	});
+	modalSortMovie.classList.add("modal-sort__movie", "navbar-sort__closed");
+	navbarSortMovie.append(modalSortMovie);
+
+	const paragraphModalTitle = document.createElement("p");
+	paragraphModalTitle.addEventListener("click", sortTitleFormHandler);
+	paragraphModalTitle.classList.add("text-sort__movie");
+	paragraphModalTitle.textContent = "Title";
+	modalSortMovie.append(paragraphModalTitle);
+
+	const paragraphModalGenre = document.createElement("p");
+	paragraphModalGenre.addEventListener("click", sortGenreFormHandler);
+	paragraphModalGenre.classList.add("text-sort__movie");
+	paragraphModalGenre.textContent = "Genre";
+	modalSortMovie.append(paragraphModalGenre);
 
 	const divMovieFound = document.createElement("div");
 	divMovieFound.classList.add("movies-found");
