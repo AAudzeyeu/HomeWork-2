@@ -1,7 +1,7 @@
 import {
 	getSearchparams,
 	objToSearch,
-	updateSearchParams
+	updateSearchParams,
 } from "../utils/search";
 
 import {
@@ -25,47 +25,62 @@ export const defaultParams = {
 	sortOrder: "desc",
 };
 
+const blockContent = (promise) => {
+	const { body } = document;
+	body.classList.add("block-content");
+	return promise.finally(
+		setTimeout(() => body.classList.remove("block-content"), 2000)
+	);
+};
+
 export const getMovies = (params) =>
-	fetch(`${baseUrl}${objToSearch(params || defaultParams)}`).then((data) =>
-		data.json()
+	blockContent(
+		fetch(`${baseUrl}${objToSearch(params || defaultParams)}`).then((data) =>
+			data.json()
+		)
 	);
 
 export const createMovie = (body) =>
-	fetch(baseUrl, {
-		method: "POST",
-		body,
-	})
-		.then((data) => data.json())
-		.then((data) => {
-			if (data.status > 299 || data.status < 200) throw new Error("Oh, oh");
-			showSuccessful();
+	blockContent(
+		fetch(baseUrl, {
+			method: "POST",
+			body,
 		})
-		.catch(() => {
-			showError();
-		});
+			.then((data) => data.json())
+			.then((data) => {
+				if (data.status > 299 || data.status < 200) throw new Error("Oh, oh");
+				showSuccessful();
+			})
+			.catch(() => {
+				showError();
+			})
+	);
 
 export const updateMovie = (body) =>
-	fetch(baseUrl, {
-		method: "PUT",
-		body: JSON.stringify(body),
-		headers: {
-			"Content-Type": "application/json",
-		},
-	}).then((data) => data.json());
+	blockContent(
+		fetch(baseUrl, {
+			method: "PUT",
+			body: JSON.stringify(body),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		}).then((data) => data.json())
+	);
 export const getMovie = (id) =>
-	fetch(`${baseUrl}/${id}`).then((data) => data.json());
+	blockContent(fetch(`${baseUrl}/${id}`).then((data) => data.json()));
 
-export let globalMoviesList = {};
+export const globalMoviesList = {};
 
 export const updateMoviesState = (params) => {
 	if (params) updateSearchParams(params);
-	globalMoviesList = {};
 	const currentParams = getSearchparams() || defaultParams;
+	const moviesElements = [];
+
 	return getMovies(currentParams).then((data) => {
 		data.data.forEach((movie) => {
 			globalMoviesList[movie.id] = movie;
+			moviesElements.push(createMovieItem(movie));
 		});
-		const moviesElements = Object.values(globalMoviesList).map(createMovieItem);
 
 		divMainMoviesCards.innerHTML = "";
 		divMainMoviesCards.append(...moviesElements);
@@ -81,14 +96,16 @@ export const updateMoviesState = (params) => {
 };
 
 export const deleteMovie = (id) =>
-	fetch(`${baseUrl}/${id}`, {
-		method: "DELETE",
-	})
-		.then((data) => {
-			if (data.status > 299 || data.status < 200) throw new Error("Oh, oh");
-			showSuccessful();
-			updateMoviesState();
+	blockContent(
+		fetch(`${baseUrl}/${id}`, {
+			method: "DELETE",
 		})
-		.catch(() => {
-			showError();
-		});
+			.then((data) => {
+				if (data.status > 299 || data.status < 200) throw new Error("Oh, oh");
+				showSuccessful();
+				updateMoviesState();
+			})
+			.catch(() => {
+				showError();
+			})
+	);

@@ -14,7 +14,3 @@ export const genreHorrorFormHandler = () => {
 export const genreCrimeFormHandler = () => {
 	updateMoviesState({ filter: "Crime" });
 };
-
-export const genreAllFormHandler = () => {
-	updateMoviesState({ filter: "" });
-};

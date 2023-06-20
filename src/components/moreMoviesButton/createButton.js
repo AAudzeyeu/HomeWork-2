@@ -8,8 +8,9 @@ export const createMoreButton = (container) => {
 	button.id = "show-more";
 	button.innerText = "Show more";
 
-	const onClick = () => {
+	const onClick = async () => {
 		const currentLimit = getSearchparams().limit || defaultLimit;
+
 		updateMoviesState({ limit: currentLimit + defaultLimit });
 	};
 

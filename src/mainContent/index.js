@@ -10,6 +10,7 @@ import {
 	sortTitleFormHandler,
 	sortGenreFormHandler,
 } from "../components/sortMovie";
+import { sortAskFormHandler, sortDescFormHandler } from "../sortByOrder";
 import { goToClosedMovieGenre } from "../utils/search";
 
 // import { genreFormHandler } from "../components/genresMovie";
@@ -198,6 +199,18 @@ export const createMainContentContainer = (container) => {
 	paragraphModalGenre.classList.add("text-sort__movie");
 	paragraphModalGenre.textContent = "Genre";
 	modalSortMovie.append(paragraphModalGenre);
+
+	const paragraphModalAsk = document.createElement("p");
+	paragraphModalAsk.addEventListener("click", sortAskFormHandler);
+	paragraphModalAsk.classList.add("text-sort__movie");
+	paragraphModalAsk.textContent = "Ask";
+	modalSortMovie.append(paragraphModalAsk);
+
+	const paragraphModalDesc = document.createElement("p");
+	paragraphModalDesc.addEventListener("click", sortDescFormHandler);
+	paragraphModalDesc.classList.add("text-sort__movie");
+	paragraphModalDesc.textContent = "Desc";
+	modalSortMovie.append(paragraphModalDesc);
 
 	const divMovieFound = document.createElement("div");
 	divMovieFound.classList.add("movies-found");
