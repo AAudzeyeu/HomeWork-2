@@ -1,11 +1,6 @@
+import { updateMoviesState } from "../api";
 import { searchFormHandler } from "../components/searchMovies";
 
-import {
-	genreDocumentaryFormHandler,
-	genreHorrorFormHandler,
-	genreComedyFormHandler,
-	genreCrimeFormHandler,
-} from "../components/genresMovie";
 import {
 	sortTitleFormHandler,
 	sortGenreFormHandler,
@@ -29,6 +24,7 @@ export const spanFoundFinished = document.createElement("span");
 export const paragraphModalEdit = document.createElement("p");
 export const modalEditOrDelete = document.createElement("div");
 export const headerContentContainer = document.createElement("header");
+export const divNavbarMovieContainer = document.createElement("form");
 
 export const createMainContentContainer = (container) => {
 	divContentContainer.classList.add("content-container");
@@ -92,7 +88,21 @@ export const createMainContentContainer = (container) => {
 	divNavbarMovieBorder.classList.add("navbar-movie__border");
 	divContentMovieContainer.append(divNavbarMovieBorder);
 
-	const divNavbarMovieContainer = document.createElement("div");
+	divNavbarMovieContainer.addEventListener("change", (e) => {
+		e.preventDefault();
+		const { target } = e;
+		if (target.tagName === "SELECT") {
+			const sortType = target.options[target.selectedIndex].value;
+			const sortAskOrDesc = target.options[target.selectedIndex].dataset.order;
+			updateMoviesState({ sortBy: sortType, sortOrder: sortAskOrDesc });
+		}
+
+		if (target.classList.contains("button-type__movie")) {
+			const formData = new FormData(e.currentTarget);
+			const genres = formData.getAll("genre");
+			updateMoviesState({ filter: genres });
+		}
+	});
 	divNavbarMovieContainer.classList.add("navbar-movie__container");
 	divNavbarMovieBorder.append(divNavbarMovieContainer);
 
@@ -111,45 +121,77 @@ export const createMainContentContainer = (container) => {
 	spanNavbarAll.textContent = "All";
 	buttonTypeAll.append(spanNavbarAll);
 
-	const buttonTypeDocumentary = document.createElement("button");
-	buttonTypeDocumentary.addEventListener("click", genreDocumentaryFormHandler);
-	buttonTypeDocumentary.classList.add("button-type__movie");
-	navbarSearchMovie.append(buttonTypeDocumentary);
+	const typeContainerDocumentary = document.createElement("div");
+	typeContainerDocumentary.classList.add("button-type__movie");
+	navbarSearchMovie.append(typeContainerDocumentary);
 
-	const spanNavbarDocumentary = document.createElement("span");
-	spanNavbarDocumentary.classList.add("navbar-movie__text");
-	spanNavbarDocumentary.textContent = "Documentary";
-	buttonTypeDocumentary.append(spanNavbarDocumentary);
+	const checkboxTypeDocumentary = document.createElement("input");
+	checkboxTypeDocumentary.type = "checkbox";
+	checkboxTypeDocumentary.name = "genre";
+	checkboxTypeDocumentary.value = "Documentary";
+	checkboxTypeDocumentary.id = "documentary";
+	checkboxTypeDocumentary.classList.add("button-type__movie");
+	typeContainerDocumentary.append(checkboxTypeDocumentary);
 
-	const buttonTypeComedy = document.createElement("button");
-	buttonTypeComedy.addEventListener("click", genreComedyFormHandler);
-	buttonTypeComedy.classList.add("button-type__movie");
-	navbarSearchMovie.append(buttonTypeComedy);
+	const labelTypeDocumentary = document.createElement("label");
+	labelTypeDocumentary.setAttribute("for", "documentary");
+	labelTypeDocumentary.classList.add("navbar-movie__text");
+	labelTypeDocumentary.textContent = "Documentary";
+	typeContainerDocumentary.append(labelTypeDocumentary);
 
-	const spanNavbarComedy = document.createElement("span");
-	spanNavbarComedy.classList.add("navbar-movie__text");
-	spanNavbarComedy.textContent = "Comedy";
-	buttonTypeComedy.append(spanNavbarComedy);
+	const typeContainerComedy = document.createElement("div");
+	typeContainerDocumentary.classList.add("button-type__movie");
+	navbarSearchMovie.append(typeContainerComedy);
 
-	const buttonTypeHorror = document.createElement("button");
-	buttonTypeHorror.addEventListener("click", genreHorrorFormHandler);
-	buttonTypeHorror.classList.add("button-type__movie");
-	navbarSearchMovie.append(buttonTypeHorror);
+	const checkboxTypeComedy = document.createElement("input");
+	checkboxTypeComedy.classList.add("button-type__movie");
+	checkboxTypeComedy.type = "checkbox";
+	checkboxTypeComedy.name = "genre";
+	checkboxTypeComedy.value = "comedy";
+	checkboxTypeComedy.id = "Comedy";
+	typeContainerComedy.append(checkboxTypeComedy);
 
-	const spanNavbarHorror = document.createElement("span");
-	spanNavbarHorror.classList.add("navbar-movie__text");
-	spanNavbarHorror.textContent = "Horror";
-	buttonTypeHorror.append(spanNavbarHorror);
+	const labelTypeComedy = document.createElement("label");
+	labelTypeComedy.setAttribute("for", "Comedy");
+	labelTypeComedy.classList.add("navbar-movie__text");
+	labelTypeComedy.textContent = "Comedy";
+	typeContainerComedy.append(labelTypeComedy);
 
-	const buttonTypeCrime = document.createElement("button");
-	buttonTypeCrime.addEventListener("click", genreCrimeFormHandler);
-	buttonTypeCrime.classList.add("button-type__movie");
-	navbarSearchMovie.append(buttonTypeCrime);
+	const typeContainerHorror = document.createElement("div");
+	typeContainerHorror.classList.add("button-type__movie");
+	navbarSearchMovie.append(typeContainerHorror);
 
-	const spanNavbarCrime = document.createElement("span");
-	spanNavbarCrime.classList.add("navbar-movie__text");
-	spanNavbarCrime.textContent = "Crime";
-	buttonTypeCrime.append(spanNavbarCrime);
+	const checkboxTypeHorror = document.createElement("input");
+	checkboxTypeHorror.classList.add("button-type__movie");
+	checkboxTypeHorror.type = "checkbox";
+	checkboxTypeHorror.name = "genre";
+	checkboxTypeHorror.value = "horror";
+	checkboxTypeHorror.id = "Horror";
+	typeContainerHorror.append(checkboxTypeHorror);
+
+	const labelTypeHorror = document.createElement("label");
+	labelTypeHorror.setAttribute("for", "Horror");
+	labelTypeHorror.classList.add("navbar-movie__text");
+	labelTypeHorror.textContent = "Horror";
+	typeContainerHorror.append(labelTypeHorror);
+
+	const typeContainerCrime = document.createElement("div");
+	typeContainerHorror.classList.add("button-type__movie");
+	navbarSearchMovie.append(typeContainerCrime);
+
+	const checkboxTypeCrime = document.createElement("input");
+	checkboxTypeCrime.classList.add("button-type__movie");
+	checkboxTypeCrime.type = "checkbox";
+	checkboxTypeCrime.name = "genre";
+	checkboxTypeCrime.value = "crime";
+	checkboxTypeCrime.id = "Crime";
+	typeContainerCrime.append(checkboxTypeCrime);
+
+	const labelTypeCrime = document.createElement("label");
+	labelTypeCrime.setAttribute("for", "Crime");
+	labelTypeCrime.classList.add("navbar-movie__text");
+	labelTypeCrime.textContent = "Crime";
+	typeContainerCrime.append(labelTypeCrime);
 
 	const navbarSortMovie = document.createElement("nav");
 	navbarSortMovie.classList.add("navbar-sort__movie");
@@ -160,31 +202,54 @@ export const createMainContentContainer = (container) => {
 	paragraphNavbarSort.textContent = "Sort by";
 	navbarSortMovie.append(paragraphNavbarSort);
 
-	const buttonTypeMovie = document.createElement("button");
-	buttonTypeMovie.classList.add("button-type__movie");
-	navbarSortMovie.append(buttonTypeMovie);
+	const selectTypeMovie = document.createElement("select");
+	selectTypeMovie.classList.add("select-type__movie");
+	navbarSortMovie.append(selectTypeMovie);
 
-	const spanNavbarMovie = document.createElement("span");
-	spanNavbarMovie.classList.add("navbar-movie__text");
-	spanNavbarMovie.textContent = "Release Date";
-	buttonTypeMovie.append(spanNavbarMovie);
+	const optionTypeReleaseDateUp = document.createElement("option");
+	optionTypeReleaseDateUp.classList.add("navbar-movie__text");
+	optionTypeReleaseDateUp.textContent = "Release Date UP";
+	optionTypeReleaseDateUp.value = "release_date";
+	optionTypeReleaseDateUp.setAttribute("data-order", "ask");
+	selectTypeMovie.append(optionTypeReleaseDateUp);
 
-	const divArrowFour = document.createElement("div");
-	divArrowFour.classList.add("arrow-4");
-	spanNavbarMovie.append(divArrowFour);
+	// const divArrowFour = document.createElement("div");
+	// divArrowFour.classList.add("arrow-4");
+	// optionTypeReleaseDateUp.append(divArrowFour);
 
-	const spanArrowFourLeft = document.createElement("span");
-	spanArrowFourLeft.classList.add("arrow-4-left");
-	divArrowFour.append(spanArrowFourLeft);
+	// const spanArrowFourLeft = document.createElement("span");
+	// spanArrowFourLeft.classList.add("arrow-4-left");
+	// divArrowFour.append(spanArrowFourLeft);
 
-	const spanArrowFourRight = document.createElement("span");
-	spanArrowFourRight.classList.add("arrow-4-right");
-	divArrowFour.append(spanArrowFourRight);
+	// const spanArrowFourRight = document.createElement("span");
+	// spanArrowFourRight.classList.add("arrow-4-right");
+	// divArrowFour.append(spanArrowFourRight);
+
+	const optionTypeReleaseDateDown = document.createElement("option");
+	optionTypeReleaseDateDown.classList.add("navbar-movie__text");
+	optionTypeReleaseDateDown.textContent = "Release Date DOWN";
+	optionTypeReleaseDateDown.value = "release_date";
+	optionTypeReleaseDateDown.setAttribute("data-order", "desc");
+	selectTypeMovie.append(optionTypeReleaseDateDown);
+
+	const optionTypeReleaseRatingUp = document.createElement("option");
+	optionTypeReleaseRatingUp.classList.add("navbar-movie__text");
+	optionTypeReleaseRatingUp.textContent = "Rating UP";
+	optionTypeReleaseRatingUp.value = "vote_average";
+	optionTypeReleaseRatingUp.setAttribute("data-order", "ask");
+	selectTypeMovie.append(optionTypeReleaseRatingUp);
+
+	const optionTypeReleaseRatingDown = document.createElement("option");
+	optionTypeReleaseRatingDown.classList.add("navbar-movie__text");
+	optionTypeReleaseRatingDown.textContent = "Rating DOWN";
+	optionTypeReleaseRatingDown.value = "vote_average";
+	optionTypeReleaseRatingDown.setAttribute("data-order", "desc");
+	selectTypeMovie.append(optionTypeReleaseRatingDown);
 
 	const modalSortMovie = document.createElement("div");
-	buttonTypeMovie.addEventListener("click", () => {
-		modalSortMovie.classList.toggle("navbar-sort__closed");
-	});
+	// optionTypeReleaseDate.addEventListener("click", () => {
+	// 	modalSortMovie.classList.toggle("navbar-sort__closed");
+	// });
 	modalSortMovie.classList.add("modal-sort__movie", "navbar-sort__closed");
 	navbarSortMovie.append(modalSortMovie);
 

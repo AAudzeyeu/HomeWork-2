@@ -24,13 +24,18 @@ export const defaultParams = {
 	sortBy: undefined,
 	sortOrder: "desc",
 };
-
+const blockAllContent = document.createElement("div");
+blockAllContent.classList.add("block-content");
 const blockContent = (promise) => {
 	const { body } = document;
-	body.classList.add("block-content");
-	return promise.finally(
-		setTimeout(() => body.classList.remove("block-content"), 2000)
-	);
+	body.append(blockAllContent);
+	body.style.overflowX = "hidden";
+	body.style.overflowY = "hidden";
+	return promise.finally(() => {
+		blockAllContent.remove();
+		body.style.overflowX = "hidden";
+		body.style.overflowY = "auto";
+	});
 };
 
 export const getMovies = (params) =>
@@ -80,6 +85,7 @@ export const updateMoviesState = (params) => {
 		data.data.forEach((movie) => {
 			globalMoviesList[movie.id] = movie;
 			moviesElements.push(createMovieItem(movie));
+			console.log(data);
 		});
 
 		divMainMoviesCards.innerHTML = "";
