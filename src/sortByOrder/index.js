@@ -1,7 +1,7 @@
 import { updateMoviesState } from "../api";
 
 export const sortAskFormHandler = () => {
-	updateMoviesState({ sortOrder: "ask" });
+	updateMoviesState({ sortOrder: "asc" });
 };
 export const sortDescFormHandler = () => {
 	updateMoviesState({ sortOrder: "desc" });

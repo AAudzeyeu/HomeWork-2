@@ -212,3 +212,8 @@ const initApp = () => {
 };
 
 initApp();
+
+export const sum = (a, b) => {
+	if (!a || !b) throw new Error("one of parametrs is not defined");
+	return +a + +b;
+};
