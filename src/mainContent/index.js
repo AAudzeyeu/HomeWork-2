@@ -210,7 +210,7 @@ export const createMainContentContainer = (container) => {
 	optionTypeReleaseDateUp.classList.add("navbar-movie__text");
 	optionTypeReleaseDateUp.textContent = "Release Date UP";
 	optionTypeReleaseDateUp.value = "release_date";
-	optionTypeReleaseDateUp.setAttribute("data-order", "ask");
+	optionTypeReleaseDateUp.setAttribute("data-order", "asc");
 	selectTypeMovie.append(optionTypeReleaseDateUp);
 
 	// const divArrowFour = document.createElement("div");
@@ -236,7 +236,7 @@ export const createMainContentContainer = (container) => {
 	optionTypeReleaseRatingUp.classList.add("navbar-movie__text");
 	optionTypeReleaseRatingUp.textContent = "Rating UP";
 	optionTypeReleaseRatingUp.value = "vote_average";
-	optionTypeReleaseRatingUp.setAttribute("data-order", "ask");
+	optionTypeReleaseRatingUp.setAttribute("data-order", "asc");
 	selectTypeMovie.append(optionTypeReleaseRatingUp);
 
 	const optionTypeReleaseRatingDown = document.createElement("option");
@@ -268,7 +268,7 @@ export const createMainContentContainer = (container) => {
 	const paragraphModalAsk = document.createElement("p");
 	paragraphModalAsk.addEventListener("click", sortAskFormHandler);
 	paragraphModalAsk.classList.add("text-sort__movie");
-	paragraphModalAsk.textContent = "Ask";
+	paragraphModalAsk.textContent = "Asc";
 	modalSortMovie.append(paragraphModalAsk);
 
 	const paragraphModalDesc = document.createElement("p");
