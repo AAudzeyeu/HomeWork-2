@@ -73,7 +73,6 @@ export const createMovies = (container) => {
 		}
 	};
 	container.addEventListener("click", clickHandler);
-	updateMoviesState();
 };
 
 const movieInfoDownload = () => {

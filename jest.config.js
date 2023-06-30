@@ -1,7 +1,7 @@
 module.exports = {
 	testEnvironment: "jsdom",
-	testMatch: ["<rootDir>/src/**/*.test.js"],
-	automock: false,
-	resetMocks: false,
-	setupFiles: ["./jest.setup.js"],
+	setupFilesAfterEnv: ["<rootDir>/jest.setup.js"],
+	moduleNameMapper: {
+		"\\.(jpe?g|svg|png|s[ac]ss)$" : "<rootDir>/fileMock.js"
+	}
 };
